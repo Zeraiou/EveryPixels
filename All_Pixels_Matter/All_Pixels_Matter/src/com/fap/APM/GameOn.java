@@ -34,7 +34,8 @@ public class GameOn extends Canvas implements Runnable{
     
     
     public GameOn () {
-        setPreferredSize(new Dimension(screenWidth, screenHeight));
+    	Dimension sizeGame = new Dimension(screenWidth, screenHeight);
+        setPreferredSize(sizeGame);
         frame = new JFrame();
         screen = new ScreenDisplay(screenWidth, screenHeight);
         keyboard = new Keyboard();
