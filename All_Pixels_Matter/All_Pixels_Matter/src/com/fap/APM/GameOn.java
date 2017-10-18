@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Input.Keyboard;
+import com.fap.APM.World.Map;
 
 public class GameOn extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1L;
@@ -25,7 +26,7 @@ public class GameOn extends Canvas implements Runnable{
     protected JFrame frame;
     private ScreenDisplay screen;
     private Keyboard keyboard;
-    
+    private Map map;
     
     
     private BufferedImage imageInFrame = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
@@ -38,8 +39,11 @@ public class GameOn extends Canvas implements Runnable{
         setPreferredSize(sizeGame);
         frame = new JFrame();
         screen = new ScreenDisplay(screenWidth, screenHeight);
+        
+        map = new Map("/Map/Map.png");
         keyboard = new Keyboard();
         addKeyListener(keyboard);
+       
 
     }
     
@@ -113,7 +117,7 @@ public class GameOn extends Canvas implements Runnable{
 		if (keyboard.down) 		yOffset-=2;
 		if (keyboard.rigth) 	xOffset-=2;
 
-		
+		map.tickMap();
 		
 	}
 
@@ -127,7 +131,9 @@ public class GameOn extends Canvas implements Runnable{
 	        
 	        screen.clearScreen();
 	        
-	        screen.renderScreen(xOffset, yOffset);
+	        
+	        
+	        map.renderMap(xOffset, yOffset, screen);
 	        
 	        for (int i = 0; i < pixelsInFrame.length; i++) {
 	            pixelsInFrame[i] = screen.pixelsScreen[i];
@@ -142,7 +148,6 @@ public class GameOn extends Canvas implements Runnable{
 	        
 	       
 	        graphics.drawImage(imageInFrame, 0, 0, getWidth(), getHeight(), null);
-	        graphics.drawImage(imageInFrame, 800, 600, getWidth(), getHeight(), null);
 	    	
 	        
 	        graphics.dispose();

@@ -12,11 +12,11 @@ public class SpriteSheet {
 	public int[] pixelsSpriteSheet;
 	
 	public static SpriteSheet tiles_Base8 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase8.png", 32, 24);
-	public static SpriteSheet tiles_Base10 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase10.png", 40, 30);
-	public static SpriteSheet tiles_Base12 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase12.png", 48, 36);
-	public static SpriteSheet tiles_Base16 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase16.png", 64, 48);
-	public static SpriteSheet tiles_Base32 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase32.png", 128, 96);
-	public static SpriteSheet tiles_Base64 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase64.png", 256, 192);
+	//public static SpriteSheet tiles_Base10 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase10.png", 40, 30);
+	//public static SpriteSheet tiles_Base12 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase12.png", 48, 36);
+	//public static SpriteSheet tiles_Base16 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase16.png", 64, 48);
+	//public static SpriteSheet tiles_Base32 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase32.png", 128, 96);
+	//public static SpriteSheet tiles_Base64 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase64.png", 256, 192);
 
 	
 	public SpriteSheet(String path, int widthSpriteSheet, int heightSpriteSheet) {
@@ -30,9 +30,9 @@ public class SpriteSheet {
 	
 	private void loadSpriteSheet() {
 		try {
-			System.out.println("Chargement" + path);
+			//System.out.println("Chargement" + path);
 			BufferedImage imageSpriteSheet = ImageIO.read(SpriteSheet.class.getResource(path));
-			System.out.println("Reussi" + path);
+			//System.out.println("Reussi" + path);
 			
 			int w  = imageSpriteSheet.getWidth();
 			int h = imageSpriteSheet.getHeight();
@@ -41,7 +41,7 @@ public class SpriteSheet {
 				e.printStackTrace();
 			}
 			catch (Exception e) {
-				System.err.println("Rater");
+			//	System.err.println("Rater" + path);
 			}
 	
 	}
