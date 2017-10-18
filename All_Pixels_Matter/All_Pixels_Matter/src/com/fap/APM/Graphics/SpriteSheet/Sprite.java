@@ -8,6 +8,9 @@ public class Sprite {
 	
 	protected SpriteSheet spriteSheet;
 	
+	public static Sprite grass8 = new Sprite(8, 8, 0, 0, SpriteSheet.tiles_Base8);
+	public static Sprite grass10 = new Sprite(10, 10, 0, 0, SpriteSheet.tiles_Base10);
+	public static Sprite grass12 = new Sprite(12, 12, 0, 0, SpriteSheet.tiles_Base12);
 	public static Sprite grass16 = new Sprite(16, 16, 0, 0, SpriteSheet.tiles_Base16);
 	public static Sprite grass32 = new Sprite(32, 32, 0, 0, SpriteSheet.tiles_Base32);
 	public static Sprite grass64 = new Sprite(64, 64, 0, 0, SpriteSheet.tiles_Base64);
