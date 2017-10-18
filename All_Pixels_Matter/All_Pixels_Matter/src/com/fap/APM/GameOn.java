@@ -142,6 +142,7 @@ public class GameOn extends Canvas implements Runnable{
 	        
 	       
 	        graphics.drawImage(imageInFrame, 0, 0, getWidth(), getHeight(), null);
+	        graphics.drawImage(imageInFrame, 800, 600, getWidth(), getHeight(), null);
 	    	
 	        
 	        graphics.dispose();
