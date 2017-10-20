@@ -6,7 +6,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import com.fap.APM.Graphics.ScreenDisplay;
-import com.fap.APM.Graphics.SpriteSheet.Sprite;
 import com.fap.APM.World.Tiles.Tile;
 
 public class Map {
@@ -30,6 +29,7 @@ public class Map {
 		try {
         	System.out.println(path);
             BufferedImage imageFromFile = ImageIO.read(Map.class.getResource(path));
+            
             int w = widthMap = imageFromFile.getWidth();
             int h = heightMap = imageFromFile.getHeight();
             int totalMapTiles = widthMap * heightMap;

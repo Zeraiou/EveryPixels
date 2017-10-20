@@ -1,8 +1,5 @@
 package com.fap.APM;
 
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-
 public class Keeper {
 
 	protected GameOn game;

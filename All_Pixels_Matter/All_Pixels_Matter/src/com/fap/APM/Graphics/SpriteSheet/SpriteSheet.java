@@ -12,8 +12,8 @@ public class SpriteSheet {
 	public int[] pixelsSpriteSheet;
 	
 	public static SpriteSheet tiles_Base8 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase8.png", 32, 24);
+	public static SpriteSheet tiles_Base12 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase12.png", 48, 36);
 	//public static SpriteSheet tiles_Base10 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase10.png", 40, 30);
-	//public static SpriteSheet tiles_Base12 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase12.png", 48, 36);
 	//public static SpriteSheet tiles_Base16 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase16.png", 64, 48);
 	//public static SpriteSheet tiles_Base32 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase32.png", 128, 96);
 	//public static SpriteSheet tiles_Base64 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase64.png", 256, 192);

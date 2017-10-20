@@ -2,7 +2,6 @@ package com.fap.APM.Graphics;
 
 import java.util.Random;
 
-import com.fap.APM.Graphics.SpriteSheet.Sprite;
 import com.fap.APM.World.Tiles.Tile;
 
 public class ScreenDisplay {
@@ -11,8 +10,8 @@ public class ScreenDisplay {
 	 public int heightScreen;
 	 public int[] pixelsScreen; 
 	 
-	 public int widthTile = 8;
-	 public int heightTile = 8;
+	 public int widthTile = 12;
+	 public int heightTile = 12;
 	
 	 
 	 public int xOffset;

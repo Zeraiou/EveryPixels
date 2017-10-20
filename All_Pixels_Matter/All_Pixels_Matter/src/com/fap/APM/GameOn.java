@@ -141,7 +141,7 @@ public class GameOn extends Canvas implements Runnable{
 	       
 	        
 	        Graphics graphics = BufferStrategy.getDrawGraphics();
-
+	        
 	        graphics.setColor(Color.BLUE);
 	        graphics.fillRect(0, 0, screenWidth, screenHeight);
 	        

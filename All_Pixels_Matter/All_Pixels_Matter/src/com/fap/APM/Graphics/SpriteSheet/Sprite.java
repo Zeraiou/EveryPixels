@@ -11,6 +11,9 @@ public class Sprite {
 
 	public static Sprite tile_Void8_Out = new Sprite(8, 8, 0x5D3F97);
 	public static Sprite tile_Void8_In = new Sprite(8, 8, 0x694BE1);
+	public static Sprite tile_Void12_Out = new Sprite(12, 12, 0x5D3F97);
+	public static Sprite tile_Void12_In = new Sprite(12, 12, 0x694BE1);
+	
 	
 	public static Sprite tile_Grass8 = new Sprite(8, 8, 0, 0, SpriteSheet.tiles_Base8);
 	public static Sprite tile_Rock8 = new Sprite(8, 8, 1, 0, SpriteSheet.tiles_Base8);
@@ -26,9 +29,9 @@ public class Sprite {
 	public static Sprite tile_Dirt8 = new Sprite(8, 8, 3, 2, SpriteSheet.tiles_Base8);
 	
 	
+	public static Sprite tile_Grass12 = new Sprite(12, 12, 0, 0, SpriteSheet.tiles_Base12);
 	/*
 	public static Sprite grass10 = new Sprite(10, 10, 0, 0, SpriteSheet.tiles_Base10);
-	public static Sprite grass12 = new Sprite(12, 12, 0, 0, SpriteSheet.tiles_Base12);
 	public static Sprite grass16 = new Sprite(16, 16, 0, 0, SpriteSheet.tiles_Base16);
 	public static Sprite grass32 = new Sprite(32, 32, 0, 0, SpriteSheet.tiles_Base32);
 	public static Sprite grass64 = new Sprite(64, 64, 0, 0, SpriteSheet.tiles_Base64);
