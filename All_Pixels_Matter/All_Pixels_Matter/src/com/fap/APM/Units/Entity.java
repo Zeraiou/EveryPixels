@@ -1,5 +1,7 @@
 package com.fap.APM.Units;
 
+import java.util.Random;
+
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Graphics.SpriteSheet.Sprite;
 import com.fap.APM.World.Map;
@@ -10,6 +12,8 @@ public class Entity {
 	private boolean isRemoved = false;
 	protected Map map;
 	protected Sprite spriteEntity;
+	
+	protected final Random RANDOM = new Random(); 
 	
 	public Entity() {
 		

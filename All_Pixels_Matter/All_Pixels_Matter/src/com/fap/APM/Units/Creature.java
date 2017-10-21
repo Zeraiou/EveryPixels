@@ -8,6 +8,7 @@ protected boolean isMoving = false;
 	protected int pointHealt, pointMagic, pointExperience;
 	protected double pointHealtMaximum, pointMagicMaximum, pointExperienceMaximum;
 	protected double pointHealtPercentage, pointMagicPercentage, pointExperiencePercentage;
+	protected double movementSpeed;
 	
 
 	protected enum Direction {

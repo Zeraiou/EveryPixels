@@ -9,7 +9,6 @@ public class Player extends Creature{
 	private Keyboard keyboard;
 	public Sprite spritePlayer;
 	public boolean isMoving;
-	private double movementSpeed = 2.5;
 	
 	public int fireRate = 0;
 	
@@ -35,7 +34,7 @@ public class Player extends Creature{
 		this.pointExperience = 0;
 		this.pointExperienceMaximum = 100.0;
 		this.pointExperiencePercentage = pointExperience / pointExperienceMaximum;
-		
+		this.movementSpeed  = 2.5;
 	}
 	
 	public void tickEntity() {

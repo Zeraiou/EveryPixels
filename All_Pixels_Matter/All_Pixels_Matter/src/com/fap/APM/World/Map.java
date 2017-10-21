@@ -14,8 +14,8 @@ import com.fap.APM.World.Tiles.Tile;
 
 public class Map {
 	protected int widthMap, heightMap;
-	public int xStatingPosition = 32;
-	public int yStartingPosition = 32;
+	public int xStatingPosition = 205 * 12;
+	public int yStartingPosition = 238 * 12;
 	
 	
 	
