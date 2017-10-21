@@ -42,10 +42,10 @@ public class GameOn extends Canvas implements Runnable{
         frame = new JFrame();
         screen = new ScreenDisplay(screenWidth, screenHeight);
         
-        //map = new Map("/Map/Map64.png");
+        map = new Map("/Map/Map64.png");
         //map = new Map("/Map/Map512.png");
        // map = new Map("/Map/Map1024.png");
-        map = new Map("/Map/Map8192.png");
+        //map = new Map("/Map/Map8192.png");
         
         
         
