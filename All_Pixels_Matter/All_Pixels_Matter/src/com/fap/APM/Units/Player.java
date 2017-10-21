@@ -17,7 +17,14 @@ public class Player extends Creature{
 		this.xEntity = xEntity;
 		this.yEntity = yEntity;
 		this.keyboard = key;
-		spritePlayer = Sprite.Player_Base_Down;
+		
+		
+		//spritePlayer = Sprite.Player_Base_Down23;
+		spritePlayer = Sprite.Player_Base_Down34;
+		//spritePlayer = Sprite.Player_Base_Down46;
+		
+		
+		
 		fireRate = 5;
 		this.pointHealt = 100;
 		this.pointHealtMaximum = 100.0;
@@ -38,22 +45,34 @@ public class Player extends Creature{
 		double xDestination = 0, yDestination = 0;
 		if (keyboard.up) {
 			yDestination -= movementSpeed; 
-			spritePlayer = Sprite.Player_Base_Up;
+			
+			//spritePlayer = Sprite.Player_Base_Up23;
+			spritePlayer = Sprite.Player_Base_Up34;
+			//spritePlayer = Sprite.Player_Base_Up46;
 		}
 		
 		if (keyboard.rigth) {
 			xDestination += movementSpeed; 
-			spritePlayer = Sprite.Player_Base_Right;
+			
+			//spritePlayer = Sprite.Player_Base_Right23;
+			spritePlayer = Sprite.Player_Base_Right34;
+			//spritePlayer = Sprite.Player_Base_Right46;
 		}
 		
 		if (keyboard.down) {
 			yDestination += movementSpeed; 
-			spritePlayer = Sprite.Player_Base_Down;
+			
+			//spritePlayer = Sprite.Player_Base_Down23;
+			spritePlayer = Sprite.Player_Base_Down34;
+			//spritePlayer = Sprite.Player_Base_Down46;
 		}
 		
 		if (keyboard.left) {
 			xDestination -= movementSpeed; 	
-			spritePlayer = Sprite.Player_Base_Left;
+			
+			//spritePlayer = Sprite.Player_Base_Left23;
+			spritePlayer = Sprite.Player_Base_Left34;
+			//spritePlayer = Sprite.Player_Base_Left46;
 		}
 		
 		if (xDestination !=0 || yDestination !=0) {

@@ -20,7 +20,7 @@ public class ScreenDisplay {
 	 public int yOffset;
 	 
 	 
-	 private final int COLOR_NULL1 = 0xFFFF00FF;
+	 private final int COLOR_NULL1 = 0xffFF00FF;
 	 private final int COLOR_NULL2 = 0xff7f007f;
 		
 	 
