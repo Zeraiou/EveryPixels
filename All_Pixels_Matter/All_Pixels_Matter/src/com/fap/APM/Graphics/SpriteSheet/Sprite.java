@@ -29,9 +29,9 @@ public class Sprite {
 	
 	
 	public static Sprite Player_Base_Down = new Sprite(36, 48, 0, 0, SpriteSheet.player_Base);
-	public static Sprite Player_Base_Left = new Sprite(36, 48, 1, 0, SpriteSheet.player_Base);
+	public static Sprite Player_Base_Right = new Sprite(36, 48, 1, 0, SpriteSheet.player_Base);
 	public static Sprite Player_Base_Up = new Sprite(36, 48, 2, 0, SpriteSheet.player_Base);
-	public static Sprite Player_Base_Right = new Sprite(36, 48, 3, 0, SpriteSheet.player_Base);
+	public static Sprite Player_Base_Left = new Sprite(36, 48, 3, 0, SpriteSheet.player_Base);
 	
 		
 	public Sprite(int widthSprite, int heightSprite, int x, int y, SpriteSheet spriteSheet) {

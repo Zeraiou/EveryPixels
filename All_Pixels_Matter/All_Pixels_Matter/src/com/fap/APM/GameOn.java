@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Input.Keyboard;
+import com.fap.APM.Units.Player;
 import com.fap.APM.World.Map;
 
 public class GameOn extends Canvas implements Runnable{
@@ -27,6 +28,7 @@ public class GameOn extends Canvas implements Runnable{
     private ScreenDisplay screen;
     private Keyboard keyboard;
     private Map map;
+    private Player player;
     
     
     private BufferedImage imageInFrame = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
@@ -44,6 +46,9 @@ public class GameOn extends Canvas implements Runnable{
         keyboard = new Keyboard();
         addKeyListener(keyboard);
        
+        
+        player = new Player(map.xStatingPosition, map.yStartingPosition, keyboard);
+        map.addEntity(player);
 
     }
     
@@ -104,19 +109,13 @@ public class GameOn extends Canvas implements Runnable{
 	}
 		
 	
-	int xOffset = 0;
-	int yOffset = 0;
 	
 	public void tickGame() {
 		
 		
 		keyboard.tickKeyboard();
 		
-		if (keyboard.up) 		yOffset+=2;
-		if (keyboard.left) 		xOffset+=2;
-		if (keyboard.down) 		yOffset-=2;
-		if (keyboard.rigth) 	xOffset-=2;
-
+		
 		map.tickMap();
 		
 	}
@@ -131,8 +130,10 @@ public class GameOn extends Canvas implements Runnable{
 	        
 	        screen.clearScreen();
 	        
-	        
-	        
+	      
+	    	int xOffset = (int) player.getXEntity() - (screen.widthScreen / 2);
+	    	int yOffset = (int) player.getYEntity() - (screen.heightScreen / 2);
+	    	
 	        map.renderMap(xOffset, yOffset, screen);
 	        
 	        for (int i = 0; i < pixelsInFrame.length; i++) {

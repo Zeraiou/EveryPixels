@@ -2,6 +2,8 @@ package com.fap.APM.Graphics;
 
 import java.util.Random;
 
+import com.fap.APM.Graphics.SpriteSheet.Sprite;
+import com.fap.APM.Units.Creature;
 import com.fap.APM.World.Tiles.Tile;
 
 public class ScreenDisplay {
@@ -17,6 +19,10 @@ public class ScreenDisplay {
 	 public int xOffset;
 	 public int yOffset;
 	 
+	 
+	 private final int COLOR_NULL1 = 0xFFFF00FF;
+	 private final int COLOR_NULL2 = 0xff7f007f;
+		
 	 
 	 //public int widthLevel = 64;
 	// public int heightLevel = 64;
@@ -96,11 +102,36 @@ public class ScreenDisplay {
 			
 			for (int x = 0; x < tile.sprite.WIDTH_SPRITE; x++) {
 				int xAbsolu = x + xPosition;
-				if (xAbsolu < - 8 || xAbsolu >= widthScreen || yAbsolu < 0 || yAbsolu >= heightScreen) break;
+				if (xAbsolu < - 12 || xAbsolu >= widthScreen || yAbsolu < 0 || yAbsolu >= heightScreen) break;
 				if (xAbsolu < 0) xAbsolu = 0;
 				
 				pixelsScreen[xAbsolu + yAbsolu * widthScreen] = tile.sprite.pixelsSprite[x + y * tile.sprite.WIDTH_SPRITE];
 			}
 		}
 	}
+	
+	public void renderCreature(int xPosition, int yPosition, Sprite sprite) {
+		xPosition -= xOffset;
+		yPosition -= yOffset;
+			
+		for (int y = 0; y < sprite.getHeightSprite(); y++) {
+			int yDestination = y + yPosition;
+			
+			for (int x = 0; x < sprite.getWidthSprite(); x++) {
+				int xDestination = x + xPosition;
+				if (xDestination < - sprite.getWidthSprite() || xDestination >= widthScreen || yDestination < 0 || yDestination >= heightScreen) break;
+				if (xDestination < 0) xDestination = 0;
+				
+				int color = sprite.pixelsSprite[x + y * sprite.getWidthSprite()];  
+				
+				if (color  != COLOR_NULL1) {
+						pixelsScreen[xDestination + yDestination * widthScreen] = color;
+				}
+					
+			}
+				
+		}
+	}
+	
+	
 }

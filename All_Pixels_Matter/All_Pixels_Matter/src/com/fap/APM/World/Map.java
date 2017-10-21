@@ -2,10 +2,14 @@ package com.fap.APM.World;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
 import com.fap.APM.Graphics.ScreenDisplay;
+import com.fap.APM.Units.Entity;
+import com.fap.APM.Units.Player;
 import com.fap.APM.World.Tiles.Tile;
 
 public class Map {
@@ -17,6 +21,9 @@ public class Map {
 	
 	private int[] mapTiles;
 	
+	public List<Player> players = new ArrayList<Player>();
+	public List<Entity> entities = new ArrayList<Entity>();
+	
 	//public static Map map = new Map("/Niveau/NiveauHUB.png");
 
 
@@ -27,7 +34,7 @@ public class Map {
 
 	private void extractFromFile(String path) {
 		try {
-        	System.out.println(path);
+        	//System.out.println(path);
             BufferedImage imageFromFile = ImageIO.read(Map.class.getResource(path));
             
             int w = widthMap = imageFromFile.getWidth();
@@ -37,11 +44,11 @@ public class Map {
 
         	imageFromFile.getRGB(0, 0, w, h, mapTiles, 0, widthMap);
         	
-        	
+        	/*
         	System.out.println("largeur map : " + widthMap);
         	System.out.println("hauteur map : " + heightMap);
         	System.out.println("Quantite totalMapTiles : " + totalMapTiles);
-			
+			*/
         	/*
         	System.out.println(mapTiles[0] + "++++++1111++++++");
 			System.out.println(mapTiles[1] + "++++++2222+++++++++++++");
@@ -76,8 +83,8 @@ public class Map {
 		//System.out.println(Tile.COLOR_ROCK + "++++++color+++++++++++++");
 		
 		if (x < 0 || y < 0 || x >= widthMap || y >= heightMap) return Tile.tile_Void_Out;
-		if (x == 1 && y == 0) System.out.println("ici");
-		if (x == 1 && y == 0) System.out.println(x + y * widthMap);
+		//if (x == 1 && y == 0) System.out.println("ici");
+		//if (x == 1 && y == 0) System.out.println(x + y * widthMap);
 		if (mapTiles[x + y * widthMap] == Tile.COLOR_GRASS) return Tile.tile_Grass;
 		if (mapTiles[x + y * widthMap] == Tile.COLOR_ROCK) return Tile.tile_Rock;
 		if (mapTiles[x + y * widthMap] == Tile.COLOR_WATER) return Tile.tile_Water;
@@ -96,8 +103,29 @@ public class Map {
 		}
 	}
 	
+	public void addEntity(Entity entity) {
+		entity.initialiseMap(this);
+		
+		if (entity instanceof Player) {
+			players.add((Player) entity);
+		} else {
+			entities.add(entity);
+		}
+	}
+	
+	
+	
 	public void tickMap() {
-		// tick des differentes List
+		//System.out.println("entities : entities.size());
+		//System.out.println(players.size());
+		
+		for (int i = 0; i < entities.size(); i++) {
+			entities.get(i).tickEntity();
+		}
+		for (int i = 0; i < players.size(); i++) {
+			players.get(i).tickEntity();
+		}
+		
 	}
 	
 	public void renderMap(int xOffset, int yOffset, ScreenDisplay screen) {
@@ -121,13 +149,19 @@ public class Map {
 		// renderWall
 		// renderRessources
 		// renderEntities(player, monster, item)
+		for (int i = 0; i < entities.size(); i++) {
+			entities.get(i).renderEntity(screen);
+		}
+		for (int i = 0; i < players.size(); i++) {
+			players.get(i).renderEntity(screen);
+		}
+		
 		// renderProjectiles
 		// render Particles
 		// renderEffects
 		
 	}
-	
-	
+
 	
 	
 	

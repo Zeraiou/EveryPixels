@@ -6,17 +6,17 @@ import com.fap.APM.Input.Keyboard;
 
 public class Player extends Creature{
 	
-	private Keyboard key;
+	private Keyboard keyboard;
 	public Sprite spritePlayer;
 	public boolean isMoving;
-	private double movementSpeed = 1.0;
+	private double movementSpeed = 2.5;
 	
 	public int fireRate = 0;
 	
 	public Player(int xEntity, int yEntity, Keyboard key) {
 		this.xEntity = xEntity;
 		this.yEntity = yEntity;
-		this.key = key;
+		this.keyboard = key;
 		spritePlayer = Sprite.Player_Base_Down;
 		fireRate = 5;
 		this.pointHealt = 100;
@@ -36,22 +36,22 @@ public class Player extends Creature{
 		
 
 		double xDestination = 0, yDestination = 0;
-		if (key.up) {
+		if (keyboard.up) {
 			yDestination -= movementSpeed; 
 			spritePlayer = Sprite.Player_Base_Up;
 		}
 		
-		if (key.rigth) {
+		if (keyboard.rigth) {
 			xDestination += movementSpeed; 
 			spritePlayer = Sprite.Player_Base_Right;
 		}
 		
-		if (key.down) {
+		if (keyboard.down) {
 			yDestination += movementSpeed; 
 			spritePlayer = Sprite.Player_Base_Down;
 		}
 		
-		if (key.left) {
+		if (keyboard.left) {
 			xDestination -= movementSpeed; 	
 			spritePlayer = Sprite.Player_Base_Left;
 		}
@@ -67,6 +67,10 @@ public class Player extends Creature{
 	}
 	
 	public void renderEntity(ScreenDisplay screen) {
+		int xRenderOffset = 0;
+		int yRenderOffset = 0;
+				
+		screen.renderCreature((int)(xEntity - xRenderOffset), (int)(yEntity - yRenderOffset), spritePlayer);
 		
 		
 	}
