@@ -9,7 +9,11 @@ import javax.imageio.ImageIO;
 
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Units.Entity;
+import com.fap.APM.Units.GeneratorParticle;
+import com.fap.APM.Units.GeneratorZombie;
+import com.fap.APM.Units.Particle;
 import com.fap.APM.Units.Player;
+import com.fap.APM.Units.Zombie;
 import com.fap.APM.World.Tiles.Tile;
 
 public class Map {
@@ -22,13 +26,16 @@ public class Map {
 	private int[] mapTiles;
 	
 	public List<Player> players = new ArrayList<Player>();
+	public List<Zombie> monsters = new ArrayList<Zombie>();
+	public List<Particle> particles = new ArrayList<Particle>();
 	public List<Entity> entities = new ArrayList<Entity>();
 	
-	//public static Map map = new Map("/Niveau/NiveauHUB.png");
-
-
+	
 	public Map(String path) {
 		extractFromFile(path);
+		generationEntity();
+		
+		
 	}
 
 
@@ -108,9 +115,17 @@ public class Map {
 		
 		if (entity instanceof Player) {
 			players.add((Player) entity);
+		}
+		if (entity instanceof Zombie) {
+			monsters.add((Zombie) entity);
+		}
+		if (entity instanceof Particle) {
+			particles.add((Particle) entity);
 		} else {
 			entities.add(entity);
 		}
+		
+	
 	}
 	
 	
@@ -118,16 +133,55 @@ public class Map {
 	public void tickMap() {
 		//System.out.println("entities : " + entities.size());
 		//System.out.println("players : " + players.size());
+		//System.out.println("particules : " + particles.size());
 		
-		for (int i = 0; i < entities.size(); i++) {
-			entities.get(i).tickEntity();
-		}
+		
 		for (int i = 0; i < players.size(); i++) {
 			players.get(i).tickEntity();
 		}
+		for (int i = 0; i < monsters.size(); i++) {
+			monsters.get(i).tickEntity();
+		}
+		for (int i = 0; i < particles.size(); i++) {
+			particles.get(i).tickEntity();
+		}
+		for (int i = 0; i < entities.size(); i++) {
+			entities.get(i).tickEntity();
+		}
+		
+		removeEntity();
 		
 	}
 	
+	private void removeEntity() {
+		for (int i = 0; i < players.size(); i++) {
+			if (players.get(i).getIsRemoved()) players.remove(i);
+		}
+		for (int i = 0; i < monsters.size(); i++) {
+			if (monsters.get(i).getIsRemoved()) monsters.remove(i);
+
+		}
+		for (int i = 0; i < particles.size(); i++) {
+			if (particles.get(i).getIsRemoved()) particles.remove(i);
+
+		}
+		for (int i = 0; i < entities.size(); i++) {
+			if (entities.get(i).getIsRemoved()) entities.remove(i);
+
+		}
+	}
+
+
+	private void generationEntity() {
+		addEntity(new GeneratorZombie(65*12, 65*12, 4, this));
+		addEntity(new GeneratorZombie(54*12, 67*12, 4, this));
+		addEntity(new GeneratorZombie(78*12, 65*12, 4, this));
+		addEntity(new GeneratorZombie(65*12, 78*12, 4, this));
+		addEntity(new GeneratorParticle(70*12, 70*12, 5000, 500, this));
+		
+	}
+
+
 	public void renderMap(int xOffset, int yOffset, ScreenDisplay screen) {
 		screen.setOffset(xOffset, yOffset);
 		
@@ -152,12 +206,20 @@ public class Map {
 		for (int i = 0; i < players.size(); i++) {
 			players.get(i).renderEntity(screen);
 		}
+		for (int i = 0; i < monsters.size(); i++) {
+			monsters.get(i).renderEntity(screen);
+		}
+		
 		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).renderEntity(screen);
 		}
 		
+		
 		// renderProjectiles
 		// render Particles
+		for (int i = 0; i < particles.size(); i++) {
+			particles.get(i).renderEntity(screen);
+		}
 		// renderEffects
 		
 	}

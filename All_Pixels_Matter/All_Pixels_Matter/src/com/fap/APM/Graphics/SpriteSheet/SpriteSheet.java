@@ -12,11 +12,7 @@ public class SpriteSheet {
 	public int[] pixelsSpriteSheet;
 	
 	public static SpriteSheet tiles_Base12 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase12.png", 48, 36);
-	
-	
 	public static SpriteSheet player_Base34 = new SpriteSheet("/Textures/SpriteSheets/Units/Player/Player_Base-3X4.png", 144, 192);
-	
-	
 	public static SpriteSheet zombie_Base22 = new SpriteSheet("/Textures/SpriteSheets/Units/Monster/Zombie_Base-2X2.png", 96, 72);
 	
 	

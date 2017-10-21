@@ -12,8 +12,6 @@ public class Sprite {
 	public static Sprite tile_Void12_Out = new Sprite(12, 12, 0x5D3F97);
 	public static Sprite tile_Void12_In = new Sprite(12, 12, 0x694BE1);
 	
-
-	
 	public static Sprite tile_Grass12 = new Sprite(12, 12, 0, 0, SpriteSheet.tiles_Base12);
 	public static Sprite tile_Rock12 = new Sprite(12, 12, 1, 0, SpriteSheet.tiles_Base12);
 	public static Sprite tile_Water12 = new Sprite(12, 12, 2, 0, SpriteSheet.tiles_Base12);
@@ -28,8 +26,6 @@ public class Sprite {
 	public static Sprite tile_Dirt12 = new Sprite(12, 12, 3, 2, SpriteSheet.tiles_Base12);
 	
 	
-	
-	
 	public static Sprite player_Base_Down34 = new Sprite(36, 48, 0, 0, SpriteSheet.player_Base34);
 	public static Sprite player_Base_Right34 = new Sprite(36, 48, 1, 0, SpriteSheet.player_Base34);
 	public static Sprite player_Base_Up34 = new Sprite(36, 48, 2, 0, SpriteSheet.player_Base34);
@@ -40,6 +36,17 @@ public class Sprite {
 	public static Sprite zombie_Base_Right22 = new Sprite(24, 24, 1, 0, SpriteSheet.zombie_Base22);
 	public static Sprite zombie_Base_Up22 = new Sprite(24, 24, 2, 0, SpriteSheet.zombie_Base22);
 	public static Sprite zombie_Base_Left22 = new Sprite(24, 24, 3, 0, SpriteSheet.zombie_Base22);
+	
+	public static Sprite particle1p = new Sprite(1, 1, 0xff7f00ff);
+	public static Sprite particle2p = new Sprite(2, 2, 0xff7f00ff);
+	public static Sprite particle3p = new Sprite(3, 3, 0xff7f00ff);
+	public static Sprite particle4p = new Sprite(4, 4, 0xff7f00ff);
+	public static Sprite particle5p = new Sprite(5, 5, 0xff7f00ff);
+	public static Sprite particle6p = new Sprite(6, 6, 0xff7f00ff);
+	public static Sprite particle7p = new Sprite(7, 7, 0xff7f00ff);
+	public static Sprite particle8p = new Sprite(8, 8, 0xff7f00ff);
+	public static Sprite particle9p = new Sprite(9, 9, 0xff7f00ff);
+
 	
 	
 	

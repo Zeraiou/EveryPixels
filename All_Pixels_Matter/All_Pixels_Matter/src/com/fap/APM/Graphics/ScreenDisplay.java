@@ -133,5 +133,22 @@ public class ScreenDisplay {
 		}
 	}
 	
-	
+	public void renderSprite(int xPosition, int yPosition, Sprite sprite, boolean fixed) {
+		if (fixed) {
+			xPosition -= xOffset;
+			yPosition -= yOffset;
+		}
+		//	System.out.println("ici");
+		for (int y = 0; y < sprite.getHeightSprite(); y++) {
+			int yAbsolu = y + yPosition;
+			for (int x = 0; x < sprite.getWidthSprite(); x++) {
+				int xAbsolu = x + xPosition;
+				if (xAbsolu < 0 || xAbsolu >=  widthScreen || yAbsolu < 0 || yAbsolu >= widthScreen) continue;
+				int color =  sprite.pixelsSprite[x + y * sprite.getWidthSprite()];
+				if (color  != COLOR_NULL1 && color  != COLOR_NULL2) {
+				pixelsScreen[xAbsolu + yAbsolu * widthScreen] = color;
+				}
+			}
+		}
+	}
 }

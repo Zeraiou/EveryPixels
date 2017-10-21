@@ -34,7 +34,7 @@ public class Entity {
 	//	if (spriteEntity != null) screen.RenduSprite((int) xEntity, (int) yEntity, spriteEntity, true);
 	}
 	
-	public void removeEtity() {
+	public void removeEntity() {
 		isRemoved = true;
 	}
 	

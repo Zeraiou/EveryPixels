@@ -10,7 +10,7 @@ import com.fap.APM.Graphics.ScreenDisplay;
 	protected double pointHealtPercentage, pointMagicPercentage, pointExperiencePercentage;
 	protected double movementSpeed;
 	
-
+	
 	protected enum Direction {
 		UP, RIGHT, DOWN, LEFT
 	}

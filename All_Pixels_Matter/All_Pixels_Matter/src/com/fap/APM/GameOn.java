@@ -58,8 +58,8 @@ public class GameOn extends Canvas implements Runnable{
         
        player = new Player(map.xStatingPosition, map.yStartingPosition, keyboard);
        map.addEntity(player);
-       zombie = new Zombie(map.xStatingPosition, map.yStartingPosition);
-       map.addEntity(zombie);
+      // zombie = new Zombie(map.xStatingPosition, map.yStartingPosition);
+       //map.addEntity(zombie);
 
     }
     
