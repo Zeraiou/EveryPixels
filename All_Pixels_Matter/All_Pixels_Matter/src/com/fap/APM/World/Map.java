@@ -71,7 +71,7 @@ public class Map {
 		
 	}
 	
-	public Tile getLevelTiles(int x, int y) {
+	public Tile getMapTiles(int x, int y) {
 		//System.out.println(mapTiles[1] + "++++++2222+++++++++++++");
 		//System.out.println(Tile.COLOR_ROCK + "++++++color+++++++++++++");
 		
@@ -103,17 +103,17 @@ public class Map {
 	public void renderMap(int xOffset, int yOffset, ScreenDisplay screen) {
 		screen.setOffset(xOffset, yOffset);
 		
-		int x0 = (xOffset - screen.widthTile) / screen.widthTile;
-		int x1 = (xOffset + screen.widthScreen + screen.widthTile) / screen.widthTile;
-		int y0 = (yOffset - screen.heightTile) / screen.heightTile;
-		int y1 = (yOffset + screen.heightScreen + screen.heightTile) / screen.widthTile;
+		int x0 = (xOffset - screen.getWidthTile()) / screen.getWidthTile();
+		int x1 = (xOffset + screen.widthScreen + screen.getWidthTile()) / screen.getWidthTile();
+		int y0 = (yOffset - screen.getHeightTile()) / screen.getHeightTile();
+		int y1 = (yOffset + screen.heightScreen + screen.getHeightTile()) / screen.getWidthTile();
 		
 		
 		// renderTile
 		for (int y = y0; y < y1; y++) {
 			for (int x = x0; x <x1; x++) {
 				
-				getLevelTiles(x, y).renderTile(x, y, screen);
+				getMapTiles(x, y).renderTile(x, y, screen);
 			}
 		}
 		

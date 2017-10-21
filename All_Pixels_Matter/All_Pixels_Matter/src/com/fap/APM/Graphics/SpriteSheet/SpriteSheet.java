@@ -17,7 +17,8 @@ public class SpriteSheet {
 	//public static SpriteSheet tiles_Base16 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase16.png", 64, 48);
 	//public static SpriteSheet tiles_Base32 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase32.png", 128, 96);
 	//public static SpriteSheet tiles_Base64 = new SpriteSheet("/Textures/SpriteSheets/Tiles/TileBase64.png", 256, 192);
-
+	
+	public static SpriteSheet player_Base = new SpriteSheet("/Textures/SpriteSheets/Units/Player/Player_Base.png", 144, 192);
 	
 	public SpriteSheet(String path, int widthSpriteSheet, int heightSpriteSheet) {
 	this.path = path;

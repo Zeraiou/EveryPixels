@@ -10,8 +10,8 @@ public class ScreenDisplay {
 	 public int heightScreen;
 	 public int[] pixelsScreen; 
 	 
-	 public int widthTile = 12;
-	 public int heightTile = 12;
+	 public static final int WIDTH_TILE = 12;
+	 public static final int HEIGHT_TILE = 12;
 	
 	 
 	 public int xOffset;
@@ -47,7 +47,13 @@ public class ScreenDisplay {
 	        this.yOffset = yOffset;
 	    }
 
+	 public int getWidthTile() {
+		 return WIDTH_TILE;
+	 }
 	 
+	 public int getHeightTile() {
+		 return HEIGHT_TILE;
+	 }
 	 public void clearScreen() {
 	        for (int i = 0; i < pixelsScreen.length; i++) {
 	            pixelsScreen[i] = 0;

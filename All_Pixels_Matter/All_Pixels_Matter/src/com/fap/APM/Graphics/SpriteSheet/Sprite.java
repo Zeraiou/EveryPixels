@@ -9,34 +9,31 @@ public class Sprite {
 	protected SpriteSheet spriteSheet;
 	
 
-	public static Sprite tile_Void8_Out = new Sprite(8, 8, 0x5D3F97);
-	public static Sprite tile_Void8_In = new Sprite(8, 8, 0x694BE1);
 	public static Sprite tile_Void12_Out = new Sprite(12, 12, 0x5D3F97);
 	public static Sprite tile_Void12_In = new Sprite(12, 12, 0x694BE1);
 	
-	
-	public static Sprite tile_Grass8 = new Sprite(8, 8, 0, 0, SpriteSheet.tiles_Base8);
-	public static Sprite tile_Rock8 = new Sprite(8, 8, 1, 0, SpriteSheet.tiles_Base8);
-	public static Sprite tile_Water8 = new Sprite(8, 8, 2, 0, SpriteSheet.tiles_Base8);
-	public static Sprite tile_Sand8 = new Sprite(8, 8, 3, 0, SpriteSheet.tiles_Base8);
-	public static Sprite tile_Floor_Wood8 = new Sprite(8, 8, 0, 1, SpriteSheet.tiles_Base8);
-	public static Sprite tile_Wall_Wood8 = new Sprite(8, 8, 1, 1, SpriteSheet.tiles_Base8);
-	public static Sprite tile_Wall_Rock8 = new Sprite(8, 8, 2, 1, SpriteSheet.tiles_Base8);
-	public static Sprite tile_Floor_Rock8 = new Sprite(8, 8, 3, 1, SpriteSheet.tiles_Base8);
-	public static Sprite tile_Ice8 = new Sprite(8, 8, 0, 2, SpriteSheet.tiles_Base8);
-	public static Sprite tile_Snow8 = new Sprite(8, 8, 1, 2, SpriteSheet.tiles_Base8);
-	public static Sprite tile_Lava8 = new Sprite(8, 8, 2, 2, SpriteSheet.tiles_Base8);
-	public static Sprite tile_Dirt8 = new Sprite(8, 8, 3, 2, SpriteSheet.tiles_Base8);
-	
+
 	
 	public static Sprite tile_Grass12 = new Sprite(12, 12, 0, 0, SpriteSheet.tiles_Base12);
-	/*
-	public static Sprite grass10 = new Sprite(10, 10, 0, 0, SpriteSheet.tiles_Base10);
-	public static Sprite grass16 = new Sprite(16, 16, 0, 0, SpriteSheet.tiles_Base16);
-	public static Sprite grass32 = new Sprite(32, 32, 0, 0, SpriteSheet.tiles_Base32);
-	public static Sprite grass64 = new Sprite(64, 64, 0, 0, SpriteSheet.tiles_Base64);
-	*/
+	public static Sprite tile_Rock12 = new Sprite(12, 12, 1, 0, SpriteSheet.tiles_Base12);
+	public static Sprite tile_Water12 = new Sprite(12, 12, 2, 0, SpriteSheet.tiles_Base12);
+	public static Sprite tile_Sand12 = new Sprite(12, 12, 3, 0, SpriteSheet.tiles_Base12);
+	public static Sprite tile_Floor_Wood12 = new Sprite(12, 12, 0, 1, SpriteSheet.tiles_Base12);
+	public static Sprite tile_Wall_Wood12 = new Sprite(12, 12, 1, 1, SpriteSheet.tiles_Base12);
+	public static Sprite tile_Wall_Rock12 = new Sprite(12, 12, 2, 1, SpriteSheet.tiles_Base12);
+	public static Sprite tile_Floor_Rock12 = new Sprite(12, 12, 3, 1, SpriteSheet.tiles_Base12);
+	public static Sprite tile_Ice12 = new Sprite(12, 12, 0, 2, SpriteSheet.tiles_Base12);
+	public static Sprite tile_Snow12 = new Sprite(12, 12, 1, 2, SpriteSheet.tiles_Base12);
+	public static Sprite tile_Lava12 = new Sprite(12, 12, 2, 2, SpriteSheet.tiles_Base12);
+	public static Sprite tile_Dirt12 = new Sprite(12, 12, 3, 2, SpriteSheet.tiles_Base12);
 	
+	
+	public static Sprite Player_Base_Down = new Sprite(36, 48, 0, 0, SpriteSheet.player_Base);
+	public static Sprite Player_Base_Left = new Sprite(36, 48, 1, 0, SpriteSheet.player_Base);
+	public static Sprite Player_Base_Up = new Sprite(36, 48, 2, 0, SpriteSheet.player_Base);
+	public static Sprite Player_Base_Right = new Sprite(36, 48, 3, 0, SpriteSheet.player_Base);
+	
+		
 	public Sprite(int widthSprite, int heightSprite, int x, int y, SpriteSheet spriteSheet) {
 		this.WIDTH_SPRITE = widthSprite;
 		this.HEIGHT_SPRITE = heightSprite;
