@@ -1,33 +1,29 @@
 package com.fap.APM.Units;
-
 import java.util.Random;
-
 import com.fap.APM.Graphics.ScreenDisplay;
-import com.fap.APM.Graphics.SpriteSheet.Sprite;
+import com.fap.APM.Graphics.Sprite;
 import com.fap.APM.World.Map;
 
 public class Entity {
 	
 	protected double xEntity, yEntity;
-	private boolean isRemoved = false;
 	protected Map map;
 	protected Sprite spriteEntity;
-	
-	protected final Random RANDOM = new Random(); 
-	
+	protected final Random RANDOM = new Random();
+	private boolean isRemoved = false;
+
 	public Entity() {
-		
-	}
-	
+
+    }
+
 	public Entity(int xPosition, int yPosition, Sprite sprite) {
 		this.xEntity = xPosition;
 		this.yEntity = yPosition;
 		this.spriteEntity = sprite;
-		
 	}
 	
 	public void tickEntity(){
-		
+
 	}
 	
 	public void renderEntity(ScreenDisplay screen) {
@@ -49,15 +45,12 @@ public class Entity {
 	public double getYEntity() {
 		return yEntity;
 	}
-	
-	
+
 	public boolean getIsRemoved() {
 		return isRemoved;
 	}
 	
 	public void initialiseMap(Map map) {
 		this.map = map;
-			
 	}
-	
 }

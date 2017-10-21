@@ -1,12 +1,8 @@
 package com.fap.APM.World;
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.imageio.ImageIO;
-
+import com.fap.APM.ControlRoom;
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Units.Entity;
 import com.fap.APM.Units.GeneratorParticle;
@@ -14,47 +10,32 @@ import com.fap.APM.Units.GeneratorZombie;
 import com.fap.APM.Units.Particle;
 import com.fap.APM.Units.Player;
 import com.fap.APM.Units.Zombie;
-import com.fap.APM.World.Tiles.Tile;
 
 public class Map {
-	protected int widthMap, heightMap;
-	public int xStatingPosition = 60 * 12;
-	public int yStartingPosition = 60 * 12;
-	
-	
-	
-	private int[] mapTiles;
-	
-	public List<Player> players = new ArrayList<Player>();
-	public List<Zombie> monsters = new ArrayList<Zombie>();
-	public List<Particle> particles = new ArrayList<Particle>();
-	public List<Entity> entities = new ArrayList<Entity>();
-	
-	
+
+	private int width, height, totalTiles;
+    private int[] mapTiles;
+	//public static Map map = new Map("/Niveau/NiveauHUB.png");
+
 	public Map(String path) {
 		extractFromFile(path);
 		generationEntity();
-		
-		
 	}
-
 
 	private void extractFromFile(String path) {
 		try {
-        	//System.out.println(path);
             BufferedImage imageFromFile = ImageIO.read(Map.class.getResource(path));
-            
-            int w = widthMap = imageFromFile.getWidth();
-            int h = heightMap = imageFromFile.getHeight();
-            int totalMapTiles = widthMap * heightMap;
-            mapTiles = new int[totalMapTiles];
+            int w = width = imageFromFile.getWidth();
+            int h = height = imageFromFile.getHeight();
+            this.totalTiles = this.width * this.height;
+            this.mapTiles = new int[this.totalTiles];
 
-        	imageFromFile.getRGB(0, 0, w, h, mapTiles, 0, widthMap);
+        	imageFromFile.getRGB(0, 0, w, h, mapTiles, 0, width);
         	
         	/*
         	System.out.println("largeur map : " + widthMap);
         	System.out.println("hauteur map : " + heightMap);
-        	System.out.println("Quantite totalMapTiles : " + totalMapTiles);
+        	System.out.println("Quantite totalTiles : " + totalTiles);
 			*/
         	/*
         	System.out.println(mapTiles[0] + "++++++1111++++++");
@@ -76,101 +57,91 @@ public class Map {
 			System.out.println(mapTiles[15] + "++++++5555++++++++++++++");
 			System.out.println(mapTiles[16] + "++++++6666++++++++++++++");
 			*/
-
-
-            
 		} catch (IOException e) {
-        
 		}
-		
 	}
 	
 	public Tile getMapTiles(int x, int y) {
 		//System.out.println(mapTiles[1] + "++++++2222+++++++++++++");
-		//System.out.println(Tile.COLOR_ROCK + "++++++color+++++++++++++");
+		//System.out.println(TileMaker.COLOR_ROCK + "++++++color+++++++++++++");
 		
-		if (x < 0 || y < 0 || x >= widthMap || y >= heightMap) return Tile.tile_Void_Out;
+		if (x < 0 || y < 0 || x >= width || y >= height) return TileMaker.tile_Void_Out;
 		//if (x == 1 && y == 0) System.out.println("ici");
-		//if (x == 1 && y == 0) System.out.println(x + y * widthMap);
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_GRASS) return Tile.tile_Grass;
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_ROCK) return Tile.tile_Rock;
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_WATER) return Tile.tile_Water;
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_SAND) return Tile.tile_Sand;
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_FLOOR_WOOD) return Tile.tile_Floor_Wood;
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_WALL_WOOD) return Tile.tile_Wall_Wood;
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_WALL_ROCK) return Tile.tile_Wall_Rock;
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_FLOOR_ROCK) return Tile.tile_Floor_Rock;
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_ICE) return Tile.tile_Ice;
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_SNOW) return Tile.tile_Snow;
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_LAVA) return Tile.tile_Lava;
-		if (mapTiles[x + y * widthMap] == Tile.COLOR_DIRT) {
-			return Tile.tile_Dirt;
-		} else {
-			return Tile.tile_Void_In;
+		//if (x == 1 && y == 0) System.out.println(x + y * width);
+		if (mapTiles[x + y * width] == TileMaker.COLOR_GRASS) return TileMaker.tile_Grass;
+		if (mapTiles[x + y * width] == TileMaker.COLOR_ROCK) return TileMaker.tile_Rock;
+		if (mapTiles[x + y * width] == TileMaker.COLOR_WATER) return TileMaker.tile_Water;
+		if (mapTiles[x + y * width] == TileMaker.COLOR_SAND) return TileMaker.tile_Sand;
+		if (mapTiles[x + y * width] == TileMaker.COLOR_FLOOR_WOOD) return TileMaker.tile_Floor_Wood;
+		if (mapTiles[x + y * width] == TileMaker.COLOR_WALL_WOOD) return TileMaker.tile_Wall_Wood;
+		if (mapTiles[x + y * width] == TileMaker.COLOR_WALL_ROCK) return TileMaker.tile_Wall_Rock;
+		if (mapTiles[x + y * width] == TileMaker.COLOR_FLOOR_ROCK) return TileMaker.tile_Floor_Rock;
+		if (mapTiles[x + y * width] == TileMaker.COLOR_ICE) return TileMaker.tile_Ice;
+		if (mapTiles[x + y * width] == TileMaker.COLOR_SNOW) return TileMaker.tile_Snow;
+		if (mapTiles[x + y * width] == TileMaker.COLOR_LAVA) return TileMaker.tile_Lava;
+		if (mapTiles[x + y * width] == TileMaker.COLOR_DIRT) {
+			return TileMaker.tile_Dirt;
+		}
+		else {
+			return TileMaker.tile_Void_In;
 		}
 	}
 	
 	public void addEntity(Entity entity) {
-		entity.initialiseMap(this);
-		
-		if (entity instanceof Player) {
-			players.add((Player) entity);
-		}
-		if (entity instanceof Zombie) {
-			monsters.add((Zombie) entity);
-		}
-		if (entity instanceof Particle) {
-			particles.add((Particle) entity);
+        entity.initialiseMap(this);
+
+        if (entity instanceof Player) {
+            WorldMaker.players.add((Player) entity);
+        } else if (entity instanceof Zombie) {
+			WorldMaker.monsters.add((Zombie) entity);
+		} else if (entity instanceof Particle) {
+			WorldMaker.particles.add((Particle) entity);
 		} else {
-			entities.add(entity);
-		}
-		
-	
+            WorldMaker.entities.add(entity);
+        }
 	}
-	
-	
 	
 	public void tickMap() {
 		//System.out.println("entities : " + entities.size());
 		//System.out.println("players : " + players.size());
 		//System.out.println("particules : " + particles.size());
-		
-		
-		for (int i = 0; i < players.size(); i++) {
-			players.get(i).tickEntity();
+
+		for (int i = 0; i < WorldMaker.players.size(); i++) {
+			WorldMaker.players.get(i).tickEntity();
 		}
-		for (int i = 0; i < monsters.size(); i++) {
-			monsters.get(i).tickEntity();
+		for (int i = 0; i < WorldMaker.monsters.size(); i++) {
+			WorldMaker.monsters.get(i).tickEntity();
 		}
-		for (int i = 0; i < particles.size(); i++) {
-			particles.get(i).tickEntity();
+		for (int i = 0; i < WorldMaker.particles.size(); i++) {
+			WorldMaker.particles.get(i).tickEntity();
 		}
-		for (int i = 0; i < entities.size(); i++) {
-			entities.get(i).tickEntity();
+		for (int i = 0; i < WorldMaker.entities.size(); i++) {
+			WorldMaker.entities.get(i).tickEntity();
 		}
 		
 		removeEntity();
-		
 	}
-	
+
+
 	private void removeEntity() {
-		for (int i = 0; i < players.size(); i++) {
-			if (players.get(i).getIsRemoved()) players.remove(i);
+		for (int i = 0; i < WorldMaker.players.size(); i++) {
+			if (WorldMaker.players.get(i).getIsRemoved()) {
+				WorldMaker.players.remove(i);
+			}
 		}
-		for (int i = 0; i < monsters.size(); i++) {
-			if (monsters.get(i).getIsRemoved()) monsters.remove(i);
 
+		for (int i = 0; i < WorldMaker.monsters.size(); i++) {
+			if (WorldMaker.monsters.get(i).getIsRemoved()) WorldMaker.monsters.remove(i);
 		}
-		for (int i = 0; i < particles.size(); i++) {
-			if (particles.get(i).getIsRemoved()) particles.remove(i);
 
+		for (int i = 0; i < WorldMaker.particles.size(); i++) {
+			if (WorldMaker.particles.get(i).getIsRemoved()) WorldMaker.particles.remove(i);
 		}
-		for (int i = 0; i < entities.size(); i++) {
-			if (entities.get(i).getIsRemoved()) entities.remove(i);
 
+		for (int i = 0; i < WorldMaker.entities.size(); i++) {
+			if (WorldMaker.entities.get(i).getIsRemoved()) WorldMaker.entities.remove(i);
 		}
 	}
-
 
 	private void generationEntity() {
 		addEntity(new GeneratorZombie(65*12, 65*12, 4, this));
@@ -178,53 +149,38 @@ public class Map {
 		addEntity(new GeneratorZombie(78*12, 65*12, 4, this));
 		addEntity(new GeneratorZombie(65*12, 78*12, 4, this));
 		addEntity(new GeneratorParticle(70*12, 70*12, 5000, 500, this));
-		
 	}
-
 
 	public void renderMap(int xOffset, int yOffset, ScreenDisplay screen) {
 		screen.setOffset(xOffset, yOffset);
 		
-		int x0 = (xOffset - screen.getWidthTile()) / screen.getWidthTile();
-		int x1 = (xOffset + screen.widthScreen + screen.getWidthTile()) / screen.getWidthTile();
-		int y0 = (yOffset - screen.getHeightTile()) / screen.getHeightTile();
-		int y1 = (yOffset + screen.heightScreen + screen.getHeightTile()) / screen.getWidthTile();
-		
-		
-		// renderTile
+		int x0 = (xOffset - ControlRoom.WIDTH_TILE) / ControlRoom.WIDTH_TILE;
+		int x1 = (xOffset + screen.screenWidth + ControlRoom.WIDTH_TILE) / ControlRoom.WIDTH_TILE;
+		int y0 = (yOffset - ControlRoom.HEIGHT_TILE) / ControlRoom.HEIGHT_TILE;
+		int y1 = (yOffset + screen.screenHeight + ControlRoom.HEIGHT_TILE) / ControlRoom.WIDTH_TILE;
+
 		for (int y = y0; y < y1; y++) {
 			for (int x = x0; x <x1; x++) {
-				
 				getMapTiles(x, y).renderTile(x, y, screen);
 			}
 		}
-		
-		
-		// renderWall
-		// renderRessources
-		// renderEntities(player, monster, item)
-		for (int i = 0; i < players.size(); i++) {
-			players.get(i).renderEntity(screen);
-		}
-		for (int i = 0; i < monsters.size(); i++) {
-			monsters.get(i).renderEntity(screen);
-		}
-		
-		for (int i = 0; i < entities.size(); i++) {
-			entities.get(i).renderEntity(screen);
-		}
-		
-		
-		// renderProjectiles
-		// render Particles
-		for (int i = 0; i < particles.size(); i++) {
-			particles.get(i).renderEntity(screen);
-		}
-		// renderEffects
-		
-	}
 
-	
-	
-	
+		for (int i = 0; i < WorldMaker.players.size(); i++) {
+            WorldMaker.players.get(i).renderEntity(screen);
+		}
+
+		for (int i = 0; i < WorldMaker.monsters.size(); i++) {
+			WorldMaker.monsters.get(i).renderEntity(screen);
+		}
+
+		for (int i = 0; i < WorldMaker.particles.size(); i++) {
+			WorldMaker.particles.get(i).renderEntity(screen);
+		}
+
+		for (int i = 0; i < WorldMaker.entities.size(); i++) {
+			WorldMaker.entities.get(i).renderEntity(screen);
+		}
+
+		// Todo: renderWall, renderRessources, renderEntities(player, monster, item), renderProjectiles, render Particles, renderEffect
+	}
 }

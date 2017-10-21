@@ -1,7 +1,7 @@
 package com.fap.APM.Units;
-
 import com.fap.APM.Graphics.ScreenDisplay;
-import com.fap.APM.Graphics.SpriteSheet.Sprite;
+import com.fap.APM.Graphics.Sprite;
+import com.fap.APM.World.WorldMaker;
 
 public class Particle extends Entity{
 	
@@ -11,36 +11,29 @@ public class Particle extends Entity{
 	
 	protected double xDestination, yDestination, zDestination; 
 	protected double xEntityDouble, yEntityDouble, zEntityDouble;
-	
-	
-	
+
 	public Particle(int xEntity, int yEntity, int lifeTime) {
 		this.xEntity = xEntity;
 		this.yEntity = yEntity;
 		this.xEntityDouble = xEntity;
 		this.yEntityDouble = yEntity;
 		this.lifeTime = lifeTime + RANDOM.nextInt(20) - 10;
-		
-		
-		
-		spriteParticle = Sprite.particle2p;
+
+			spriteParticle = WorldMaker.particle2p;
 		/*
-		spriteParticle = Sprite.particle1p;
-		spriteParticle = Sprite.particle3p;
-		spriteParticle = Sprite.particle4p;
-		spriteParticle = Sprite.particle5p;
-		spriteParticle = Sprite.particle6p;
-		spriteParticle = Sprite.particle7p;
-		spriteParticle = Sprite.particle8p;
-		spriteParticle = Sprite.particle9p;
+		spriteParticle = WorldMaker.particle1p;
+		spriteParticle = WorldMaker.particle3p;
+		spriteParticle = WorldMaker.particle4p;
+		spriteParticle = WorldMaker.particle5p;
+		spriteParticle = WorldMaker.particle6p;
+		spriteParticle = WorldMaker.particle7p;
+		spriteParticle = WorldMaker.particle8p;
+		spriteParticle = WorldMaker.particle9p;
 		*/
-		
-		
+
 		this.xDestination = RANDOM.nextGaussian();
-		
 		this.yDestination = RANDOM.nextGaussian();
 		this.zEntityDouble= RANDOM.nextFloat() + 2.0 ;
-		
 	}
 
 	public void tickEntity() {
@@ -57,16 +50,12 @@ public class Particle extends Entity{
 		
 		}
 		moveParticle((xEntityDouble + xDestination), (yEntityDouble + yDestination) + (zEntityDouble + zDestination));
-		
-		
 	}
 
 	private void moveParticle(double currentX, double currentY) {
 		this.xEntityDouble += xDestination;
 		this.yEntityDouble += yDestination;
 		this.zEntityDouble += zDestination;
-	
-		
 	}
 
 	public void renderEntity(ScreenDisplay screen) {
@@ -75,6 +64,4 @@ public class Particle extends Entity{
 		
 		screen.renderSprite(((int) xEntityDouble) - xPrecisionParticle - xPrecisionParticleCollision, ((int)yEntityDouble) - yPrecisionParticle - yPrecisionParticleCollision - (int) zEntityDouble, spriteParticle, true); 
 	}
-	
-	
 }

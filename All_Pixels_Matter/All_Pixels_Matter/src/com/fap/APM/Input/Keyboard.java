@@ -1,10 +1,9 @@
 package com.fap.APM.Input;
-
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Keyboard implements KeyListener{
+public class Keyboard implements KeyListener {
+
 	private boolean[] keys = new boolean[199];
 	public boolean up, rigth, down, left, potionLife, potionMagic, potionExperience, dammage;
 	
@@ -17,8 +16,6 @@ public class Keyboard implements KeyListener{
 		potionMagic = keys[KeyEvent.VK_H];
 		potionExperience = keys[KeyEvent.VK_J];
 		dammage = keys[KeyEvent.VK_T];
-		
-		
 	}
 	
 	public void keyPressed(KeyEvent e) {
@@ -30,6 +27,6 @@ public class Keyboard implements KeyListener{
 	}
 
 	public void keyTyped(KeyEvent e) {
-		
+
 	}
 }
