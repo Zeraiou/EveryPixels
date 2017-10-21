@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Input.Keyboard;
 import com.fap.APM.Units.Player;
+import com.fap.APM.Units.Zombie;
 import com.fap.APM.World.Map;
 
 public class GameOn extends Canvas implements Runnable{
@@ -29,6 +30,7 @@ public class GameOn extends Canvas implements Runnable{
     private Keyboard keyboard;
     private Map map;
     private Player player;
+    private Zombie zombie;
     
     
     private BufferedImage imageInFrame = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
@@ -54,8 +56,10 @@ public class GameOn extends Canvas implements Runnable{
         addKeyListener(keyboard);
        
         
-        player = new Player(map.xStatingPosition, map.yStartingPosition, keyboard);
-        map.addEntity(player);
+       player = new Player(map.xStatingPosition, map.yStartingPosition, keyboard);
+       map.addEntity(player);
+       zombie = new Zombie(map.xStatingPosition, map.yStartingPosition);
+       map.addEntity(zombie);
 
     }
     
@@ -96,11 +100,11 @@ public class GameOn extends Canvas implements Runnable{
 				frame.setTitle(Keeper.gameTitle + "    |     " + "Fps : "
 						+ fps + " , Tps : " + tps
 						+ "        |       " + " Pixels -- X : "
-				//		+ (int) joueur.SaisirXActuelle() + ", Y: "
-				//		+ (int) joueur.SaisirYActuelle() + "        |       "
+						+ (int) player.getXEntity() + ", Y: "
+						+ (int) player.getYEntity() + "        |       "
 						+ "Tuiles -- X : "
-				//		+ (int) (joueur.SaisirXActuelle() / 16) + ", Y: "
-				//		+ (int) (joueur.SaisirYActuelle() / 16)
+						+ (int) (player.getXEntity() / 12) + ", Y: "
+						+ (int) (player.getYEntity() / 12)
 						+ "        |       " + " Souris -- X : ");
 				//		+ (int) Souris.SaisirX() + " , Y : "
 				//		+ (int) Souris.SaisirY());
@@ -141,6 +145,7 @@ public class GameOn extends Canvas implements Runnable{
 	    	int xOffset = (int) player.getXEntity() - (screen.widthScreen / 2);
 	    	int yOffset = (int) player.getYEntity() - (screen.heightScreen / 2);
 	    	
+	        
 	        map.renderMap(xOffset, yOffset, screen);
 	        
 	        for (int i = 0; i < pixelsInFrame.length; i++) {

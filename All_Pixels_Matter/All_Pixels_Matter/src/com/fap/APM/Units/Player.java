@@ -18,9 +18,7 @@ public class Player extends Creature{
 		this.keyboard = key;
 		
 		
-		//spritePlayer = Sprite.Player_Base_Down23;
-		spritePlayer = Sprite.Player_Base_Down34;
-		//spritePlayer = Sprite.Player_Base_Down46;
+		spritePlayer = Sprite.player_Base_Down34;
 		
 		
 		
@@ -45,33 +43,29 @@ public class Player extends Creature{
 		if (keyboard.up) {
 			yDestination -= movementSpeed; 
 			
-			//spritePlayer = Sprite.Player_Base_Up23;
-			spritePlayer = Sprite.Player_Base_Up34;
-			//spritePlayer = Sprite.Player_Base_Up46;
+			spritePlayer = Sprite.player_Base_Up34;
+			
 		}
 		
 		if (keyboard.rigth) {
 			xDestination += movementSpeed; 
 			
-			//spritePlayer = Sprite.Player_Base_Right23;
-			spritePlayer = Sprite.Player_Base_Right34;
-			//spritePlayer = Sprite.Player_Base_Right46;
+			spritePlayer = Sprite.player_Base_Right34;
+			
 		}
 		
 		if (keyboard.down) {
 			yDestination += movementSpeed; 
 			
-			//spritePlayer = Sprite.Player_Base_Down23;
-			spritePlayer = Sprite.Player_Base_Down34;
-			//spritePlayer = Sprite.Player_Base_Down46;
+			spritePlayer = Sprite.player_Base_Down34;
+			
 		}
 		
 		if (keyboard.left) {
 			xDestination -= movementSpeed; 	
 			
-			//spritePlayer = Sprite.Player_Base_Left23;
-			spritePlayer = Sprite.Player_Base_Left34;
-			//spritePlayer = Sprite.Player_Base_Left46;
+			spritePlayer = Sprite.player_Base_Left34;
+			
 		}
 		
 		if (xDestination !=0 || yDestination !=0) {
@@ -87,7 +81,10 @@ public class Player extends Creature{
 	public void renderEntity(ScreenDisplay screen) {
 		int xRenderOffset = 0;
 		int yRenderOffset = 0;
-				
+		
+		//System.out.println("x : " + xEntity + " y : " + yEntity);
+
+		
 		screen.renderCreature((int)(xEntity - xRenderOffset), (int)(yEntity - yRenderOffset), spritePlayer);
 		
 		

@@ -2,8 +2,8 @@ package com.fap.APM.Units;
 
 import com.fap.APM.Graphics.ScreenDisplay;
 
-public abstract class Creature extends Entity{
-protected boolean isMoving = false;
+	public abstract class Creature extends Entity{
+	protected boolean isMoving = false;
 	
 	protected int pointHealt, pointMagic, pointExperience;
 	protected double pointHealtMaximum, pointMagicMaximum, pointExperienceMaximum;

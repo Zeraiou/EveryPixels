@@ -14,8 +14,8 @@ import com.fap.APM.World.Tiles.Tile;
 
 public class Map {
 	protected int widthMap, heightMap;
-	public int xStatingPosition = 205 * 12;
-	public int yStartingPosition = 238 * 12;
+	public int xStatingPosition = 60 * 12;
+	public int yStartingPosition = 60 * 12;
 	
 	
 	
@@ -116,8 +116,8 @@ public class Map {
 	
 	
 	public void tickMap() {
-		//System.out.println("entities : entities.size());
-		//System.out.println(players.size());
+		//System.out.println("entities : " + entities.size());
+		//System.out.println("players : " + players.size());
 		
 		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).tickEntity();
@@ -149,11 +149,11 @@ public class Map {
 		// renderWall
 		// renderRessources
 		// renderEntities(player, monster, item)
-		for (int i = 0; i < entities.size(); i++) {
-			entities.get(i).renderEntity(screen);
-		}
 		for (int i = 0; i < players.size(); i++) {
 			players.get(i).renderEntity(screen);
+		}
+		for (int i = 0; i < entities.size(); i++) {
+			entities.get(i).renderEntity(screen);
 		}
 		
 		// renderProjectiles

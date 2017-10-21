@@ -28,24 +28,18 @@ public class Sprite {
 	public static Sprite tile_Dirt12 = new Sprite(12, 12, 3, 2, SpriteSheet.tiles_Base12);
 	
 	
-	public static Sprite Player_Base_Down23 = new Sprite(24, 36, 0, 0, SpriteSheet.player_Base23);
-	public static Sprite Player_Base_Right23 = new Sprite(24, 36, 1, 0, SpriteSheet.player_Base23);
-	public static Sprite Player_Base_Up23 = new Sprite(26, 36, 2, 0, SpriteSheet.player_Base23);
-	public static Sprite Player_Base_Left23 = new Sprite(24, 36, 3, 0, SpriteSheet.player_Base23);
 	
 	
-	public static Sprite Player_Base_Down34 = new Sprite(36, 48, 0, 0, SpriteSheet.player_Base34);
-	public static Sprite Player_Base_Right34 = new Sprite(36, 48, 1, 0, SpriteSheet.player_Base34);
-	public static Sprite Player_Base_Up34 = new Sprite(36, 48, 2, 0, SpriteSheet.player_Base34);
-	public static Sprite Player_Base_Left34 = new Sprite(36, 48, 3, 0, SpriteSheet.player_Base34);
+	public static Sprite player_Base_Down34 = new Sprite(36, 48, 0, 0, SpriteSheet.player_Base34);
+	public static Sprite player_Base_Right34 = new Sprite(36, 48, 1, 0, SpriteSheet.player_Base34);
+	public static Sprite player_Base_Up34 = new Sprite(36, 48, 2, 0, SpriteSheet.player_Base34);
+	public static Sprite player_Base_Left34 = new Sprite(36, 48, 3, 0, SpriteSheet.player_Base34);
 	
 	
-	public static Sprite Player_Base_Down46 = new Sprite(48, 72, 0, 0, SpriteSheet.player_Base46);
-	public static Sprite Player_Base_Right46 = new Sprite(48, 72, 1, 0, SpriteSheet.player_Base46);
-	public static Sprite Player_Base_Up46 = new Sprite(48, 72, 2, 0, SpriteSheet.player_Base46);
-	public static Sprite Player_Base_Left46 = new Sprite(48, 72, 3, 0, SpriteSheet.player_Base46);
-	
-	
+	public static Sprite zombie_Base_Down22 = new Sprite(24, 24, 0, 0, SpriteSheet.zombie_Base22);
+	public static Sprite zombie_Base_Right22 = new Sprite(24, 24, 1, 0, SpriteSheet.zombie_Base22);
+	public static Sprite zombie_Base_Up22 = new Sprite(24, 24, 2, 0, SpriteSheet.zombie_Base22);
+	public static Sprite zombie_Base_Left22 = new Sprite(24, 24, 3, 0, SpriteSheet.zombie_Base22);
 	
 	
 	
