@@ -13,10 +13,10 @@ import com.fap.APM.Units.Zombie;
 
 public class Map {
 
+
 	private int width, height, totalTiles;
     private int[] mapTiles;
-	//public static Map map = new Map("/Niveau/NiveauHUB.png");
-
+	
 	public Map(String path) {
 		extractFromFile(path);
 		generationEntity();
@@ -148,7 +148,11 @@ public class Map {
 		addEntity(new GeneratorZombie(54*12, 67*12, 4, this));
 		addEntity(new GeneratorZombie(78*12, 65*12, 4, this));
 		addEntity(new GeneratorZombie(65*12, 78*12, 4, this));
+
 		addEntity(new GeneratorParticle(70*12, 70*12, 5000, 500, this));
+
+		
+	
 	}
 
 	public void renderMap(int xOffset, int yOffset, ScreenDisplay screen) {
