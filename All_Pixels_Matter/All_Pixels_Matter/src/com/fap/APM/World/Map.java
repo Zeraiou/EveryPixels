@@ -15,22 +15,22 @@ public class Map {
 
 
 	private int width, height, totalTiles;
-    private int[] mapTiles;
+    private int[] mapFieldTiles, mapResourcesTiles, mapWallTiles;
 	
 	public Map(String path) {
-		extractFromFile(path);
+		extractMapField(path);
 		generationEntity();
 	}
 
-	private void extractFromFile(String path) {
+	private void extractMapField(String path) {
 		try {
             BufferedImage imageFromFile = ImageIO.read(Map.class.getResource(path));
             int w = width = imageFromFile.getWidth();
             int h = height = imageFromFile.getHeight();
             this.totalTiles = this.width * this.height;
-            this.mapTiles = new int[this.totalTiles];
+            this.mapFieldTiles = new int[this.totalTiles];
 
-        	imageFromFile.getRGB(0, 0, w, h, mapTiles, 0, width);
+        	imageFromFile.getRGB(0, 0, w, h, mapFieldTiles, 0, width);
         	
         	/*
         	System.out.println("largeur map : " + widthMap);
@@ -61,25 +61,25 @@ public class Map {
 		}
 	}
 	
-	public Tile getMapTiles(int x, int y) {
+	public Tile getMapFieldTiles(int x, int y) {
 		//System.out.println(mapTiles[1] + "++++++2222+++++++++++++");
 		//System.out.println(TileMaker.COLOR_ROCK + "++++++color+++++++++++++");
 		
 		if (x < 0 || y < 0 || x >= width || y >= height) return TileMaker.tile_Void_Out;
 		//if (x == 1 && y == 0) System.out.println("ici");
 		//if (x == 1 && y == 0) System.out.println(x + y * width);
-		if (mapTiles[x + y * width] == TileMaker.COLOR_GRASS) return TileMaker.tile_Grass;
-		if (mapTiles[x + y * width] == TileMaker.COLOR_ROCK) return TileMaker.tile_Rock;
-		if (mapTiles[x + y * width] == TileMaker.COLOR_WATER) return TileMaker.tile_Water;
-		if (mapTiles[x + y * width] == TileMaker.COLOR_SAND) return TileMaker.tile_Sand;
-		if (mapTiles[x + y * width] == TileMaker.COLOR_FLOOR_WOOD) return TileMaker.tile_Floor_Wood;
-		if (mapTiles[x + y * width] == TileMaker.COLOR_WALL_WOOD) return TileMaker.tile_Wall_Wood;
-		if (mapTiles[x + y * width] == TileMaker.COLOR_WALL_ROCK) return TileMaker.tile_Wall_Rock;
-		if (mapTiles[x + y * width] == TileMaker.COLOR_FLOOR_ROCK) return TileMaker.tile_Floor_Rock;
-		if (mapTiles[x + y * width] == TileMaker.COLOR_ICE) return TileMaker.tile_Ice;
-		if (mapTiles[x + y * width] == TileMaker.COLOR_SNOW) return TileMaker.tile_Snow;
-		if (mapTiles[x + y * width] == TileMaker.COLOR_LAVA) return TileMaker.tile_Lava;
-		if (mapTiles[x + y * width] == TileMaker.COLOR_DIRT) {
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_GRASS) return TileMaker.tile_Grass;
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_ROCK) return TileMaker.tile_Rock;
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_WATER) return TileMaker.tile_Water;
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_SAND) return TileMaker.tile_Sand;
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_FLOOR_WOOD) return TileMaker.tile_Floor_Wood;
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_WALL_WOOD) return TileMaker.tile_Wall_Wood;
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_WALL_ROCK) return TileMaker.tile_Wall_Rock;
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_FLOOR_ROCK) return TileMaker.tile_Floor_Rock;
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_ICE) return TileMaker.tile_Ice;
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_SNOW) return TileMaker.tile_Snow;
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_LAVA) return TileMaker.tile_Lava;
+		if (mapFieldTiles[x + y * width] == TileMaker.COLOR_DIRT) {
 			return TileMaker.tile_Dirt;
 		}
 		else {
@@ -165,7 +165,7 @@ public class Map {
 
 		for (int y = y0; y < y1; y++) {
 			for (int x = x0; x <x1; x++) {
-				getMapTiles(x, y).renderTile(x, y, screen);
+				getMapFieldTiles(x, y).renderTile(x, y, screen);
 			}
 		}
 

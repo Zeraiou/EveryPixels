@@ -31,7 +31,7 @@ public class GameOn extends Canvas implements Runnable {
 
         frame = new JFrame();
         screen = new ScreenDisplay(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT);
-        map = new Map(ControlRoom.MAP_PIXEL_SPRITE_PATH);
+        map = new Map(ControlRoom.MAP_FIELD_PATH);
 
         keyboard = new Keyboard();
         addKeyListener(keyboard);

@@ -59,7 +59,7 @@ public abstract class Creature extends Entity {
 		
 			if (c % 2 == 0) xTempInt = (int) Math.floor(xTemp);
 			if (c / 2 == 0) yTempInt = (int) Math.floor(yTemp);
-			if (map.getMapTiles(xTempInt, yTempInt).solid()) solid = true;
+			if (map.getMapFieldTiles(xTempInt, yTempInt).solid()) solid = true;
 		} 
 		return solid;
 	}
