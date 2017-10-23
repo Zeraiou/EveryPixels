@@ -12,6 +12,9 @@ public class WorldMaker {
     public static List<Entity> entities = new ArrayList<Entity>();
     public static List<Zombie> monsters = new ArrayList<Zombie>();
     public static List<Particle> particles = new ArrayList<Particle>();
+    public static List<Wall> walls = new ArrayList<Wall>();
+    public static List<Resource> resources = new ArrayList<Resource>();
+    public static List<Item> items = new ArrayList<Item>();
 
     public static SpriteSheet player_Base34 = new SpriteSheet(ControlRoom.PLAYER_SPRITE_PATH, 144, 192);
     public static Sprite player_Base_Down34 = new Sprite(36, 48, 0, 0, WorldMaker.player_Base34);

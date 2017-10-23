@@ -169,22 +169,38 @@ public class Map {
 			}
 		}
 
-		for (int i = 0; i < WorldMaker.players.size(); i++) {
-            WorldMaker.players.get(i).renderEntity(screen);
-		}
+		drawPlayers(screen);
 
+		drawMonsters(screen);
+
+		drawParticles(screen);
+
+		drawEntities(screen);
+
+		// Todo: renderWall, renderRessources, renderEntities(player, monster, item), renderProjectiles, render Particles, renderEffect
+	}
+
+	private void drawPlayers(ScreenDisplay screen) {
+		for (int i = 0; i < WorldMaker.players.size(); i++) {
+			WorldMaker.players.get(i).renderEntity(screen);
+		}
+	}
+
+	private void drawMonsters(ScreenDisplay screen) {
 		for (int i = 0; i < WorldMaker.monsters.size(); i++) {
 			WorldMaker.monsters.get(i).renderEntity(screen);
 		}
+	}
 
+	private void drawParticles(ScreenDisplay screen) {
 		for (int i = 0; i < WorldMaker.particles.size(); i++) {
 			WorldMaker.particles.get(i).renderEntity(screen);
 		}
+	}
 
+	private void drawEntities(ScreenDisplay screen) {
 		for (int i = 0; i < WorldMaker.entities.size(); i++) {
 			WorldMaker.entities.get(i).renderEntity(screen);
 		}
-
-		// Todo: renderWall, renderRessources, renderEntities(player, monster, item), renderProjectiles, render Particles, renderEffect
 	}
 }
