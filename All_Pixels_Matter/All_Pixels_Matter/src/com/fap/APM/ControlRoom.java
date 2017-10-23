@@ -2,6 +2,11 @@ package com.fap.APM;
 
 public class ControlRoom {
 
+    public static final int SCREEN_WIDTH = 800;
+    public static final int SCREEN_HEIGHT = 600;
+    public static final int SCREEN_CENTER_X = SCREEN_WIDTH / 2;
+    public static final int SCREEN_CENTER_Y = SCREEN_HEIGHT / 2;
+
     public static final int STARTING_X = 60 * 12;
     public static final int STARTING_Y = 60 * 12;
 

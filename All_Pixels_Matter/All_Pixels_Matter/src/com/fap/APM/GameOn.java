@@ -7,36 +7,30 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
-
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Input.Keyboard;
 import com.fap.APM.Units.Player;
-import com.fap.APM.Units.Zombie;
 import com.fap.APM.World.Map;
 
-public class GameOn extends Canvas implements Runnable{
-	private static final long serialVersionUID = 1L;
+public class GameOn extends Canvas implements Runnable {
 
+	private static final long serialVersionUID = 1L;
 	private boolean running = false;
-	private final int screenWidth = 800;
-    private final int screenHeight = 600;
-    
     private Thread thread;
-    public JFrame frame;
     private ScreenDisplay screen;
     private Keyboard keyboard;
     private Map map;
     private Player player;
-    private Zombie zombie;
+	public JFrame frame;
 
-    private BufferedImage imageInFrame = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
+    private BufferedImage imageInFrame = new BufferedImage(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixelsInFrame = ((DataBufferInt) imageInFrame.getRaster().getDataBuffer()).getData();
 
     public GameOn () {
-        setPreferredSize(new Dimension(screenWidth, screenHeight));
+        setPreferredSize(new Dimension(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT));
 
         frame = new JFrame();
-        screen = new ScreenDisplay(screenWidth, screenHeight);
+        screen = new ScreenDisplay(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT);
         map = new Map(ControlRoom.MAP_PIXEL_SPRITE_PATH);
 
         keyboard = new Keyboard();
@@ -44,8 +38,6 @@ public class GameOn extends Canvas implements Runnable{
 
         player = new Player(ControlRoom.STARTING_X, ControlRoom.STARTING_Y, keyboard);
         map.addEntity(player);
-        zombie = new Zombie(ControlRoom.STARTING_X, ControlRoom.STARTING_Y);
-        map.addEntity(zombie);
     }
     
     public synchronized void startGame() {
@@ -115,7 +107,7 @@ public class GameOn extends Canvas implements Runnable{
 
 		Graphics graphics = BufferStrategy.getDrawGraphics();
 		graphics.setColor(Color.BLUE);
-		graphics.fillRect(0, 0, screenWidth, screenHeight);
+		graphics.fillRect(0, 0, ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT);
 		graphics.drawImage(imageInFrame, 0, 0, getWidth(), getHeight(), null);
 		graphics.dispose();
 		BufferStrategy.show();

@@ -19,7 +19,7 @@ public class Particle extends Entity{
 		this.yEntityDouble = yEntity;
 		this.lifeTime = lifeTime + RANDOM.nextInt(20) - 10;
 
-			spriteParticle = WorldMaker.particle2p;
+		spriteParticle = WorldMaker.particle2p;
 		/*
 		spriteParticle = WorldMaker.particle1p;
 		spriteParticle = WorldMaker.particle3p;
