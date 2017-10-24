@@ -1,20 +1,23 @@
 package com.fap.APM;
+import com.fap.APM.Core.ControlRoom;
+import com.fap.APM.Core.GameLoop;
+
 import javax.swing.JFrame;
 
 public class Main {
 	
 	public static void main(String[] args) {
 
-		GameOn game = new GameOn();
+		GameLoop gameLoop = new GameLoop();
 
-		game.frame.setResizable(false);
-		game.frame.setTitle(ControlRoom.GAME_TITLE);
-		game.frame.add(game);
-		game.frame.pack();
-		game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		game.frame.setLocationRelativeTo(null);
-		game.frame.setVisible(true);
+		gameLoop.frame.setResizable(false);
+		gameLoop.frame.setTitle(ControlRoom.GAME_TITLE);
+		gameLoop.frame.add(gameLoop);
+		gameLoop.frame.pack();
+		gameLoop.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gameLoop.frame.setLocationRelativeTo(null);
+		gameLoop.frame.setVisible(true);
 
-		game.startGame();
+		gameLoop.startGame();
 	}
 }

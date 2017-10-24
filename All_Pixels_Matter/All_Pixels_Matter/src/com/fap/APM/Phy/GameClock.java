@@ -1,9 +1,9 @@
 package com.fap.APM.Phy;
 
-import com.fap.APM.ControlRoom;
+import com.fap.APM.Core.ControlRoom;
 import com.fap.APM.Input.Keyboard;
-import com.fap.APM.World.WorldList;
-import com.fap.APM.World.WorldMaker;
+import com.fap.APM.Core.WorldList;
+import com.fap.APM.Core.WorldMaker;
 
 import javax.swing.*;
 
@@ -45,11 +45,11 @@ public class GameClock {
             frame.setTitle(ControlRoom.GAME_TITLE + "    |     " + "Fps : "
                     + fps + " , Tps : " + tps
                     + "        |       " + " Pixels -- X : "
-                    + (int) WorldList.players.get(0).getXEntity() + ", Y: "
-                    + (int) WorldList.players.get(0).getYEntity() + "        |       "
+                    + (int) WorldList.players.get(0).xEntity + ", Y: "
+                    + (int) WorldList.players.get(0).yEntity + "        |       "
                     + "Tuiles -- X : "
-                    + (int) (WorldList.players.get(0).getXEntity() / 12) + ", Y: "
-                    + (int) (WorldList.players.get(0).getYEntity() / 12)
+                    + (int) (WorldList.players.get(0).xEntity / 12) + ", Y: "
+                    + (int) (WorldList.players.get(0).yEntity / 12)
                     + "        |       " + " Souris -- X : ");
             //		+ (int) Souris.SaisirX() + " , Y : "
             //		+ (int) Souris.SaisirY());

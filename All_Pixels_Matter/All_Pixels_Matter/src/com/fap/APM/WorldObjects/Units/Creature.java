@@ -1,8 +1,6 @@
-package com.fap.APM.Units;
-import com.fap.APM.ControlRoom;
-import com.fap.APM.Graphics.DrawManager;
-import com.fap.APM.Graphics.ScreenDisplay;
-import com.fap.APM.World.WorldMaker;
+package com.fap.APM.WorldObjects.Units;
+import com.fap.APM.Core.ControlRoom;
+import com.fap.APM.Core.DrawManager;
 
 public abstract class Creature extends Entity {
 
@@ -13,7 +11,6 @@ public abstract class Creature extends Entity {
 	protected double movementSpeed;
 
 	public abstract void tickEntity();
-	public abstract void renderEntity(ScreenDisplay screen);
 
 	protected void move(double xDestination, double yDestination) {
 		
@@ -54,8 +51,8 @@ public abstract class Creature extends Entity {
 	private boolean collisionCreatureTile(double xAbsolu, double yAbsolu) {
 		boolean solid = false;
 		for (int c = 0; c < 4; c++) {
-			double xTemp = ((xEntity + xAbsolu) - (c % 2)) / ControlRoom.WIDTH_TILE;
-			double yTemp= ((yEntity + yAbsolu) - (c / 2)) / ControlRoom.HEIGHT_TILE;
+			double xTemp = ((xEntity + xAbsolu) - (c % 2)) / ControlRoom.TILE_WIDTH;
+			double yTemp= ((yEntity + yAbsolu) - (c / 2)) / ControlRoom.TILE_HEIGHT;
 			int xTempInt = (int) Math.ceil(xTemp);
 			int yTempInt = (int) Math.ceil(yTemp);
 		

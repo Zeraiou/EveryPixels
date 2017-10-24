@@ -1,8 +1,7 @@
 package com.fap.APM.Graphics;
 
 public class AnimatedSprite extends Sprite {
-		
-		
+
 		private int frame = 0;
 		private Sprite sprite;
 		private int animationRate = 11;
@@ -21,32 +20,19 @@ public class AnimatedSprite extends Sprite {
 			if (time % animationRate == 0) {
 				if (frame >= amountOfAnimation - 1) frame = 0;
 				else frame++;
-				sprite = spriteSheet.getSprites()[frame];
+                sprite = spriteSheet.getSprites()[frame];
 			}
-			// System.out.println(sprite + ", ImageCadre : " + ImageCadre);
-				
 		}
-			
-		
+
 		public Sprite getSprite() {
 			return sprite;
 		}
-		
-		
+
 		public void setAnimationRate(int animationRate) {
 			this.animationRate = animationRate;
 		}
 
 		public void setFrame(int index) {
-			
-			if (index > spriteSheet.getSprites().length - 1) {
-				return;
-			}
 			sprite = spriteSheet.getSprites()[index];
-		
 		}
-		
-		
-		
-		
 	}

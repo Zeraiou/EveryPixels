@@ -1,4 +1,4 @@
-package com.fap.APM;
+package com.fap.APM.Core;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,35 +8,29 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
-import com.fap.APM.Graphics.DrawManager;
-import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Input.Keyboard;
 import com.fap.APM.Phy.GameClock;
-import com.fap.APM.World.WorldList;
-import com.fap.APM.World.WorldMaker;
 
-public class GameOn extends Canvas implements Runnable {
+public class GameLoop extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 	private boolean running = false;
     private Thread thread;
-    private ScreenDisplay screen;
     private Keyboard keyboard;
 	public JFrame frame;
 
     private BufferedImage imageInFrame = new BufferedImage(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixelsInFrame = ((DataBufferInt) imageInFrame.getRaster().getDataBuffer()).getData();
 
-    public GameOn () {
+    public GameLoop() {
         setPreferredSize(new Dimension(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT));
         frame = new JFrame();
-        screen = new ScreenDisplay(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT);
         keyboard = new Keyboard();
         addKeyListener(keyboard);
         WorldMaker.shared().createPlayer("Zercos", keyboard);
         WorldMaker.shared().createZombie();
     }
-    
+
     public synchronized void startGame() {
     	running = true;
         thread = new Thread(this, "Display");
@@ -48,27 +42,24 @@ public class GameOn extends Canvas implements Runnable {
 
 		while(running) {
 		    GameClock.shared().clockTick(frame, keyboard);
-			renderGame();
+			renderScreen();
 		}
 
 		stopGame();
 	}
 
-	public void renderGame() {
+	public void renderScreen() {
 		 BufferStrategy BufferStrategy = getBufferStrategy();
 
 		if (BufferStrategy == null) {
 			createBufferStrategy(3);
 			return;
 		}
-		screen.clearScreen();
 
-		int xOffset = (int) WorldList.players.get(0).getXEntity() - ControlRoom.SCREEN_CENTER_X;
-		int yOffset = (int) WorldList.players.get(0).getYEntity() - ControlRoom.SCREEN_CENTER_Y;
-		DrawManager.shared().renderMap(xOffset, yOffset, screen);
+		DrawManager.shared().renderScreen();
 
 		for (int i = 0; i < pixelsInFrame.length; i++) {
-			pixelsInFrame[i] = screen.pixelsScreen[i];
+			pixelsInFrame[i] = DrawManager.shared().pixelsScreen[i];
 		}
 
 		Graphics graphics = BufferStrategy.getDrawGraphics();

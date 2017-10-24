@@ -1,7 +1,7 @@
-package com.fap.APM.World;
-import com.fap.APM.ControlRoom;
+package com.fap.APM.Core;
 import com.fap.APM.Input.Keyboard;
-import com.fap.APM.Units.*;
+import com.fap.APM.WorldObjects.Units.*;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -13,7 +13,7 @@ public class WorldMaker {
 
     private static WorldMaker INSTANCE = null;
 
-    private WorldMaker() {}     // Private Init.
+    private WorldMaker() { }     // Private Init.
 
     public static WorldMaker shared() {
         if (INSTANCE == null) {
@@ -33,7 +33,7 @@ public class WorldMaker {
             imageFromFile.getRGB(0, 0, width, height, mapFieldTiles, 0, width);
 
             if (ControlRoom.PIXEL_TILE_LOAD_OUT) {
-                System.out.println("Width: " + width + " - Height: " + height + " - TotalTiles: " + totalTiles + " - Array Size: " + mapFieldTiles.length + "\n");
+                System.out.println("Width: " + width + " - Height: " + height + " - TotalTiles: " + totalTiles + " - Array Size: " + mapFieldTiles.length);
             }
         } catch (IOException e) {
             if (ControlRoom.PIXEL_TILE_LOAD_OUT) {
@@ -43,9 +43,21 @@ public class WorldMaker {
     }
 
     public void createPlayer(String name, Keyboard keyboard) {
-        Player player = new Player(ControlRoom.STARTING_X, ControlRoom.STARTING_Y, keyboard);
+        Player newPlayer = new Player(ControlRoom.STARTING_X, ControlRoom.STARTING_Y, keyboard);
+        WorldList.players.add(newPlayer);
 
-        WorldList.players.add(player);
+        if (ControlRoom.PIXEL_TILE_LOAD_OUT) {
+            if (newPlayer == null) {
+                System.out.println("ERROR -- createPlayer() Failed!");
+            } else {
+                System.out.println("Total Players: " + WorldList.players.size());
+                for (int i = 0; i < WorldList.players.size(); i++) {
+                    System.out.println("Player " + i + ": " + WorldList.players.get(i).xEntity + ", " + WorldList.players.get(i).yEntity);
+                }
+            }
+        } else {
+            WorldList.players.add(newPlayer);
+        }
     }
 
     public void createZombie() {
