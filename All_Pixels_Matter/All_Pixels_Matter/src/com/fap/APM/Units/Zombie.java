@@ -31,33 +31,30 @@ public class Zombie extends Creature {
 		time++;
 		
 		if (time % (RANDOM.nextInt(1) + 30) == 0) {
-//			System.out.println("ici");
-			int directionChoice = (RANDOM.nextInt(3));
+			int directionChoice = (RANDOM.nextInt(4));
 			
 			if (isMoving) currentAnimatedSprite.tickAnimation();
 			else currentAnimatedSprite.setFrame(0);
 			
 			
 			if (directionChoice == 0) {
-//				System.out.println("ici2");
 				currentAnimatedSprite = animationDown;
-				yDestination += movementSpeed * 12; 
-//				System.out.println(yDestination);
+				yDestination += movementSpeed ; 
 			}
 			
 			if (directionChoice == 1) {
 				currentAnimatedSprite = animationRight;
-				xDestination += movementSpeed * 12;
+				xDestination += movementSpeed ;
 			}
 			
 			if (directionChoice == 2) {
 				currentAnimatedSprite = animationUp;
-				yDestination -= movementSpeed * 12;
+				yDestination -= movementSpeed ;
 			}
 			
 			if (directionChoice == 3) {
 				currentAnimatedSprite = animationLeft;
-				yDestination -= movementSpeed * 12;
+				xDestination -= movementSpeed ;
 			}
 			
 			if (RANDOM.nextInt(5) == 0) {

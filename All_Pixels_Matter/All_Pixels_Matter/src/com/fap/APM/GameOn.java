@@ -34,6 +34,7 @@ public class GameOn extends Canvas implements Runnable {
         keyboard = new Keyboard();
         addKeyListener(keyboard);
         WorldMaker.shared().createPlayer("Zercos", keyboard);
+        WorldMaker.shared().createZombie();
     }
     
     public synchronized void startGame() {

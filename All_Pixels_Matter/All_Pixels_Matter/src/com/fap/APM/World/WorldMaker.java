@@ -48,6 +48,12 @@ public class WorldMaker {
         WorldList.players.add(player);
     }
 
+    public void createZombie() {
+        Zombie zombie = new Zombie(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20);
+
+        WorldList.monsters.add(zombie);
+    }
+    
     public void addEntity(Entity entity) {
 //        entity.initialiseMap(this);
 //
