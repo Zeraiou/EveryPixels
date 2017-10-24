@@ -26,7 +26,11 @@ public class WorldList {
     public static List<Item> items = new ArrayList<Item>();
     public static List<Tile> tiles = new ArrayList<Tile>();
 
+<<<<<<< Updated upstream
     public static SpriteSheet player_Base34 = new SpriteSheet(ControlRoom.PLAYER_SPRITE_PATH, 144, 192);
+=======
+    public static SpriteSheet player_Base34 = new SpriteSheet(ControlRoom.PLAYER_SPRITE_PATH, 144, 144);
+>>>>>>> Stashed changes
     public static SpriteSheet player_Base34_Down = new SpriteSheet(player_Base34, 0, 0, 1, 3, 36, 48);
     public static SpriteSheet player_Base34_Right = new SpriteSheet(player_Base34, 0, 0, 1, 3, 36, 48);
     public static SpriteSheet player_Base34_Up = new SpriteSheet(player_Base34, 0, 0, 1, 3, 36, 48);
