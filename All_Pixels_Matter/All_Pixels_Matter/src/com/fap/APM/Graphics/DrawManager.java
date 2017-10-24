@@ -3,8 +3,7 @@ import com.fap.APM.ControlRoom;
 import com.fap.APM.Objects.Tile;
 import com.fap.APM.World.TileMaker;
 import com.fap.APM.World.WorldList;
-import com.fap.APM.World.WorldMaker;;
-import static com.fap.APM.ControlRoom.SCREEN_WIDTH;
+import com.fap.APM.World.WorldMaker;
 
 public class DrawManager {
 
