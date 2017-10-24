@@ -27,17 +27,23 @@ public class WorldList {
     public static List<Tile> tiles = new ArrayList<Tile>();
 
     public static SpriteSheet player_Base34 = new SpriteSheet(ControlRoom.PLAYER_SPRITE_PATH, 144, 192);
-    public static Sprite player_Base_Down34 = new Sprite(36, 48, 0, 0, WorldList.player_Base34);
-    public static Sprite player_Base_Right34 = new Sprite(36, 48, 1, 0, WorldList.player_Base34);
-    public static Sprite player_Base_Up34 = new Sprite(36, 48, 2, 0, WorldList.player_Base34);
-    public static Sprite player_Base_Left34 = new Sprite(36, 48, 3, 0, WorldList.player_Base34);
-
+    public static SpriteSheet player_Base34_Down = new SpriteSheet(player_Base34, 0, 0, 1, 3, 36, 48);
+    public static SpriteSheet player_Base34_Right = new SpriteSheet(player_Base34, 0, 0, 1, 3, 36, 48);
+    public static SpriteSheet player_Base34_Up = new SpriteSheet(player_Base34, 0, 0, 1, 3, 36, 48);
+    public static SpriteSheet player_Base34_Left = new SpriteSheet(player_Base34, 0, 0, 1, 3, 36, 48);
+    public static Sprite sprite_Player_Base34 = new Sprite(36, 48, 0, 0, player_Base34);
+	
+    
+    
     public static SpriteSheet zombie_Base22 = new SpriteSheet(ControlRoom.ZOMBIE_SPRITE_PATH, 96, 72);
-    public static Sprite zombie_Base_Down22 = new Sprite(24, 24, 0, 0, WorldList.zombie_Base22);
-    public static Sprite zombie_Base_Right22 = new Sprite(24, 24, 1, 0, WorldList.zombie_Base22);
-    public static Sprite zombie_Base_Up22 = new Sprite(24, 24, 2, 0, WorldList.zombie_Base22);
-    public static Sprite zombie_Base_Left22 = new Sprite(24, 24, 3, 0, WorldList.zombie_Base22);
-
+    public static SpriteSheet zombie_Base22_Down = new SpriteSheet(zombie_Base22, 0, 0, 1, 3, 24, 24);
+   	public static SpriteSheet zombie_Base22_Right = new SpriteSheet(zombie_Base22, 1, 0, 1, 3, 24, 24);
+   	public static SpriteSheet zombie_Base22_Up = new SpriteSheet(zombie_Base22, 2, 0, 1, 3, 24, 24);
+   	public static SpriteSheet zombie_Base22_Left = new SpriteSheet(zombie_Base22, 3, 0, 1, 3, 24, 24);
+    public static Sprite sprite_zombie_Base22 = new Sprite(24, 24, 0, 0, zombie_Base22);
+	
+   	
+   	
     public static Sprite particle1p = new Sprite(1, 1, 0xff7f00ff);
     public static Sprite particle2p = new Sprite(2, 2, 0xff7f00ff);
     public static Sprite particle3p = new Sprite(3, 3, 0xff7f00ff);
