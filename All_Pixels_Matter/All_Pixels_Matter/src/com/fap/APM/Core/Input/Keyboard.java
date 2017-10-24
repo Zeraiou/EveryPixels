@@ -1,4 +1,4 @@
-package com.fap.APM.Input;
+package com.fap.APM.Core.Input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

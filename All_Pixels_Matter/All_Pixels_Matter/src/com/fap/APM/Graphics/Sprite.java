@@ -2,8 +2,8 @@ package com.fap.APM.Graphics;
 
 public class Sprite {
 	
-	public int x, y, totalPx;
-	public int width, height;
+	public int x, y;
+	public int width, height, totalPx;
 	public int[] pixelsSprite;
 	protected SpriteSheet spriteSheet;
 	
@@ -13,7 +13,6 @@ public class Sprite {
 		this.spriteSheet = spriteSheet;
 		this.totalPx = this.width * this.height;
 		this.pixelsSprite = new int[totalPx];
-		
 	}
 	
 	public Sprite(int width, int height, int x, int y, SpriteSheet spriteSheet) {
@@ -32,14 +31,12 @@ public class Sprite {
 		this.width = widthSprite;
 		this.height = heightSprite;
 		this.pixelsSprite = new int[pixelsSprite.length];
+
 		for (int i = 0; i < pixelsSprite.length; i++) {
 			this.pixelsSprite[i] = pixelsSprite[i];
 		}
-		
 	}
-	
-	
-	
+
 	public Sprite(int width, int height, int color) {
 		this.width = width;
 		this.height = height;

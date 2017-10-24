@@ -1,22 +1,21 @@
-package com.fap.APM.Core;
+package com.fap.APM.WorldObjects;
+import com.fap.APM.Core.ControlRoom;
 import com.fap.APM.Graphics.Sprite;
 import com.fap.APM.Graphics.SpriteSheet;
-import com.fap.APM.WorldObjects.Item;
-import com.fap.APM.WorldObjects.Resource;
-import com.fap.APM.WorldObjects.Tile;
-import com.fap.APM.WorldObjects.Wall;
-import com.fap.APM.WorldObjects.Units.Entity;
+import com.fap.APM.WorldObjects.Items.Item;
+import com.fap.APM.WorldObjects.Basics.Resource;
+import com.fap.APM.WorldObjects.Basics.Tile;
+import com.fap.APM.WorldObjects.Basics.Wall;
 import com.fap.APM.Graphics.Particle;
 import com.fap.APM.WorldObjects.Units.Player;
-import com.fap.APM.WorldObjects.Units.Zombie;
+import com.fap.APM.WorldObjects.Units.Monster;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WorldList {
 
     public static List<Player> players = new ArrayList<Player>();
-    public static List<Entity> entities = new ArrayList<Entity>();
-    public static List<Zombie> monsters = new ArrayList<Zombie>();
+    public static List<Monster> monsters = new ArrayList<Monster>();
     public static List<Particle> particles = new ArrayList<Particle>();
     public static List<Wall> walls = new ArrayList<Wall>();
     public static List<Resource> resources = new ArrayList<Resource>();

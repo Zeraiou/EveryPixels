@@ -1,11 +1,10 @@
-package com.fap.APM.Phy;
+package com.fap.APM.Graphics.Phy;
 
 public class CollisionManager {
     
 	private static CollisionManager INSTANCE = null;
 
-	
-	 private CollisionManager() {}     // Private Init.
+	 private CollisionManager() {} // Private Init.
 
 	    public static CollisionManager shared() {
 	        if (INSTANCE == null) {
@@ -13,6 +12,7 @@ public class CollisionManager {
 	        }
 	        return INSTANCE;
 	    }
+}
 	    
 	/*    
 	    private boolean CollisionCreatureTuile(double xAbsolu, double yAbsolu) {
@@ -29,8 +29,6 @@ public class CollisionManager {
 			} 
 			return Solide;
 	}
-
-
 
 	public boolean CollisionParticuleTuile(double xActuelle, double yActuelle) {
 			boolean Solide = false;
@@ -49,9 +47,6 @@ public class CollisionManager {
 			}return Solide;
 	}
 
-
-
-
 	public boolean CollisionEntiteTuile(int xActuelle, int yActuelle, int DimensionEntite, int xDecallage, int yDecallage) {
 			boolean Solide = false;
 			for (int c =0; c < 4; c++) {
@@ -60,14 +55,3 @@ public class CollisionManager {
 				if (SaisirTuileHUB(xTemporaire, yTemporaire).Solide()) Solide = true;
 			}return Solide;
 	}  */
-	    
-	    // Entity - Tiles
-		// Entity - Ressources
-		// Entity - Entity
-	    // Ressources - Tiles
-	    // Ressources - Ressources
-		// effects - Entity
-		// effects - Tiles
-		// effects - Ressources
-		
-}

@@ -2,11 +2,11 @@ package com.fap.APM.Graphics;
 
 public class AnimatedSprite extends Sprite {
 
-		private int frame = 0;
-		private Sprite sprite;
-		private int animationRate = 11;
-		private int amountOfAnimation = -1;
-		private int time = 0;
+    private Sprite sprite;
+    private int animationRate = 11;
+    private int amountOfAnimation = -1;
+    private int frame = 0;
+    private int time = 0;
 		
 		public AnimatedSprite(SpriteSheet spriteSheet, int widthSprite, int heightSprite, int amountOfAnimation) {
 			super(spriteSheet, widthSprite, heightSprite);

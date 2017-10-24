@@ -7,9 +7,8 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
-
-import com.fap.APM.Input.Keyboard;
-import com.fap.APM.Phy.GameClock;
+import com.fap.APM.Core.Input.Keyboard;
+import com.fap.APM.Graphics.Phy.GameClock;
 
 public class GameLoop extends Canvas implements Runnable {
 
@@ -29,12 +28,6 @@ public class GameLoop extends Canvas implements Runnable {
         addKeyListener(keyboard);
         WorldMaker.shared().createPlayer("Zercos", keyboard);
         WorldMaker.shared().createZombie();
-    }
-
-    public synchronized void startGame() {
-    	running = true;
-        thread = new Thread(this, "Display");
-        thread.start();
     }
 
 	public void run() {
@@ -69,6 +62,12 @@ public class GameLoop extends Canvas implements Runnable {
 		graphics.dispose();
 		BufferStrategy.show();
 	}
+
+    public synchronized void startGame() {
+        running = true;
+        thread = new Thread(this, "Display");
+        thread.start();
+    }
 
 	public synchronized void stopGame() {
 		running = false;

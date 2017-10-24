@@ -1,10 +1,8 @@
-package com.fap.APM.Phy;
-
+package com.fap.APM.Graphics.Phy;
 import com.fap.APM.Core.ControlRoom;
-import com.fap.APM.Input.Keyboard;
-import com.fap.APM.Core.WorldList;
+import com.fap.APM.Core.Input.Keyboard;
+import com.fap.APM.WorldObjects.WorldList;
 import com.fap.APM.Core.WorldMaker;
-
 import javax.swing.*;
 
 public class GameClock {
@@ -32,8 +30,8 @@ public class GameClock {
 
         if (delta >= 1) {
             keyboard.updateKeyboard();
-            tickMap();
-            WorldMaker.shared().removeEntity();
+            globalTick();
+            WorldMaker.shared().removeEntity();  // Todo: removeList.
             tps++;
             delta--;
         }
@@ -45,11 +43,11 @@ public class GameClock {
             frame.setTitle(ControlRoom.GAME_TITLE + "    |     " + "Fps : "
                     + fps + " , Tps : " + tps
                     + "        |       " + " Pixels -- X : "
-                    + (int) WorldList.players.get(0).xEntity + ", Y: "
-                    + (int) WorldList.players.get(0).yEntity + "        |       "
+                    + (int) WorldList.players.get(0).posX + ", Y: "
+                    + (int) WorldList.players.get(0).posY + "        |       "
                     + "Tuiles -- X : "
-                    + (int) (WorldList.players.get(0).xEntity / 12) + ", Y: "
-                    + (int) (WorldList.players.get(0).yEntity / 12)
+                    + (int) (WorldList.players.get(0).posX / 12) + ", Y: "
+                    + (int) (WorldList.players.get(0).posY / 12)
                     + "        |       " + " Souris -- X : ");
             //		+ (int) Souris.SaisirX() + " , Y : "
             //		+ (int) Souris.SaisirY());
@@ -58,18 +56,17 @@ public class GameClock {
         }
     }
 
-    private void tickMap() {
+    private void globalTick() {
         for (int i = 0; i < WorldList.players.size(); i++) {
-            WorldList.players.get(i).tickEntity();
+            WorldList.players.get(i).nextTick();
         }
+
         for (int i = 0; i < WorldList.monsters.size(); i++) {
-            WorldList.monsters.get(i).tickEntity();
+            WorldList.monsters.get(i).nextTick();
         }
+
         for (int i = 0; i < WorldList.particles.size(); i++) {
-            WorldList.particles.get(i).tickEntity();
-        }
-        for (int i = 0; i < WorldList.entities.size(); i++) {
-            WorldList.entities.get(i).tickEntity();
+            WorldList.particles.get(i).nextTick();
         }
     }
 }

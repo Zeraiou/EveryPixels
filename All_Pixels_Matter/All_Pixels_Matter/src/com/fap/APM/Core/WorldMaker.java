@@ -1,7 +1,7 @@
 package com.fap.APM.Core;
-import com.fap.APM.Input.Keyboard;
+import com.fap.APM.Core.Input.Keyboard;
 import com.fap.APM.WorldObjects.Units.*;
-
+import com.fap.APM.WorldObjects.WorldList;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -52,7 +52,7 @@ public class WorldMaker {
             } else {
                 System.out.println("Total Players: " + WorldList.players.size());
                 for (int i = 0; i < WorldList.players.size(); i++) {
-                    System.out.println("Player " + i + ": " + WorldList.players.get(i).xEntity + ", " + WorldList.players.get(i).yEntity);
+                    System.out.println("Player " + i + ": " + WorldList.players.get(i).posX + ", " + WorldList.players.get(i).posY);
                 }
             }
         } else {
@@ -61,47 +61,21 @@ public class WorldMaker {
     }
 
     public void createZombie() {
-        Zombie zombie = new Zombie(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20);
+        Monster zombie = new Monster(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20);
 
         WorldList.monsters.add(zombie);
     }
-    
-    public void addEntity(Entity entity) {
-//        entity.initialiseMap(this);
-//
-//        if (entity instanceof Player) {
-//            WorldList.players.add((Player) entity);
-//        } else if (entity instanceof Zombie) {
-//            WorldList.monsters.add((Zombie) entity);
-//        } else if (entity instanceof Particle) {
-//            WorldList.particles.add((Particle) entity);
-//        } else {
-//            WorldList.entities.add(entity);
-//        }
-    }
 
     public void removeEntity() {
-        for (int i = 0; i < WorldList.players.size(); i++) {
-            if (WorldList.players.get(i).getIsRemoved()) {
-                WorldList.players.remove(i);
-            }
-        }
-
         for (int i = 0; i < WorldList.monsters.size(); i++) {
-            if (WorldList.monsters.get(i).getIsRemoved()) {
+            if (WorldList.monsters.get(i).isRemoved) {
                 WorldList.monsters.remove(i);
             }
         }
 
         for (int i = 0; i < WorldList.particles.size(); i++) {
-            if (WorldList.particles.get(i).getIsRemoved()) {
+            if (WorldList.particles.get(i).ttl <= 0) {
                 WorldList.particles.remove(i);
-            }
-        }
-
-        for (int i = 0; i < WorldList.entities.size(); i++) {
-            if (WorldList.entities.get(i).getIsRemoved()) {
-                WorldList.entities.remove(i);
             }
         }
     }
