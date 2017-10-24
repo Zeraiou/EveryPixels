@@ -7,10 +7,13 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
+
+import com.fap.APM.Graphics.DrawManager;
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Input.Keyboard;
-import com.fap.APM.Units.Player;
-import com.fap.APM.World.Map;
+import com.fap.APM.Phy.GameClock;
+import com.fap.APM.World.WorldList;
+import com.fap.APM.World.WorldMaker;
 
 public class GameOn extends Canvas implements Runnable {
 
@@ -19,8 +22,6 @@ public class GameOn extends Canvas implements Runnable {
     private Thread thread;
     private ScreenDisplay screen;
     private Keyboard keyboard;
-    private Map map;
-    private Player player;
 	public JFrame frame;
 
     private BufferedImage imageInFrame = new BufferedImage(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -28,16 +29,11 @@ public class GameOn extends Canvas implements Runnable {
 
     public GameOn () {
         setPreferredSize(new Dimension(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT));
-
         frame = new JFrame();
         screen = new ScreenDisplay(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT);
-        map = new Map(ControlRoom.MAP_FIELD_PATH);
-
         keyboard = new Keyboard();
         addKeyListener(keyboard);
-
-        player = new Player(ControlRoom.STARTING_X, ControlRoom.STARTING_Y, keyboard);
-        map.addEntity(player);
+        WorldMaker.shared().createPlayer("Zercos", keyboard);
     }
     
     public synchronized void startGame() {
@@ -47,44 +43,13 @@ public class GameOn extends Canvas implements Runnable {
     }
 
 	public void run() {
-		long lastTime = System.nanoTime();
-		long clock1Sec = System.currentTimeMillis();
-		double delta = 0;
-		int fps = 0;
-		int tps = 0;
-
 		requestFocus();
 
 		while(running) {
-			long currentTime = System.nanoTime();
-			delta += (currentTime - lastTime) / ControlRoom.NANOSECONDE;
-			lastTime = currentTime;
-			while (delta >= 1) {
-                keyboard.tickKeyboard();
-                map.tickMap();
-				tps++;
-				delta--;
-			}
+		    GameClock.shared().clockTick(frame, keyboard);
 			renderGame();
-			fps++;
-
-			if (System.currentTimeMillis() - clock1Sec > 1000) {
-				clock1Sec += 1000;
-				frame.setTitle(ControlRoom.GAME_TITLE + "    |     " + "Fps : "
-						+ fps + " , Tps : " + tps
-						+ "        |       " + " Pixels -- X : "
-						+ (int) player.getXEntity() + ", Y: "
-						+ (int) player.getYEntity() + "        |       "
-						+ "Tuiles -- X : "
-						+ (int) (player.getXEntity() / 12) + ", Y: "
-						+ (int) (player.getYEntity() / 12)
-						+ "        |       " + " Souris -- X : ");
-				//		+ (int) Souris.SaisirX() + " , Y : "
-				//		+ (int) Souris.SaisirY());
-				fps = 0;
-				tps = 0;
-			}
 		}
+
 		stopGame();
 	}
 
@@ -97,9 +62,9 @@ public class GameOn extends Canvas implements Runnable {
 		}
 		screen.clearScreen();
 
-		int xOffset = (int) player.getXEntity() - (screen.screenWidth / 2);
-		int yOffset = (int) player.getYEntity() - (screen.screenHeight / 2);
-		map.renderMap(xOffset, yOffset, screen);
+		int xOffset = (int) WorldList.players.get(0).getXEntity() - ControlRoom.SCREEN_CENTER_X;
+		int yOffset = (int) WorldList.players.get(0).getYEntity() - ControlRoom.SCREEN_CENTER_Y;
+		DrawManager.shared().renderMap(xOffset, yOffset, screen);
 
 		for (int i = 0; i < pixelsInFrame.length; i++) {
 			pixelsInFrame[i] = screen.pixelsScreen[i];
@@ -108,7 +73,7 @@ public class GameOn extends Canvas implements Runnable {
 		Graphics graphics = BufferStrategy.getDrawGraphics();
 		graphics.setColor(Color.BLUE);
 		graphics.fillRect(0, 0, ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT);
-		graphics.drawImage(imageInFrame, 0, 0, getWidth(), getHeight(), null);
+		graphics.drawImage(imageInFrame, 0, 0, ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, null);
 		graphics.dispose();
 		BufferStrategy.show();
 	}

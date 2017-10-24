@@ -1,6 +1,8 @@
 package com.fap.APM.Units;
 import com.fap.APM.ControlRoom;
+import com.fap.APM.Graphics.DrawManager;
 import com.fap.APM.Graphics.ScreenDisplay;
+import com.fap.APM.World.WorldMaker;
 
 public abstract class Creature extends Entity {
 
@@ -59,7 +61,9 @@ public abstract class Creature extends Entity {
 		
 			if (c % 2 == 0) xTempInt = (int) Math.floor(xTemp);
 			if (c / 2 == 0) yTempInt = (int) Math.floor(yTemp);
-			if (map.getMapFieldTiles(xTempInt, yTempInt).solid()) solid = true;
+			if (DrawManager.shared().getMapFieldTiles(xTempInt, yTempInt).solid()) {
+				solid = true;
+			}
 		} 
 		return solid;
 	}

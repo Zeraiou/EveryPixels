@@ -1,43 +1,90 @@
 package com.fap.APM.World;
 import com.fap.APM.ControlRoom;
-import com.fap.APM.Graphics.Sprite;
-import com.fap.APM.Graphics.SpriteSheet;
+import com.fap.APM.Input.Keyboard;
 import com.fap.APM.Units.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class WorldMaker {
 
-    public static List<Player> players = new ArrayList<Player>();
-    public static List<Entity> entities = new ArrayList<Entity>();
-    public static List<Zombie> monsters = new ArrayList<Zombie>();
-    public static List<Particle> particles = new ArrayList<Particle>();
-    public static List<Wall> walls = new ArrayList<Wall>();
-    public static List<Resource> resources = new ArrayList<Resource>();
-    public static List<Item> items = new ArrayList<Item>();
+    public int width, height, totalTiles;
+    public int[] mapFieldTiles;
 
-    public static SpriteSheet player_Base34 = new SpriteSheet(ControlRoom.PLAYER_SPRITE_PATH, 144, 192);
-    public static Sprite player_Base_Down34 = new Sprite(36, 48, 0, 0, WorldMaker.player_Base34);
-    public static Sprite player_Base_Right34 = new Sprite(36, 48, 1, 0, WorldMaker.player_Base34);
-    public static Sprite player_Base_Up34 = new Sprite(36, 48, 2, 0, WorldMaker.player_Base34);
-    public static Sprite player_Base_Left34 = new Sprite(36, 48, 3, 0, WorldMaker.player_Base34);
+    private static WorldMaker INSTANCE = null;
 
-    public static SpriteSheet zombie_Base22 = new SpriteSheet(ControlRoom.ZOMBIE_SPRITE_PATH, 96, 72);
-    public static Sprite zombie_Base_Down22 = new Sprite(24, 24, 0, 0, WorldMaker.zombie_Base22);
-    public static Sprite zombie_Base_Right22 = new Sprite(24, 24, 1, 0, WorldMaker.zombie_Base22);
-    public static Sprite zombie_Base_Up22 = new Sprite(24, 24, 2, 0, WorldMaker.zombie_Base22);
-    public static Sprite zombie_Base_Left22 = new Sprite(24, 24, 3, 0, WorldMaker.zombie_Base22);
+    private WorldMaker() {}     // Private Init.
 
-    public static Sprite particle1p = new Sprite(1, 1, 0xff7f00ff);
-    public static Sprite particle2p = new Sprite(2, 2, 0xff7f00ff);
-    public static Sprite particle3p = new Sprite(3, 3, 0xff7f00ff);
+    public static WorldMaker shared() {
+        if (INSTANCE == null) {
+            INSTANCE = new WorldMaker();
+            INSTANCE.extractMapField();
+        }
+        return INSTANCE;
+    }
 
-    public static Sprite particle4p = new Sprite(4, 4, 0xff7f00ff);
-    public static Sprite particle5p = new Sprite(5, 5, 0xff7f00ff);
-    public static Sprite particle6p = new Sprite(6, 6, 0xff7f00ff);
+    private void extractMapField() {
+        try {
+            BufferedImage imageFromFile = ImageIO.read(WorldMaker.class.getResource(ControlRoom.MAP_FIELD_PATH));
+            width = imageFromFile.getWidth();
+            height = imageFromFile.getHeight();
+            totalTiles = this.width * this.height;
+            mapFieldTiles = new int[this.totalTiles];
+            imageFromFile.getRGB(0, 0, width, height, mapFieldTiles, 0, width);
 
-    public static Sprite particle7p = new Sprite(7, 7, 0xff7f00ff);
-    public static Sprite particle8p = new Sprite(8, 8, 0xff7f00ff);
-    public static Sprite particle9p = new Sprite(9, 9, 0xff7f00ff);
+            if (ControlRoom.PIXEL_TILE_LOAD_OUT) {
+                System.out.println("Width: " + width + " - Height: " + height + " - TotalTiles: " + totalTiles + " - Array Size: " + mapFieldTiles.length + "\n");
+            }
+        } catch (IOException e) {
+            if (ControlRoom.PIXEL_TILE_LOAD_OUT) {
+                System.out.println("ERROR -- extractMapField() Failed! \n");
+            }
+        }
+    }
 
+    public void createPlayer(String name, Keyboard keyboard) {
+        Player player = new Player(ControlRoom.STARTING_X, ControlRoom.STARTING_Y, keyboard);
+
+        WorldList.players.add(player);
+    }
+
+    public void addEntity(Entity entity) {
+//        entity.initialiseMap(this);
+//
+//        if (entity instanceof Player) {
+//            WorldList.players.add((Player) entity);
+//        } else if (entity instanceof Zombie) {
+//            WorldList.monsters.add((Zombie) entity);
+//        } else if (entity instanceof Particle) {
+//            WorldList.particles.add((Particle) entity);
+//        } else {
+//            WorldList.entities.add(entity);
+//        }
+    }
+
+    public void removeEntity() {
+        for (int i = 0; i < WorldList.players.size(); i++) {
+            if (WorldList.players.get(i).getIsRemoved()) {
+                WorldList.players.remove(i);
+            }
+        }
+
+        for (int i = 0; i < WorldList.monsters.size(); i++) {
+            if (WorldList.monsters.get(i).getIsRemoved()) {
+                WorldList.monsters.remove(i);
+            }
+        }
+
+        for (int i = 0; i < WorldList.particles.size(); i++) {
+            if (WorldList.particles.get(i).getIsRemoved()) {
+                WorldList.particles.remove(i);
+            }
+        }
+
+        for (int i = 0; i < WorldList.entities.size(); i++) {
+            if (WorldList.entities.get(i).getIsRemoved()) {
+                WorldList.entities.remove(i);
+            }
+        }
+    }
 }

@@ -1,9 +1,11 @@
-package com.fap.APM.Units;
+package com.fap.APM.Particles;
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Graphics.Sprite;
+import com.fap.APM.Units.Entity;
+import com.fap.APM.World.WorldList;
 import com.fap.APM.World.WorldMaker;
 
-public class Particle extends Entity{
+public class Particle extends Entity {
 	
 	private Sprite spriteParticle;
 	private int lifeTime;
@@ -19,16 +21,16 @@ public class Particle extends Entity{
 		this.yEntityDouble = yEntity;
 		this.lifeTime = lifeTime + RANDOM.nextInt(20) - 10;
 
-		spriteParticle = WorldMaker.particle2p;
+		spriteParticle = WorldList.particle2p;
 		/*
-		spriteParticle = WorldMaker.particle1p;
-		spriteParticle = WorldMaker.particle3p;
-		spriteParticle = WorldMaker.particle4p;
-		spriteParticle = WorldMaker.particle5p;
-		spriteParticle = WorldMaker.particle6p;
-		spriteParticle = WorldMaker.particle7p;
-		spriteParticle = WorldMaker.particle8p;
-		spriteParticle = WorldMaker.particle9p;
+		spriteParticle = WorldList.particle1p;
+		spriteParticle = WorldList.particle3p;
+		spriteParticle = WorldList.particle4p;
+		spriteParticle = WorldList.particle5p;
+		spriteParticle = WorldList.particle6p;
+		spriteParticle = WorldList.particle7p;
+		spriteParticle = WorldList.particle8p;
+		spriteParticle = WorldList.particle9p;
 		*/
 
 		this.xDestination = RANDOM.nextGaussian();

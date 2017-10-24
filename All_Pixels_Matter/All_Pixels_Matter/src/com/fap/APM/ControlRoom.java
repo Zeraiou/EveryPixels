@@ -9,7 +9,6 @@ public class ControlRoom {
 
     public static final int STARTING_X = 60 * 12;
     public static final int STARTING_Y = 60 * 12;
-
     public static final int WIDTH_TILE = 12;
     public static final int HEIGHT_TILE = 12;
 
@@ -20,4 +19,7 @@ public class ControlRoom {
     public static final String MAP_FIELD_PATH = "/Map/Map512-Field.png"; // Map64.png, Map1024.png, Map8192.png
 
     public static final double NANOSECONDE = 1000000000.0 / 60.0;
+
+
+    public static final boolean PIXEL_TILE_LOAD_OUT = true;
 }

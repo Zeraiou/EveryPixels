@@ -1,4 +1,4 @@
-package com.fap.APM.World;
+package com.fap.APM.Objects;
 import com.fap.APM.ControlRoom;
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Graphics.Sprite;

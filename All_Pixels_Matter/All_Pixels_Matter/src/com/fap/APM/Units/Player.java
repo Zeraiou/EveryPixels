@@ -2,6 +2,7 @@ package com.fap.APM.Units;
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Graphics.Sprite;
 import com.fap.APM.Input.Keyboard;
+import com.fap.APM.World.WorldList;
 import com.fap.APM.World.WorldMaker;
 
 public class Player extends Creature {
@@ -15,7 +16,7 @@ public class Player extends Creature {
 		this.xEntity = xEntity;
 		this.yEntity = yEntity;
 		this.keyboard = key;
-		this.spritePlayer = WorldMaker.player_Base_Down34;
+		this.spritePlayer = WorldList.player_Base_Down34;
 		this.fireRate = 5;
 		this.pointHealt = 100;
 		this.pointHealtMaximum = 100.0;
@@ -35,22 +36,22 @@ public class Player extends Creature {
 		double xDestination = 0, yDestination = 0;
 		if (keyboard.up) {
 			yDestination -= movementSpeed;
-			spritePlayer = WorldMaker.player_Base_Up34;
+			spritePlayer = WorldList.player_Base_Up34;
 		}
 		
 		if (keyboard.rigth) {
 			xDestination += movementSpeed;
-			spritePlayer = WorldMaker.player_Base_Right34;
+			spritePlayer = WorldList.player_Base_Right34;
 		}
 		
 		if (keyboard.down) {
 			yDestination += movementSpeed;
-			spritePlayer = WorldMaker.player_Base_Down34;
+			spritePlayer = WorldList.player_Base_Down34;
 		}
 		
 		if (keyboard.left) {
 			xDestination -= movementSpeed;
-			spritePlayer = WorldMaker.player_Base_Left34;
+			spritePlayer = WorldList.player_Base_Left34;
 		}
 		
 		if (xDestination !=0 || yDestination !=0) {

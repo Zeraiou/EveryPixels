@@ -1,5 +1,6 @@
 package com.fap.APM.Units;
 import com.fap.APM.Graphics.ScreenDisplay;
+import com.fap.APM.World.WorldList;
 import com.fap.APM.World.WorldMaker;
 
 public class Zombie extends Creature {
@@ -9,7 +10,7 @@ public class Zombie extends Creature {
 	public Zombie(int xStratingPoint, int yStratingPoint) {
 		this.xEntity = xStratingPoint;
 		this.yEntity = yStratingPoint;
-		this.spriteEntity = WorldMaker.zombie_Base_Down22;
+		this.spriteEntity = WorldList.zombie_Base_Down22;
 		this.movementSpeed = 1.0;
 	}
 
@@ -25,23 +26,23 @@ public class Zombie extends Creature {
 			
 			if (directionChoice == 0) {
 //				System.out.println("ici2");
-				spriteEntity = WorldMaker.zombie_Base_Down22;
+				spriteEntity = WorldList.zombie_Base_Down22;
 				yDestination += movementSpeed * 12; 
 //				System.out.println(yDestination);
 			}
 			
 			if (directionChoice == 1) {
-				spriteEntity = WorldMaker.zombie_Base_Right22;
+				spriteEntity = WorldList.zombie_Base_Right22;
 				xDestination += movementSpeed * 12;
 			}
 			
 			if (directionChoice == 2) {
-				spriteEntity = WorldMaker.zombie_Base_Up22;
+				spriteEntity = WorldList.zombie_Base_Up22;
 				yDestination -= movementSpeed * 12;
 			}
 			
 			if (directionChoice == 3) {
-				spriteEntity = WorldMaker.zombie_Base_Left22;
+				spriteEntity = WorldList.zombie_Base_Left22;
 				yDestination -= movementSpeed * 12;
 			}
 			

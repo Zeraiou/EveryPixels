@@ -2,6 +2,7 @@ package com.fap.APM.World;
 import com.fap.APM.ControlRoom;
 import com.fap.APM.Graphics.Sprite;
 import com.fap.APM.Graphics.SpriteSheet;
+import com.fap.APM.Objects.Tile;
 
 public class TileMaker {
 

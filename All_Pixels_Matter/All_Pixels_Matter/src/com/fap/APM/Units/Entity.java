@@ -2,12 +2,10 @@ package com.fap.APM.Units;
 import java.util.Random;
 import com.fap.APM.Graphics.ScreenDisplay;
 import com.fap.APM.Graphics.Sprite;
-import com.fap.APM.World.Map;
 
 public class Entity {
 	
 	protected double xEntity, yEntity;
-	protected Map map;
 	protected Sprite spriteEntity;
 	protected final Random RANDOM = new Random();
 	private boolean isRemoved = false;
@@ -48,9 +46,5 @@ public class Entity {
 
 	public boolean getIsRemoved() {
 		return isRemoved;
-	}
-	
-	public void initialiseMap(Map map) {
-		this.map = map;
 	}
 }
