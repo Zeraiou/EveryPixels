@@ -75,27 +75,19 @@ public class WorldMaker {
     }
 
     public void createZombie() {
-        Monster monster = new Monster(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20);
-
+        Monster monster = new Monster(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20, 1);
         WorldList.monsters.add(monster);
     }
-    
-    public void createEspirito() {
-        Espirito espirito = new Espirito(ControlRoom.STARTING_X + 50, ControlRoom.STARTING_Y + 50);
 
-        WorldList.espiritos.add(espirito);
+    public void createEspirito() {
+        Monster monster = new Monster(ControlRoom.STARTING_X - 200, ControlRoom.STARTING_Y - 200, 2);
+        WorldList.monsters.add(monster);
     }
 
     public void removeEntity() {
         for (int i = 0; i < WorldList.monsters.size(); i++) {
             if (WorldList.monsters.get(i).isRemoved) {
                 WorldList.monsters.remove(i);
-            }
-        }
-        
-        for (int i = 0; i < WorldList.espiritos.size(); i++) {
-            if (WorldList.espiritos.get(i).isRemoved) {
-                WorldList.espiritos.remove(i);
             }
         }
 

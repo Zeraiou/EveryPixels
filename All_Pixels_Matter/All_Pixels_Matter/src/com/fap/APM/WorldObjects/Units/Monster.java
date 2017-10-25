@@ -8,21 +8,37 @@ import java.util.Random;
 
 public class Monster {
 
+    private AnimatedSprite animDown;
+    private AnimatedSprite animUp;
+    private AnimatedSprite animLeft;
+    private AnimatedSprite animRight;
+
     protected final Random RANDOM = new Random();
-	private AnimatedSprite animationDown = new AnimatedSprite(WorldList.zombie_Base22_Down, 36, 48, 3);
-	private AnimatedSprite animationRight = new AnimatedSprite(WorldList.zombie_Base22_Right, 36, 48, 3);
-	private AnimatedSprite animationUp = new AnimatedSprite(WorldList.zombie_Base22_Up, 36, 48, 3);
-	private AnimatedSprite animationLeft = new AnimatedSprite(WorldList.zombie_Base22_Left, 36, 48, 3);
-	public AnimatedSprite sprite = animationDown;
+	public AnimatedSprite sprite;
     public double posX, posY, ticksAlive, movementSpeed;
     public boolean isRemoved = false;
     public boolean isMoving = false;
+    private int monsterType;
 
-	public Monster(int posX, int posY) {
+	public Monster(int posX, int posY, int type) {
 		this.posX = posX;
 		this.posY = posY;
 		this.movementSpeed = 1.0;
 		this.ticksAlive = 0;
+		this.monsterType = type;
+
+		if (monsterType == 1) {
+            animDown = MonsterAnimations.animationDown;
+            animUp = MonsterAnimations.animationUp;
+            animLeft = MonsterAnimations.animationLeft;
+            animRight = MonsterAnimations.animationRight;
+        } else if (monsterType == 2) {
+            animDown = MonsterAnimations.animationDownTwo;
+            animUp = MonsterAnimations.animationUpTwo;
+            animLeft = MonsterAnimations.animationLeftTwo;
+            animRight = MonsterAnimations.animationRightTwo;
+        }
+        sprite = animDown;
 	}
 
 	public void nextTick() {
@@ -41,22 +57,22 @@ public class Monster {
             }
 
 			if (directionChoice == 0) {
-				sprite = animationDown;
-				yDestination += movementSpeed ; 
+				sprite = animDown;
+				yDestination += movementSpeed ;
 			}
-			
+
 			if (directionChoice == 1) {
-				sprite = animationRight;
+				sprite = animRight;
 				xDestination += movementSpeed ;
 			}
-			
+
 			if (directionChoice == 2) {
-				sprite = animationUp;
+				sprite = animUp;
 				yDestination -= movementSpeed ;
 			}
-			
+
 			if (directionChoice == 3) {
-				sprite = animationLeft;
+				sprite = animLeft;
 				xDestination -= movementSpeed ;
 			}
 			

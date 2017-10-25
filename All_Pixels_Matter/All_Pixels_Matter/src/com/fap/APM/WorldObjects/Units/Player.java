@@ -49,13 +49,19 @@ public class Player {
         if (Keyboard.shared().left) {
             xDestination -= movementSpeed;
             sprite = animationLeft;
-        } else if (Keyboard.shared().rigth) {
+        }
+
+        if (Keyboard.shared().rigth) {
             xDestination += movementSpeed;
             sprite = animationRight;
-        } else if (Keyboard.shared().up) {
+        }
+
+        if (Keyboard.shared().up) {
             yDestination -= movementSpeed;
             sprite = animationUp;
-        } else if (Keyboard.shared().down) {
+        }
+
+        if (Keyboard.shared().down) {
             yDestination += movementSpeed;
             sprite = animationDown;
         }
