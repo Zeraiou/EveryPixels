@@ -28,7 +28,7 @@ public class DrawManager {
 
         screenCenterX = ControlRoom.SCREEN_CENTER_X;
         screenCenterY = ControlRoom.SCREEN_CENTER_Y;
-    }  // Private Constructor
+    }
 
     public static DrawManager shared() {
         if (INSTANCE == null) {

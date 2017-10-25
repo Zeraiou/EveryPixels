@@ -10,8 +10,10 @@ public class ControlRoom {
     public static final int EXP_POINTS = 0;
 
     /// CONSOLE LOG SWITCHES ///
-    public static final boolean PIXEL_TILE_LOAD_OUT = true;
+    public static final boolean PIXEL_TILE_LOAD_OUT = false;
     public static final boolean RENDER_SCREEN_OUT = false;
+    public static final boolean MOUSE_INPUT_OUT = true;
+    public static final boolean KEYBOARD_INPUT_OUT = true;
 
     /// SCREEN INFO ///
     public static final int SCREEN_WIDTH = 800;

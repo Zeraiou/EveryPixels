@@ -1,4 +1,6 @@
 package com.fap.APM.Core.Input;
+import com.fap.APM.Core.ControlRoom;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -29,48 +31,37 @@ public class Keyboard implements KeyListener {
 
     public void keyPressed(KeyEvent e) {
         keys[e.getKeyCode()] = true;
+        if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+            System.out.print("Key:(" + e.getKeyChar() + "," + e.getKeyCode() + ") " + e.getID() + e.getExtendedKeyCode() +" ");
+        }
+    }
+
+    public void keyTyped(KeyEvent e) {
+        if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+            System.out.print(e.getID() + "-" + e.getExtendedKeyCode() + "-" + e.getKeyCode() + " ");
+        }
     }
 
     public void keyReleased(KeyEvent e) {
         keys[e.getKeyCode()] = false;
+        if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+            System.out.println(e.getID() + " " + e.getKeyLocation() + " " + e.getExtendedKeyCode() + " " + e.getKeyCode() + " " + e.getKeyChar());
+        }
     }
-
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-//	public void player() {
-//		switch (key) {
-//			case 1: key.esc;
-//				Menu.shared().openUserInterface();
-//				break;
-//			case 2:  key up;
-//				player.move()
-//				break;
-//			case 3:  monthString = "March";
-//				break;
-//			case 4:  monthString = "April";
-//				break;
-//			case 5:  monthString = "May";
-//				break;
-//			case 6:  monthString = "June";
-//				break;
-//			case 7:  monthString = "July";
-//				break;
-//			case 8:  monthString = "August";
-//				break;
-//			case 9:  monthString = "September";
-//				break;
-//			case 10: monthString = "October";
-//				break;
-//			case 11: monthString = "November";
-//				break;
-//			case 12: monthString = "December";
-//				break;
-//			default: monthString = "Invalid month";
-//				break;
-//		}
-//	}
-
-
 }
+
+// Missing Tab Button
+// 27 == ESC
+// 192 == ` (Console)
+// 16 == LShift/RShift
+// 157 == Command
+// 117 == Control
+// 18 == Option
+// 32 == Space
+// 81 ==
+// 10 == Enter
+// 8 == BackSpace
+// 81 == Q, 87 == W, 69 == E, 82 == R, 84 == T
+// 65 == A, 83 == S, 68 == D, 70 == F, 71 == G
+// 90 == Z, 88 == X, 67 == C, 86 == V, 66 == B
+// 48 == 0 ... 57 == 9

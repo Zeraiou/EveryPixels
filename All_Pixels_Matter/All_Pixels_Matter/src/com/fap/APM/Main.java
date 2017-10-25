@@ -9,7 +9,6 @@ public class Main {
     private static Thread thread;
     
 	public static void main(String[] args) {
-
 		gameLoop = new GameLoop();
 		gameLoop.frame.setResizable(false);
 		gameLoop.frame.setTitle(ControlRoom.GAME_TITLE);
@@ -18,12 +17,10 @@ public class Main {
 		gameLoop.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameLoop.frame.setLocationRelativeTo(null);
 		gameLoop.frame.setVisible(true);
-
 		startGame();
 	}
 
 	private static synchronized void startGame() {
-
 		thread = new Thread(gameLoop, "Display");
 		thread.start();
 	}

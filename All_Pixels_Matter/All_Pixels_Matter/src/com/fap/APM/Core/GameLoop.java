@@ -3,33 +3,34 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-import javax.swing.JFrame;
+import java.awt.image.*;
+import javax.swing.*;
 import com.fap.APM.Core.Input.Keyboard;
+import com.fap.APM.Core.Input.Mouse;
 import com.fap.APM.Graphics.Phy.GameClock;
 
 public class GameLoop extends Canvas implements Runnable {
 
-	private static final long serialVersionUID = 1L;
-    private boolean running;
-	public JFrame frame;
-
     private BufferedImage imageInFrame = new BufferedImage(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixelsInFrame = ((DataBufferInt) imageInFrame.getRaster().getDataBuffer()).getData();
+    private static final long serialVersionUID = 1L;
+    private boolean running;
+	public JFrame frame;
 
     public GameLoop() {
         setPreferredSize(new Dimension(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT));
         frame = new JFrame();
+
         addKeyListener(Keyboard.shared());
+        addMouseListener(Mouse.shared());
+
         WorldMaker.shared().createPlayer();
         WorldMaker.shared().createZombie();
-        running = true;
     }
 
 	public void run() {
 		requestFocus();
+        running = true;
 
 		while(running) {
 		    GameClock.shared().clockTick(frame);

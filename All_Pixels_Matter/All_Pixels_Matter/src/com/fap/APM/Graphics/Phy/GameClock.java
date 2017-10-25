@@ -14,7 +14,7 @@ public class GameClock {
     int fps = 0;
     int tps = 0;
 
-    private GameClock() {}     // Private Init.
+    private GameClock() {}
 
     public static GameClock shared() {
         if (INSTANCE == null) {
@@ -30,8 +30,8 @@ public class GameClock {
 
         if (delta >= 1) {
             Keyboard.shared().updateKeyboard();
-            globalTick();
-            WorldMaker.shared().removeEntity();  // Todo: removeList.
+            worldTick();
+            WorldMaker.shared().removeEntity();
             tps++;
             delta--;
         }
@@ -56,7 +56,7 @@ public class GameClock {
         }
     }
 
-    private void globalTick() {
+    private void worldTick() {
         for (int i = 0; i < WorldList.players.size(); i++) {
             WorldList.players.get(i).nextTick();
         }
