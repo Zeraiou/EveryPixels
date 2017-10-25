@@ -1,6 +1,5 @@
 package com.fap.APM.Core.Input;
 import com.fap.APM.Core.ControlRoom;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -8,7 +7,7 @@ public class Keyboard implements KeyListener {
 
     private static Keyboard INSTANCE = null;
     private boolean[] keys = new boolean[199];
-    public boolean up, rigth, down, left, potionLife, potionMagic, potionExperience, dammage;
+    public boolean up, rigth, down, left, potionLife, potionMagic, potionExperience, damage;
 
     private Keyboard() { }
     public static Keyboard shared() {
@@ -23,29 +22,30 @@ public class Keyboard implements KeyListener {
         rigth = keys[KeyEvent.VK_RIGHT] || keys[KeyEvent.VK_D];
         down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
         left = keys[KeyEvent.VK_LEFT] || keys[KeyEvent.VK_A];
+
         potionLife = keys[KeyEvent.VK_G];
         potionMagic = keys[KeyEvent.VK_H];
         potionExperience = keys[KeyEvent.VK_J];
-        dammage = keys[KeyEvent.VK_T];
+        damage = keys[KeyEvent.VK_T];
     }
 
     public void keyPressed(KeyEvent e) {
         keys[e.getKeyCode()] = true;
         if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
-            System.out.print("Key:(" + e.getKeyChar() + "," + e.getKeyCode() + ") " + e.getID() + e.getExtendedKeyCode() +" ");
+            System.out.println("\nKeyPressed:(" + e.getKeyChar() + "," + e.getKeyCode() + "," + e.getExtendedKeyCode() + ") " + e.getID() + " "+ e.getModifiers() + " " + e.getKeyLocation());
         }
     }
 
     public void keyTyped(KeyEvent e) {
         if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
-            System.out.print(e.getID() + "-" + e.getExtendedKeyCode() + "-" + e.getKeyCode() + " ");
+            System.out.println("KeyTyped:(" + e.getKeyChar() + "," + e.getKeyCode() + "," + e.getExtendedKeyCode() + ") " + e.getID() + " "+ e.getModifiers() + " " + e.getKeyLocation());
         }
     }
 
     public void keyReleased(KeyEvent e) {
         keys[e.getKeyCode()] = false;
         if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
-            System.out.println(e.getID() + " " + e.getKeyLocation() + " " + e.getExtendedKeyCode() + " " + e.getKeyCode() + " " + e.getKeyChar());
+            System.out.println("KeyReleased:(" + e.getKeyChar() + "," + e.getKeyCode() + "," + e.getExtendedKeyCode() + ") " + e.getID() + " " + e.getModifiers() + " " + e.getKeyLocation());
         }
     }
 }
