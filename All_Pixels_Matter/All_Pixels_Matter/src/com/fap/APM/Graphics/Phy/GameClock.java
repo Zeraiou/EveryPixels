@@ -23,13 +23,13 @@ public class GameClock {
         return INSTANCE;
     }
 
-    public void clockTick(JFrame frame, Keyboard keyboard) {
+    public void clockTick(JFrame frame) {
         long currentTime = System.nanoTime();
         delta += (currentTime - lastTime) / ControlRoom.NANOSECONDE;
         lastTime = currentTime;
 
         if (delta >= 1) {
-            keyboard.updateKeyboard();
+            Keyboard.shared().updateKeyboard();
             globalTick();
             WorldMaker.shared().removeEntity();  // Todo: removeList.
             tps++;

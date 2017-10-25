@@ -15,7 +15,6 @@ public class GameLoop extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	private boolean running = false;
     private Thread thread;
-    private Keyboard keyboard;
 	public JFrame frame;
 
     private BufferedImage imageInFrame = new BufferedImage(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -24,9 +23,8 @@ public class GameLoop extends Canvas implements Runnable {
     public GameLoop() {
         setPreferredSize(new Dimension(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT));
         frame = new JFrame();
-        keyboard = new Keyboard();
-        addKeyListener(keyboard);
-        WorldMaker.shared().createPlayer("Zercos", keyboard);
+        addKeyListener(Keyboard.shared());
+        WorldMaker.shared().createPlayer();
         WorldMaker.shared().createZombie();
     }
 
@@ -34,7 +32,7 @@ public class GameLoop extends Canvas implements Runnable {
 		requestFocus();
 
 		while(running) {
-		    GameClock.shared().clockTick(frame, keyboard);
+		    GameClock.shared().clockTick(frame);
 			renderScreen();
 		}
 

@@ -10,10 +10,9 @@ public class WorldMaker {
 
     public int width, height, totalTiles;
     public int[] mapFieldTiles;
-
     private static WorldMaker INSTANCE = null;
 
-    private WorldMaker() { }     // Private Init.
+    private WorldMaker() { }
 
     public static WorldMaker shared() {
         if (INSTANCE == null) {
@@ -42,12 +41,11 @@ public class WorldMaker {
         }
     }
 
-    public void createPlayer(String name, Keyboard keyboard) {
-        Player newPlayer = new Player(ControlRoom.STARTING_X, ControlRoom.STARTING_Y, keyboard);
-        WorldList.players.add(newPlayer);
+    public void createPlayer() {
+        WorldList.players.add(new Player());
 
         if (ControlRoom.PIXEL_TILE_LOAD_OUT) {
-            if (newPlayer == null) {
+            if (WorldList.players.size() == 0) {
                 System.out.println("ERROR -- createPlayer() Failed!");
             } else {
                 System.out.println("Total Players: " + WorldList.players.size());
@@ -55,15 +53,13 @@ public class WorldMaker {
                     System.out.println("Player " + i + ": " + WorldList.players.get(i).posX + ", " + WorldList.players.get(i).posY);
                 }
             }
-        } else {
-            WorldList.players.add(newPlayer);
         }
     }
 
     public void createZombie() {
-        Monster zombie = new Monster(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20);
+        Monster monster = new Monster(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20);
 
-        WorldList.monsters.add(zombie);
+        WorldList.monsters.add(monster);
     }
 
     public void removeEntity() {
@@ -74,7 +70,7 @@ public class WorldMaker {
         }
 
         for (int i = 0; i < WorldList.particles.size(); i++) {
-            if (WorldList.particles.get(i).ttl <= 0) {
+            if (WorldList.particles.get(i).timeToLive <= 0) {
                 WorldList.particles.remove(i);
             }
         }

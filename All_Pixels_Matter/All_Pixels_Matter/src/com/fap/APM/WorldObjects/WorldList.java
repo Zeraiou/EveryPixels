@@ -17,10 +17,11 @@ public class WorldList {
     public static List<Player> players = new ArrayList<Player>();
     public static List<Monster> monsters = new ArrayList<Monster>();
     public static List<Particle> particles = new ArrayList<Particle>();
+
+    public static List<Tile> tiles = new ArrayList<Tile>();
     public static List<Wall> walls = new ArrayList<Wall>();
     public static List<Resource> resources = new ArrayList<Resource>();
     public static List<Item> items = new ArrayList<Item>();
-    public static List<Tile> tiles = new ArrayList<Tile>();
 
     public static SpriteSheet player_Base34 = new SpriteSheet(ControlRoom.PLAYER_SPRITE_PATH, 144, 144);
     public static SpriteSheet player_Base34_Down = new SpriteSheet(player_Base34, 0, 0, 1, 3, 36, 48);

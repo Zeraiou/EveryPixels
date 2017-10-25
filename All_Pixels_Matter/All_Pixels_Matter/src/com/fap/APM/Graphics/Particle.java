@@ -8,15 +8,14 @@ public class Particle {
     protected double xDestination, yDestination, zDestination;
     public double posX, posY, posZ;
     public boolean isRemoved = false;
-
 	public Sprite spriteParticle;
-	public int ttl, ticksAlive;
+	public int timeToLive;
 	public int time = 0;
 
-	public Particle(int x, int y, int lifeTime) {
+	public Particle(int x, int y, int timeToLive) {
 		this.posX = x;
 		this.posY = y;
-		this.ttl = lifeTime + RANDOM.nextInt(20) - 10;
+		this.timeToLive = timeToLive + RANDOM.nextInt(20) - 10;
 		spriteParticle = WorldList.particle2p;
 
 		this.xDestination = RANDOM.nextGaussian();
@@ -27,7 +26,7 @@ public class Particle {
 	public void nextTick() {
 		time++;
 		if(time > 10000) time = 0;
-		if (time > ttl) {
+		if (time > timeToLive) {
 		    isRemoved = true;
         }
 		

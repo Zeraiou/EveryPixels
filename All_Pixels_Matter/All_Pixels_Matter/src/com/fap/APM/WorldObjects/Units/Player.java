@@ -3,6 +3,7 @@ import com.fap.APM.Core.ControlRoom;
 import com.fap.APM.Core.DrawManager;
 import com.fap.APM.Graphics.AnimatedSprite;
 import com.fap.APM.Core.Input.Keyboard;
+import com.fap.APM.Helper;
 import com.fap.APM.WorldObjects.WorldList;
 
 public class Player {
@@ -15,31 +16,22 @@ public class Player {
 
     public boolean isMoving = false;
     private boolean isAlive = true;
-    private Keyboard keyboard;
-    private int healthPoints, pointMagic, pointExperience;
-    private double pointHealtMaximum, pointMagicMaximum, pointExperienceMaximum, fireRate;
-    private double pointHealtPercentage, pointMagicPercentage, pointExperiencePercentage;
+    private int pointExperience;
+    private double healthPoints, maxHealthPoints, fireRate;
     private double movementSpeed;
     public double posX, posY;
 
-	public Player(int posX, int posY, Keyboard key) {
-		this.posX = posX;
-		this.posY = posY;
-		this.keyboard = key;
-		this.fireRate = 5.0;
-        this.movementSpeed  = 2.5;
-		this.healthPoints = 100;
-		this.pointHealtMaximum = 100.0;
-		this.pointHealtPercentage = healthPoints / pointHealtMaximum;
-		this.pointMagic = 100;
-		this.pointMagicMaximum = 100.0;
-		this.pointMagicPercentage = pointMagic / pointMagicMaximum;
-		this.pointExperience = 0;
-		this.pointExperienceMaximum = 100.0;
-		this.pointExperiencePercentage = pointExperience / pointExperienceMaximum;
+	public Player() {
+        sprite = animationDown;
 
-		sprite = animationDown;
-	}
+        posX = ControlRoom.STARTING_X;
+        posY = ControlRoom.STARTING_Y;
+        healthPoints = ControlRoom.HEALTH_POINTS;
+        maxHealthPoints = ControlRoom.MAX_HEALTH_POINTS;
+        movementSpeed = ControlRoom.MOVEMENT_SPEED;
+        pointExperience = ControlRoom.EXP_POINTS;
+        fireRate = ControlRoom.FIRE_RATE;
+    }
 	
 	public void nextTick() {
 		if (fireRate > 0) {
@@ -54,16 +46,16 @@ public class Player {
 
 		double xDestination = 0, yDestination = 0;
 
-        if (keyboard.left) {
+        if (Keyboard.shared().left) {
             xDestination -= movementSpeed;
             sprite = animationLeft;
-        } else if (keyboard.rigth) {
+        } else if (Keyboard.shared().rigth) {
             xDestination += movementSpeed;
             sprite = animationRight;
-        } else if (keyboard.up) {
+        } else if (Keyboard.shared().up) {
             yDestination -= movementSpeed;
             sprite = animationUp;
-        } else if (keyboard.down) {
+        } else if (Keyboard.shared().down) {
             yDestination += movementSpeed;
             sprite = animationDown;
         }
@@ -79,12 +71,12 @@ public class Player {
     protected void move(double xDestination, double yDestination) {
         while (xDestination != 0) {
             if (Math.abs(xDestination) > 1) {
-                if (!collisionCreatureTile(absolute(xDestination), yDestination)) {
-                    this.posX += absolute(xDestination);
+                if (!collisionCreatureTile(Helper.absolute(xDestination), yDestination)) {
+                    this.posX += Helper.absolute(xDestination);
                 }
-                xDestination -= absolute(xDestination);
+                xDestination -= Helper.absolute(xDestination);
             }	else {
-                if (!collisionCreatureTile(absolute(xDestination), yDestination)) {
+                if (!collisionCreatureTile(Helper.absolute(xDestination), yDestination)) {
                     this.posX += xDestination;
                 }
                 xDestination = 0;
@@ -93,12 +85,12 @@ public class Player {
 
         while (yDestination != 0) {
             if (Math.abs(yDestination) > 1) {
-                if (!collisionCreatureTile(xDestination, absolute(yDestination))) {
-                    this.posY += absolute(yDestination);
+                if (!collisionCreatureTile(xDestination, Helper.absolute(yDestination))) {
+                    this.posY += Helper.absolute(yDestination);
                 }
-                yDestination -= absolute(yDestination);
+                yDestination -= Helper.absolute(yDestination);
             }	else {
-                if (!collisionCreatureTile(xDestination, absolute(yDestination))) {
+                if (!collisionCreatureTile(xDestination, Helper.absolute(yDestination))) {
                     this.posY += yDestination;
                 }
                 yDestination = 0;
@@ -121,10 +113,5 @@ public class Player {
             }
         }
         return solid;
-    }
-
-    private int absolute(double value) {
-        if (value < 0) return -1;
-        return 1;
     }
 }

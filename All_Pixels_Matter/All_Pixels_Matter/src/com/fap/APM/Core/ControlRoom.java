@@ -5,8 +5,12 @@ public class ControlRoom {
     /// CONSOLE LOG SWITCHES ///
     public static final boolean PIXEL_TILE_LOAD_OUT = false;
 
-    /// PLAYER SPECS ///
-
+    /// PLAYER STATS ///
+    public static final double FIRE_RATE = 5.0;
+    public static final double MOVEMENT_SPEED = 3.2;
+    public static final double HEALTH_POINTS = 100.00;
+    public static final double MAX_HEALTH_POINTS = 100.00;
+    public static final int EXP_POINTS = 0;
 
     /// SCREEN INFO ///
     public static final int SCREEN_WIDTH = 800;
