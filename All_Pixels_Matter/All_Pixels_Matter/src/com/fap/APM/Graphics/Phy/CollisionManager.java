@@ -4,7 +4,7 @@ public class CollisionManager {
     
 	private static CollisionManager INSTANCE = null;
 
-	 private CollisionManager() {} // Private Init.
+	 private CollisionManager() {}
 
 	    public static CollisionManager shared() {
 	        if (INSTANCE == null) {

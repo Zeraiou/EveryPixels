@@ -1,5 +1,4 @@
 package com.fap.APM.Core.Input;
-import com.fap.APM.Core.DrawManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -9,8 +8,7 @@ public class Keyboard implements KeyListener {
     private boolean[] keys = new boolean[199];
     public boolean up, rigth, down, left, potionLife, potionMagic, potionExperience, dammage;
 
-    private Keyboard() { }  // Private Constructor
-
+    private Keyboard() { }
     public static Keyboard shared() {
         if (INSTANCE == null) {
             INSTANCE = new Keyboard();

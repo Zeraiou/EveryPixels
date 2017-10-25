@@ -13,8 +13,7 @@ import com.fap.APM.Graphics.Phy.GameClock;
 public class GameLoop extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
-	private boolean running = false;
-    private Thread thread;
+    private boolean running;
 	public JFrame frame;
 
     private BufferedImage imageInFrame = new BufferedImage(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -26,6 +25,7 @@ public class GameLoop extends Canvas implements Runnable {
         addKeyListener(Keyboard.shared());
         WorldMaker.shared().createPlayer();
         WorldMaker.shared().createZombie();
+        running = true;
     }
 
 	public void run() {
@@ -36,7 +36,7 @@ public class GameLoop extends Canvas implements Runnable {
 			renderScreen();
 		}
 
-		stopGame();
+        running = false;
 	}
 
 	public void renderScreen() {
@@ -59,20 +59,5 @@ public class GameLoop extends Canvas implements Runnable {
 		graphics.drawImage(imageInFrame, 0, 0, ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, null);
 		graphics.dispose();
 		BufferStrategy.show();
-	}
-
-    public synchronized void startGame() {
-        running = true;
-        thread = new Thread(this, "Display");
-        thread.start();
-    }
-
-	public synchronized void stopGame() {
-		running = false;
-		try {
-			thread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 }

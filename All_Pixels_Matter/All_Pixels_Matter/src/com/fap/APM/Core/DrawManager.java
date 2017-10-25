@@ -43,8 +43,8 @@ public class DrawManager {
         this.offsetX = (int)(WorldList.players.get(0).posX - screenCenterX);
         this.offsetY = (int)(WorldList.players.get(0).posY - screenCenterY);
 
-        if (ControlRoom.PIXEL_TILE_LOAD_OUT) {
-            System.out.println("Total Px:" + totalPixels + " - OffSetX: " + offsetX + ", OffsetY: " + offsetX);
+        if (ControlRoom.RENDER_SCREEN_OUT) {
+            System.out.println("Total Screen Pixels:" + totalPixels + " - OffSetX: " + offsetX + ", OffsetY: " + offsetX);
         }
 
         drawTiles();

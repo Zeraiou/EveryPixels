@@ -17,7 +17,6 @@ public class WorldList {
     public static List<Player> players = new ArrayList<Player>();
     public static List<Monster> monsters = new ArrayList<Monster>();
     public static List<Particle> particles = new ArrayList<Particle>();
-
     public static List<Tile> tiles = new ArrayList<Tile>();
     public static List<Wall> walls = new ArrayList<Wall>();
     public static List<Resource> resources = new ArrayList<Resource>();
