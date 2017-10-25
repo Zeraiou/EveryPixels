@@ -50,6 +50,7 @@ public class DrawManager {
         drawTiles();
         drawPlayers();
         drawMonsters();
+        drawEspiritos();
         drawParticles();
     }
 
@@ -117,6 +118,31 @@ public class DrawManager {
             int posX = (int)WorldList.monsters.get(i).posX - offsetX;
             int posY = (int)WorldList.monsters.get(i).posY - offsetY;
             Sprite sprite = WorldList.monsters.get(i).sprite.getSprite();
+
+            for (int y = 0; y < sprite.height; y++) {
+                int yDestination = y + posY;
+
+                for (int x = 0; x < sprite.width; x++) {
+                    int xDestination = x + posX;
+                    if (xDestination < - sprite.width || xDestination >= screenWidth || yDestination < 0 || yDestination >= screenHeight){
+                        break;
+                    } else if (xDestination < 0){
+                        xDestination = 0;
+                    }
+
+                    if (sprite.pixelsSprite[x + y * sprite.width] != WorldList.COLOR_NULL1) {
+                        pixelsScreen[xDestination + yDestination * screenWidth] = sprite.pixelsSprite[x + y * sprite.width];
+                    }
+                }
+            }
+        }
+    }
+    
+    private void drawEspiritos() {
+        for (int i = 0; i < WorldList.espiritos.size(); i++) {
+            int posX = (int)WorldList.espiritos.get(i).posX - offsetX;
+            int posY = (int)WorldList.espiritos.get(i).posY - offsetY;
+            Sprite sprite = WorldList.espiritos.get(i).sprite.getSprite();
 
             for (int y = 0; y < sprite.height; y++) {
                 int yDestination = y + posY;

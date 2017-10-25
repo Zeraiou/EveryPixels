@@ -8,6 +8,7 @@ import com.fap.APM.WorldObjects.Basics.Tile;
 import com.fap.APM.WorldObjects.Basics.Wall;
 import com.fap.APM.Graphics.Particle;
 import com.fap.APM.WorldObjects.Units.Player;
+import com.fap.APM.WorldObjects.Units.Espirito;
 import com.fap.APM.WorldObjects.Units.Monster;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,8 @@ public class WorldList {
 
     public static List<Player> players = new ArrayList<Player>();
     public static List<Monster> monsters = new ArrayList<Monster>();
+    public static List<Espirito> espiritos = new ArrayList<Espirito>();
+
     public static List<Particle> particles = new ArrayList<Particle>();
     public static List<Tile> tiles = new ArrayList<Tile>();
     public static List<Wall> walls = new ArrayList<Wall>();
@@ -36,6 +39,15 @@ public class WorldList {
     public static SpriteSheet zombie_Base22_Left = new SpriteSheet(zombie_Base22, 3, 0, 1, 3, 24, 24);
     public static Sprite sprite_zombie_Base22 = new Sprite(24, 24, 0, 0, zombie_Base22);
 
+    public static SpriteSheet espirito_66 = new SpriteSheet(ControlRoom.ESPIRITO_SPRITE_PATH, 288, 216);
+    public static SpriteSheet espirito_66_Down = new SpriteSheet(espirito_66, 0, 0, 1, 3, 72, 72);
+    public static SpriteSheet espirito_66_Right = new SpriteSheet(espirito_66, 1, 0, 1, 3, 72, 72);
+    public static SpriteSheet espirito_66_Up = new SpriteSheet(espirito_66, 2, 0, 1, 3, 72, 72);
+    public static SpriteSheet espirito_66_Left = new SpriteSheet(espirito_66, 3, 0, 1, 3, 72, 72);
+    public static Sprite sprite_espirito_66 = new Sprite(72, 72, 0, 0, espirito_66);
+
+    
+    
     public static Sprite particle1p = new Sprite(1, 1, 0xff7f00ff);
     public static Sprite particle2p = new Sprite(2, 2, 0xff7f00ff);
     public static Sprite particle3p = new Sprite(3, 3, 0xff7f00ff);
@@ -93,4 +105,34 @@ public class WorldList {
     public static final int COLOR_DIRT = 0xff694B11;
     public static final int COLOR_NULL1 = 0xffFF00FF;
     public static final int COLOR_NULL2 = 0xff7f007f;
+
+
+
+  /*  
+    public static SpriteSheet Wall_Wood = new SpriteSheet(ControlRoom.WALL_WOOD_SPRITE_PATH, 120, 168);
+    public static Sprite sprite_Wall_Wood_1 = new Sprite(12, 48, 0, 10, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_2 = new Sprite(24, 48, 1, 10, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_3 = new Sprite(36, 48, 3, 10, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_4 = new Sprite(48, 48, 6, 10, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X1 = new Sprite(12, 48, 0, 9, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X2 = new Sprite(24, 48, 1, 9, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X3 = new Sprite(36, 48, 3, 9, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X4 = new Sprite(48, 48, 6, 9, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X1 = new Sprite(12, 48, 0, 7, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X2 = new Sprite(24, 48, 1, 7, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X3 = new Sprite(36, 48, 3, 7, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X4 = new Sprite(48, 48, 6, 7, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X1 = new Sprite(12, 48, 0, 4, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X2 = new Sprite(24, 48, 1, 4, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X3 = new Sprite(36, 48, 3, 4, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X4 = new Sprite(48, 48, 6, 4, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X1 = new Sprite(12, 48, 0, 0, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X2 = new Sprite(24, 48, 1, 0, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X3 = new Sprite(36, 48, 3, 0, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X4 = new Sprite(48, 48, 6, 0, Wall_Wood);
+  */
+    
+    
+    
 }
+

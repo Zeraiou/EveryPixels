@@ -28,10 +28,20 @@ public class ControlRoom {
     /// SPRITE LOADING STRINGS ///
     public static final String GAME_TITLE = "All Pixels Matter!";
     public static final String TILE_SPRITE_PATH = "/Textures/SpriteSheets/Tiles/TileBase12.png";
+    public static final String WALL_WOOD_SPRITE_PATH = "/Textures/SpriteSheets/Structure/Wall-Wood.png";
+    
     public static final String PLAYER_SPRITE_PATH = "/Textures/SpriteSheets/Units/Player/Player_Base-3X4.png";
     public static final String ZOMBIE_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Zombie_Base-2X2.png";
-    public static final String MAP_FIELD_PATH = "/Map/Map512-Field.png"; // Map64.png, Map1024.png, Map8192.png
+  
+    public static final String ESPIRITO_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Espirito-6X6a.png";
+   // public static final String ESPIRITO_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Espirito-6X6b.png";
+   // public static final String ESPIRITO_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Espirito-6X6c.png";
 
+    
+    public static final String MAP_FIELD_PATH = "/Map/Map512-Field.png"; // Map64.png, Map1024.png, Map8192.png
+    public static final String MAP_STRUCTURE_PATH = "/Map/Map512-Structure.png"; // Map64.png, Map1024.png, Map8192.png
+
+    
     /// TIME VARIABLES ///
     public static final double NANOSECONDE = 1000000000.0 / 60.0;
 

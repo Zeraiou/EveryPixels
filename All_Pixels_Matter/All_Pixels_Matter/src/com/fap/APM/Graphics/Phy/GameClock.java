@@ -64,6 +64,9 @@ public class GameClock {
         for (int i = 0; i < WorldList.monsters.size(); i++) {
             WorldList.monsters.get(i).nextTick();
         }
+        for (int i = 0; i < WorldList.espiritos.size(); i++) {
+            WorldList.espiritos.get(i).nextTick();
+        }
 
         for (int i = 0; i < WorldList.particles.size(); i++) {
             WorldList.particles.get(i).nextTick();
