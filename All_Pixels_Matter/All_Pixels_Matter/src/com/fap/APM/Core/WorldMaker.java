@@ -168,13 +168,13 @@ public class WorldMaker {
 	int time = 0;
 	public void tickGenerateMonster() {
 		time++;
-		if (time == 600) {
+		if (time == 60) {
 			WorldMaker.shared().createZombie(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20, 4, 1, 1, 1);
 		}
-		if (time == 1200) {
+		if (time == 120) {
 		WorldMaker.shared().createEspirito(ControlRoom.STARTING_X - 200, ControlRoom.STARTING_Y - 200, 4, 2, 1, 1);
 		}
-		if (time == 3600) time = 0;
+		if (time == 360) time = 0;
 	}
 
 }

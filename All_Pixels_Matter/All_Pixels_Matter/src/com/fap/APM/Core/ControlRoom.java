@@ -33,9 +33,9 @@ public class ControlRoom {
     public static final String PLAYER_SPRITE_PATH = "/Textures/SpriteSheets/Units/Player/Player_Base-3X4.png";
     public static final String ZOMBIE_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Zombie_Base-2X2.png";
   
-    public static final String ESPIRITO_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Espirito-6X6a.png";
-   // public static final String ESPIRITO_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Espirito-6X6b.png";
-   // public static final String ESPIRITO_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Espirito-6X6c.png";
+   // public static final String ESPIRITO_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Espirito-6X6a.png";
+  // public static final String ESPIRITO_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Espirito-6X6b.png";
+    public static final String ESPIRITO_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Espirito-6X6c.png";
 
     
     public static final String MAP_FIELD_PATH = "/Map/Map512-Field.png"; // Map64.png, Map1024.png, Map8192.png
