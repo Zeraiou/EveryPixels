@@ -68,5 +68,7 @@ public class GameClock {
         for (int i = 0; i < WorldList.particles.size(); i++) {
             WorldList.particles.get(i).nextTick();
         }
+        
+        WorldMaker.shared().tickGenerateMonster();
     }
 }

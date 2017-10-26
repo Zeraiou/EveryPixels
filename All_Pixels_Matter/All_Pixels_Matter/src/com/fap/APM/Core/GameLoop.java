@@ -25,8 +25,7 @@ public class GameLoop extends Canvas implements Runnable {
         addMouseListener(Mouse.shared());
 
         WorldMaker.shared().createPlayer();
-        WorldMaker.shared().createZombie();
-        WorldMaker.shared().createEspirito();
+       
     }
 
 	public void run() {

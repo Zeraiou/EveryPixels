@@ -57,9 +57,11 @@ public class WorldList {
     public static Sprite particle8p = new Sprite(8, 8, 0xff7f00ff);
     public static Sprite particle9p = new Sprite(9, 9, 0xff7f00ff);
 
-    public static SpriteSheet tiles_Base12 = new SpriteSheet(ControlRoom.TILE_SPRITE_PATH, 48, 36);
     public static Sprite tile_Void12_Out = new Sprite(12, 12, 0x5D3F97);
     public static Sprite tile_Void12_In = new Sprite(12, 12, 0x694BE1);
+    public static Sprite sprite_Void12_transparent = new Sprite(12, 12, 0x00000000);
+    
+    public static SpriteSheet tiles_Base12 = new SpriteSheet(ControlRoom.TILE_SPRITE_PATH, 48, 36);
     public static Sprite tile_Grass12 = new Sprite(12, 12, 0, 0, tiles_Base12);
     public static Sprite tile_Rock12 = new Sprite(12, 12, 1, 0, tiles_Base12);
     public static Sprite tile_Water12 = new Sprite(12, 12, 2, 0, tiles_Base12);
@@ -103,28 +105,54 @@ public class WorldList {
     public static final int COLOR_NULL1 = 0xffFF00FF;
     public static final int COLOR_NULL2 = 0xff7f007f;
 
-    /*
+    
     public static SpriteSheet Wall_Wood = new SpriteSheet(ControlRoom.WALL_WOOD_SPRITE_PATH, 120, 168);
-    public static Sprite sprite_Wall_Wood_1 = new Sprite(12, 48, 0, 10, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_2 = new Sprite(24, 48, 1, 10, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_3 = new Sprite(36, 48, 3, 10, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_4 = new Sprite(48, 48, 6, 10, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_1X1 = new Sprite(12, 48, 0, 9, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_1X2 = new Sprite(24, 48, 1, 9, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_1X3 = new Sprite(36, 48, 3, 9, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_1X4 = new Sprite(48, 48, 6, 9, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_2X1 = new Sprite(12, 48, 0, 7, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_2X2 = new Sprite(24, 48, 1, 7, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_2X3 = new Sprite(36, 48, 3, 7, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_2X4 = new Sprite(48, 48, 6, 7, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_3X1 = new Sprite(12, 48, 0, 4, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_3X2 = new Sprite(24, 48, 1, 4, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_3X3 = new Sprite(36, 48, 3, 4, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_3X4 = new Sprite(48, 48, 6, 4, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_4X1 = new Sprite(12, 48, 0, 0, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_4X2 = new Sprite(24, 48, 1, 0, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_4X3 = new Sprite(36, 48, 3, 0, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_4X4 = new Sprite(48, 48, 6, 0, Wall_Wood);
-  */
+    public static Sprite sprite_Wall_Wood_1 = new Sprite(12, 48, 9, 0, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_2 = new Sprite(24, 48, 2, 0, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_3 = new Sprite(36, 48, 2, 0, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_4 = new Sprite(48, 48, 0, 0, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X1 = new Sprite(12, 12, 9, 8, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X2 = new Sprite(12, 24, 9, 6, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X3 = new Sprite(12, 36, 9, 3, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X4 = new Sprite(12, 48, 9, 1, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X1 = new Sprite(24, 12, 2, 8, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X2 = new Sprite(24, 24, 2, 6, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X3 = new Sprite(24, 36, 2, 3, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X4 = new Sprite(24, 48, 2, 1, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X1 = new Sprite(36, 12, 2, 8, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X2 = new Sprite(36, 24, 2, 6, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X3 = new Sprite(36, 36, 2, 3, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X4 = new Sprite(36, 48, 2, 1, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X1 = new Sprite(48, 12, 0, 8, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X2 = new Sprite(48, 24, 0, 6, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X3 = new Sprite(48, 36, 0, 3, Wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X4 = new Sprite(48, 48, 0, 1, Wall_Wood);
+ 
+    public static final int COLOR_TRANSPARENT = 0xffff00ff;
+    public static final int COLOR_WALL_WOOD_1 = 0xff4293E8;
+    public static final int COLOR_WALL_WOOD_2 = 0xffE53327;
+    public static final int COLOR_WALL_WOOD_3 = 0xff42933F;
+    public static final int COLOR_WALL_WOOD_4 = 0xffC6933F;
+    public static final int COLOR_WALL_WOOD_TOP_1X2 = 0xff6BFFF2;
+    public static final int COLOR_WALL_WOOD_TOP_2X1 = 0xff42E586;
+    public static final int COLOR_WALL_WOOD_TOP_2X2 = 0xffE0DD35;
+    public static final int COLOR_WALL_WOOD_TOP_2X3 = 0xffE27CC2;
+    public static final int COLOR_WALL_WOOD_TOP_2X4 = 0xff38387F;
+    public static final int COLOR_WALL_WOOD_TOP_3X2 = 0xffE02670;
+    public static final int COLOR_WALL_WOOD_TOP_4X2 = 0xff7F5E28;
+    // public static final int COLOR_WALL_WOOD_TOP_1X1 = 0xff27E109;
+    // public static final int COLOR_WALL_WOOD_TOP_1X3 = 0xff27E109;
+    // public static final int COLOR_WALL_WOOD_TOP_1X4 = 0xff27E109;
+    // public static final int COLOR_WALL_WOOD_TOP_3X1 = 0xff27E109;
+   /* public static final int COLOR_WALL_WOOD_TOP_3X3 = 0xff27E109;
+    public static final int COLOR_WALL_WOOD_TOP_3X4 = 0xff27E109;
+    public static final int COLOR_WALL_WOOD_TOP_4X1 = 0xff27E109;
+    public static final int COLOR_WALL_WOOD_TOP_4X3 = 0xff27E109;
+    public static final int COLOR_WALL_WOOD_TOP_4X4 = 0xff27E109;
+   */
+    
+    
+    
+    
 }
 

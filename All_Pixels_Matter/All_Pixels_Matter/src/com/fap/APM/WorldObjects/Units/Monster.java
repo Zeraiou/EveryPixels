@@ -18,14 +18,17 @@ public class Monster {
     public double posX, posY, ticksAlive, movementSpeed;
     public boolean isRemoved = false;
     public boolean isMoving = false;
-    private int monsterType;
+    private int monsterType, level, status, orientation;
 
-	public Monster(int posX, int posY, int type) {
+	public Monster(int posX, int posY, int orientation, int type, int level, int status) {
 		this.posX = posX;
 		this.posY = posY;
+		this.monsterType = type;
+		this.level = level;
+		this.status = status;
+		this.orientation = orientation;
 		this.movementSpeed = 1.0;
 		this.ticksAlive = 0;
-		this.monsterType = type;
 
 		if (monsterType == 1) {
             animDown = MonsterAnimations.animationDown;
@@ -38,7 +41,16 @@ public class Monster {
             animLeft = MonsterAnimations.animationLeftTwo;
             animRight = MonsterAnimations.animationRightTwo;
         }
-        sprite = animDown;
+		
+		if (orientation == 1) {
+			sprite = animUp;
+		} else if (orientation == 2) {
+			sprite = animDown;
+		} else if (orientation == 3) {
+			sprite = animRight;
+		} else if (orientation == 4) {
+			sprite = animLeft;
+		}
 	}
 
 	public void nextTick() {
@@ -58,22 +70,22 @@ public class Monster {
 
 			if (directionChoice == 0) {
 				sprite = animDown;
-				yDestination += movementSpeed ;
+				yDestination += movementSpeed * 12;
 			}
 
 			if (directionChoice == 1) {
 				sprite = animRight;
-				xDestination += movementSpeed ;
+				xDestination += movementSpeed * 12;
 			}
 
 			if (directionChoice == 2) {
 				sprite = animUp;
-				yDestination -= movementSpeed ;
+				yDestination -= movementSpeed * 12;
 			}
 
 			if (directionChoice == 3) {
 				sprite = animLeft;
-				xDestination -= movementSpeed ;
+				xDestination -= movementSpeed * 12;
 			}
 			
 			if (RANDOM.nextInt(5) == 0) {

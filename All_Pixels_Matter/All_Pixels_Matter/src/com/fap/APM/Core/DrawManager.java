@@ -49,6 +49,7 @@ public class DrawManager {
 
         drawTiles();
         drawPlayers();
+        drawStructures();
         drawMonsters();
         drawParticles();
     }
@@ -84,6 +85,35 @@ public class DrawManager {
             }
         }
     }
+    
+    private  void drawStructures() {
+     
+        
+        for (int g = 0; g < WorldList.walls.size(); g++) {
+        
+                int posX = WorldList.walls.get(g).posX - offsetX;
+                int posY = WorldList.walls.get(g).posY - offsetY;
+                Sprite sprite = WorldList.walls.get(g).sprite;
+
+
+                for (int i = 0; i < sprite.height; i++) {
+                    int yAbsolu = i + posY;
+
+                    for (int j = 0; j < sprite.width; j++) {
+                        int xAbsolu = j + posX;
+
+                        if (xAbsolu < - sprite.width || xAbsolu >= screenWidth || yAbsolu < 0 || yAbsolu >= screenHeight) {
+                            break;
+                        } else if (xAbsolu < 0) {
+                            xAbsolu = 0;
+                        }
+
+                        pixelsScreen[xAbsolu + yAbsolu * screenWidth] = sprite.pixelsSprite[j + i * sprite.width];
+                    }
+                }
+        }
+   }
+   
 
     private void drawPlayers() {
         for (int i = 0; i < WorldList.players.size(); i++) {
@@ -189,4 +219,6 @@ public class DrawManager {
             return WorldList.tile_Void_In;
         }
     }
+   
+    
 }

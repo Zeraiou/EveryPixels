@@ -1,6 +1,9 @@
 package com.fap.APM.Core;
 import com.fap.APM.WorldObjects.Units.*;
+import com.fap.APM.Graphics.Sprite;
 import com.fap.APM.WorldObjects.WorldList;
+import com.fap.APM.WorldObjects.Basics.Wall;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -8,7 +11,7 @@ import java.io.IOException;
 public class WorldMaker {
 
     public int width, height, totalTiles;
-    public int[] mapFieldTiles;
+    public int[] mapFieldTiles, mapStructures;
     private static WorldMaker INSTANCE = null;
 
     private WorldMaker() { }
@@ -17,6 +20,9 @@ public class WorldMaker {
         if (INSTANCE == null) {
             INSTANCE = new WorldMaker();
             INSTANCE.extractMapField();
+            INSTANCE.extractMapStructure();
+            
+            
         }
         return INSTANCE;
     }
@@ -39,16 +45,15 @@ public class WorldMaker {
             }
         }
     }
-    /*
+    
     private void extractMapStructure() {
         try {
-            BufferedImage imageFromFile = ImageIO.read(WorldMaker.class.getResource(ControlRoom.MAP_FIELD_PATH));
-            width = imageFromFile.getWidth();
-            height = imageFromFile.getHeight();
-            totalTiles = this.width * this.height;
-            mapFieldTiles = new int[this.totalTiles];
-            imageFromFile.getRGB(0, 0, width, height, mapFieldTiles, 0, width);
+            BufferedImage imageFromFile = ImageIO.read(WorldMaker.class.getResource(ControlRoom.MAP_STRUCTURE_PATH));
+            mapStructures = new int[this.totalTiles];
+            imageFromFile.getRGB(0, 0, width, height, mapStructures, 0, width);
 
+                 
+            
             if (ControlRoom.PIXEL_TILE_LOAD_OUT) {
                 System.out.println("Width: " + width + " - Height: " + height + " - TotalTiles: " + totalTiles + " - Array Size: " + mapFieldTiles.length);
             }
@@ -57,8 +62,19 @@ public class WorldMaker {
                 System.out.println("ERROR -- extractMapField() Failed! \n");
             }
         }
+        
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x <width; x++) {
+
+                Sprite sprite = getStructuresSprite(x, y);
+                if (sprite != WorldList.sprite_Void12_transparent) {
+                WorldMaker.shared().createWall(sprite, x * ControlRoom.TILE_WIDTH, y * ControlRoom.TILE_HEIGHT , sprite.width, sprite.height);
+                }
+            }
+        }
+        
     }
-    */
+    
     public void createPlayer() {
         WorldList.players.add(new Player());
 
@@ -74,16 +90,22 @@ public class WorldMaker {
         }
     }
 
-    public void createZombie() {
-        Monster monster = new Monster(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20, 1);
+    public void createZombie(int posX, int posY, int orientation, int type, int level, int status) {
+        Monster monster = new Monster(posX, posY, orientation, type, level, status);
         WorldList.monsters.add(monster);
     }
 
-    public void createEspirito() {
-        Monster monster = new Monster(ControlRoom.STARTING_X - 200, ControlRoom.STARTING_Y - 200, 2);
+    public void createEspirito(int posX, int posY, int orientation, int type, int level, int status) {
+        Monster monster = new Monster(posX, posY, orientation, type, level, status);
         WorldList.monsters.add(monster);
     }
-
+    
+    public void createWall(Sprite sprite, int posX, int posY, int width, int height) {
+		Wall wall = new Wall(sprite, posX, posY, width, height);
+		WorldList.walls.add(wall);
+	}
+    
+   
     public void removeEntity() {
         for (int i = 0; i < WorldList.monsters.size(); i++) {
             if (WorldList.monsters.get(i).isRemoved) {
@@ -97,4 +119,62 @@ public class WorldMaker {
             }
         }
     }
+
+	
+
+
+
+
+	public Sprite getStructuresSprite(int x, int y) {
+		if (x < 0 || y < 0 || x >= WorldMaker.shared().width || y >= WorldMaker.shared().height) return WorldList.sprite_Void12_transparent;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_1) return WorldList.sprite_Wall_Wood_1;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_2) return WorldList.sprite_Wall_Wood_2;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_3) return WorldList.sprite_Wall_Wood_3;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_4) return WorldList.sprite_Wall_Wood_4;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_1X2) return WorldList.sprite_Wall_Wood_Top_1X2;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_2X1) return WorldList.sprite_Wall_Wood_Top_2X1;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_2X2) return WorldList.sprite_Wall_Wood_Top_2X2;
+
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_2X3) return WorldList.sprite_Wall_Wood_Top_2X3;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_3X2) return WorldList.sprite_Wall_Wood_Top_3X2;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_4X2) return WorldList.sprite_Wall_Wood_Top_4X2;
+
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_TRANSPARENT) return WorldList.sprite_Void12_transparent;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_2X4) {
+			return WorldList.sprite_Wall_Wood_Top_2X4; 
+		} else {
+			return WorldList.sprite_Void12_transparent;
+		}
+        
+        //   if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_1X1) return WorldList.sprite_Wall_Wood_Top_1X1;
+        //   if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_1X3) return WorldList.sprite_Wall_Wood_Top_1X3;
+        //   if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_1X4) return WorldList.sprite_Wall_Wood_Top_1X4;
+        
+        
+			/*  
+    	if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_3X1) return WorldList.sprite_Wall_Wood_Top_3X1;
+    	if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_3X3) return WorldList.sprite_Wall_Wood_Top_3X3;
+    	if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_3X4) return WorldList.sprite_Wall_Wood_Top_3X4;
+    	if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_4X1) return WorldList.sprite_Wall_Wood_Top_4X1;
+    	if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_4X2) return WorldList.sprite_Wall_Wood_Top_4X2;
+    	if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_4X3) return WorldList.sprite_Wall_Wood_Top_4X3;
+    	if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_4X4) {
+    		return WorldList.sprite_Wall_Wood_Top_4X4;
+			 */
+		
+
+	}
+	
+	int time = 0;
+	public void tickGenerateMonster() {
+		time++;
+		if (time == 600) {
+			WorldMaker.shared().createZombie(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20, 4, 1, 1, 1);
+		}
+		if (time == 1200) {
+		WorldMaker.shared().createEspirito(ControlRoom.STARTING_X - 200, ControlRoom.STARTING_Y - 200, 4, 2, 1, 1);
+		}
+		if (time == 3600) time = 0;
+	}
+
 }
