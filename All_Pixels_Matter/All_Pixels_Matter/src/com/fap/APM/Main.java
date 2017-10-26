@@ -5,23 +5,19 @@ import javax.swing.JFrame;
 
 public class Main {
 
-	private static GameLoop gameLoop;
-    private static Thread thread;
-    
 	public static void main(String[] args) {
-		gameLoop = new GameLoop();
+		GameLoop gameLoop = new GameLoop();
 		gameLoop.frame.setResizable(false);
 		gameLoop.frame.setTitle(ControlRoom.GAME_TITLE);
-		gameLoop.frame.add(gameLoop);
 		gameLoop.frame.pack();
 		gameLoop.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameLoop.frame.setLocationRelativeTo(null);
 		gameLoop.frame.setVisible(true);
-		startGame();
+		startGame(gameLoop);
 	}
 
-	private static synchronized void startGame() {
-		thread = new Thread(gameLoop, "Display");
+	private static synchronized void startGame(GameLoop gameLoop) {
+		Thread thread = new Thread(gameLoop, "Display");
 		thread.start();
 	}
 }

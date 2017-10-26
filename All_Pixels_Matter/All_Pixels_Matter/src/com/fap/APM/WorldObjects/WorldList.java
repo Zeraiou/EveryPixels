@@ -8,7 +8,6 @@ import com.fap.APM.WorldObjects.Basics.Tile;
 import com.fap.APM.WorldObjects.Basics.Wall;
 import com.fap.APM.Graphics.Particle;
 import com.fap.APM.WorldObjects.Units.Player;
-import com.fap.APM.WorldObjects.Units.Espirito;
 import com.fap.APM.WorldObjects.Units.Monster;
 import java.util.ArrayList;
 import java.util.List;

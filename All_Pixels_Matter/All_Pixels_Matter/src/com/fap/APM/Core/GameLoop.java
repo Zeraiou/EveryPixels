@@ -15,17 +15,18 @@ public class GameLoop extends Canvas implements Runnable {
     private int[] pixelsInFrame = ((DataBufferInt) imageInFrame.getRaster().getDataBuffer()).getData();
     private static final long serialVersionUID = 1L;
     private boolean running;
-	public JFrame frame;
+    public JFrame frame;
 
     public GameLoop() {
         setPreferredSize(new Dimension(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT));
         frame = new JFrame();
 
+        Keyboard.shared().loadInputActions(frame);
         addKeyListener(Keyboard.shared());
         addMouseListener(Mouse.shared());
 
         WorldMaker.shared().createPlayer();
-       
+        frame.add(this);
     }
 
 	public void run() {

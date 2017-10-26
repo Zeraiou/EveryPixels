@@ -29,7 +29,6 @@ public class GameClock {
         lastTime = currentTime;
 
         if (delta >= 1) {
-            Keyboard.shared().updateKeyboard();
             worldTick();
             WorldMaker.shared().removeEntity();
             tps++;
