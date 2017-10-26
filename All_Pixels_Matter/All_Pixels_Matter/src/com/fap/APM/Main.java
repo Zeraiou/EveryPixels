@@ -9,6 +9,7 @@ public class Main {
 		GameLoop gameLoop = new GameLoop();
 		gameLoop.frame.setResizable(false);
 		gameLoop.frame.setTitle(ControlRoom.GAME_TITLE);
+        gameLoop.frame.add(gameLoop);
 		gameLoop.frame.pack();
 		gameLoop.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameLoop.frame.setLocationRelativeTo(null);

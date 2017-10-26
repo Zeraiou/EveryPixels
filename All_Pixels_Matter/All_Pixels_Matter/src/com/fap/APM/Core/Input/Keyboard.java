@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 
 public class Keyboard implements KeyListener {
 
-    private static Keyboard INSTANCE = null;
+    //private static Keyboard INSTANCE = null;
     private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
     private static final String MOVE_UP = "move up";
     private static final String MOVE_DOWN = "move down";
@@ -17,14 +17,14 @@ public class Keyboard implements KeyListener {
     private static final String FIRE = "fire";
     private JLabel keyMapper;
 
-    private Keyboard() { }
+    //private Keyboard() { }
 
-    public static Keyboard shared() {
-        if (INSTANCE == null) {
-            INSTANCE = new Keyboard();
-        }
-        return INSTANCE;
-    }
+//    public static Keyboard shared() {
+//        if (INSTANCE == null) {
+//            INSTANCE = new Keyboard();
+//        }
+//        return INSTANCE;
+//    }
 
     public void loadInputActions(JFrame frame) {
         JLabel tempW = new JLabel();
