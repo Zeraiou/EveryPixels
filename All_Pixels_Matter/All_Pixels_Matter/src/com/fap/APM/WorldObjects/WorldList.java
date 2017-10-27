@@ -21,11 +21,16 @@ public class WorldList {
     public static List<Resource> resources = new ArrayList<Resource>();
     public static List<Item> items = new ArrayList<Item>();
 
-    public static SpriteSheet player_Base34 = new SpriteSheet(ControlRoom.PLAYER_SPRITE_PATH, 144, 144);
-    public static SpriteSheet player_Base34_Down = new SpriteSheet(player_Base34, 0, 0, 1, 3, 36, 48);
-    public static SpriteSheet player_Base34_Right = new SpriteSheet(player_Base34, 1, 0, 1, 3, 36, 48);
-    public static SpriteSheet player_Base34_Up = new SpriteSheet(player_Base34, 2, 0, 1, 3, 36, 48);
-    public static SpriteSheet player_Base34_Left = new SpriteSheet(player_Base34, 3, 0, 1, 3, 36, 48);
+    public static SpriteSheet player_Base34 = new SpriteSheet(ControlRoom.PLAYER_SPRITE_PATH, 192, 144);
+    public static SpriteSheet player_Idle_Down = new SpriteSheet(player_Base34, 0, 0, 1, 1, 36, 48);
+    public static SpriteSheet player_Idle_Right = new SpriteSheet(player_Base34, 1, 0, 1, 1, 36, 48);
+    public static SpriteSheet player_Idle_Up = new SpriteSheet(player_Base34, 2, 0, 1, 1, 36, 48);
+    public static SpriteSheet player_Idle_Left = new SpriteSheet(player_Base34, 3, 0, 1, 1, 36, 48);
+  
+    public static SpriteSheet player_Base34_Down = new SpriteSheet(player_Base34, 0, 1, 1, 3, 36, 48);
+    public static SpriteSheet player_Base34_Right = new SpriteSheet(player_Base34, 1, 1, 1, 3, 36, 48);
+    public static SpriteSheet player_Base34_Up = new SpriteSheet(player_Base34, 2, 1, 1, 3, 36, 48);
+    public static SpriteSheet player_Base34_Left = new SpriteSheet(player_Base34, 3, 1, 1, 3, 36, 48);
     public static Sprite sprite_Player_Base34 = new Sprite(36, 48, 0, 0, player_Base34);
 
     public static SpriteSheet zombie_Base22 = new SpriteSheet(ControlRoom.ZOMBIE_SPRITE_PATH, 96, 72);
