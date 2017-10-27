@@ -50,6 +50,7 @@ public class DrawManager {
         drawTiles();
         drawPlayers();
         drawStructures();
+        drawResources();
         drawMonsters();
         drawParticles();
     }
@@ -107,8 +108,41 @@ public class DrawManager {
                         } else if (xAbsolu < 0) {
                             xAbsolu = 0;
                         }
+                        if (sprite.pixelsSprite[j + i * sprite.width] != WorldList.COLOR_NULL1) {
 
                         pixelsScreen[xAbsolu + yAbsolu * screenWidth] = sprite.pixelsSprite[j + i * sprite.width];
+                        }
+                    }
+                }
+        }
+   }
+    
+    private  void drawResources() {
+     
+        
+        for (int g = 0; g < WorldList.resources.size(); g++) {
+        
+                int posX = WorldList.resources.get(g).posX - offsetX;
+                int posY = WorldList.resources.get(g).posY - offsetY;
+                Sprite sprite = WorldList.resources.get(g).sprite;
+
+
+                for (int i = 0; i < sprite.height; i++) {
+                    int yAbsolu = i + posY;
+
+                    for (int j = 0; j < sprite.width; j++) {
+                        int xAbsolu = j + posX;
+
+                        if (xAbsolu < - sprite.width || xAbsolu >= screenWidth || yAbsolu < 0 || yAbsolu >= screenHeight) {
+                            break;
+                        } else if (xAbsolu < 0) {
+                            xAbsolu = 0;
+                        }
+              
+                        if (sprite.pixelsSprite[j + i * sprite.width] != WorldList.COLOR_NULL1) {
+
+                        pixelsScreen[xAbsolu + yAbsolu * screenWidth] = sprite.pixelsSprite[j + i * sprite.width];
+                        }
                     }
                 }
         }

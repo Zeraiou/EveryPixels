@@ -44,6 +44,21 @@ public class WorldList {
     public static SpriteSheet espirito_66_Left = new SpriteSheet(espirito_66, 3, 0, 1, 3, 72, 72);
     public static Sprite sprite_espirito_66 = new Sprite(72, 72, 0, 0, espirito_66);
 
+    public static SpriteSheet larvion_46 = new SpriteSheet(ControlRoom.LARVION_SPRITE_PATH, 192, 216);
+    public static SpriteSheet larvion_46_Down = new SpriteSheet(larvion_46, 0, 0, 1, 3, 48, 72);
+    public static SpriteSheet larvion_46_Right = new SpriteSheet(larvion_46, 1, 0, 1, 3, 48, 72);
+    public static SpriteSheet larvion_46_Up = new SpriteSheet(larvion_46, 2, 0, 1, 3, 48, 72);
+    public static SpriteSheet larvion_46_Left = new SpriteSheet(larvion_46, 3, 0, 1, 3, 48, 72);
+    public static Sprite sprite_larvion_46 = new Sprite(48, 72, 0, 0, larvion_46);
+
+    public static SpriteSheet bichette_34 = new SpriteSheet(ControlRoom.BICHETTE_SPRITE_PATH, 144, 144);
+    public static SpriteSheet bichette_34_Down = new SpriteSheet(bichette_34, 0, 0, 1, 3, 36, 48);
+    public static SpriteSheet bichette_34_Right = new SpriteSheet(bichette_34, 1, 0, 1, 3, 36, 48);
+    public static SpriteSheet bichette_34_Up = new SpriteSheet(bichette_34, 2, 0, 1, 3, 36, 48);
+    public static SpriteSheet bichette_34_Left = new SpriteSheet(bichette_34, 3, 0, 1, 3, 36, 48);
+    public static Sprite sprite_bichette_34 = new Sprite(36, 48, 0, 0, bichette_34);
+
+    
     public static Sprite particle1p = new Sprite(1, 1, 0xff7f00ff);
     public static Sprite particle2p = new Sprite(2, 2, 0xff7f00ff);
     public static Sprite particle3p = new Sprite(3, 3, 0xff7f00ff);
@@ -150,6 +165,22 @@ public class WorldList {
     public static final int COLOR_WALL_WOOD_TOP_4X4 = 0xff27E109;
    */
     
+    public static SpriteSheet Coniferous = new SpriteSheet(ControlRoom.CONIFEROUS_SPRITE_PATH, 144, 96);
+    public static Sprite sprite_Coniferous_Big = new Sprite(72, 96, 0, 0, Coniferous);
+    public static Sprite sprite_Coniferous_Small = new Sprite(72, 72, 1, 0, Coniferous);
+    
+    public static SpriteSheet Hardwood = new SpriteSheet(ControlRoom.HARDWOOD_SPRITE_PATH, 120, 120);
+    public static Sprite sprite_Hardwood_Big = new Sprite(60, 96, 1, 0, Hardwood);
+    public static Sprite sprite_Hardwood_Small = new Sprite(60, 72, 0, 0, Hardwood);
+    public static Sprite sprite_Bush_Big = new Sprite(36, 24, 0, 3, Hardwood);
+    public static Sprite sprite_Bush_Small = new Sprite(24, 24, 0, 4, Hardwood);
+    
+    public static final int COLOR_CONIFEROUS_BIG = 0xffC619FF;
+    public static final int COLOR_CONIFEROUS_SMALL = 0xff870FFF;
+    public static final int COLOR_HARDWOOD_BIG = 0xffE500FF;
+    public static final int COLOR_HARDWOOD_SMALL = 0xffFF00A5;
+    public static final int COLOR_BUSH_BIG = 0xffFF0037;
+    public static final int COLOR_BUSH_SMALL = 0xffFF6100;
     
     
     
