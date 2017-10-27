@@ -1,6 +1,5 @@
 package com.fap.APM.Graphics.Phy;
 import com.fap.APM.Core.ControlRoom;
-import com.fap.APM.Core.Input.Keyboard;
 import com.fap.APM.WorldObjects.WorldList;
 import com.fap.APM.Core.WorldMaker;
 import javax.swing.*;
@@ -42,11 +41,11 @@ public class GameClock {
             frame.setTitle(ControlRoom.GAME_TITLE + "    |     " + "Fps : "
                     + fps + " , Tps : " + tps
                     + "        |       " + " Pixels -- X : "
-                    + (int) WorldList.players.get(0).posX + ", Y: "
-                    + (int) WorldList.players.get(0).posY + "        |       "
+                    + (int) ControlRoom.PLAYER.posX + ", Y: "
+                    + (int) ControlRoom.PLAYER.posY + "        |       "
                     + "Tuiles -- X : "
-                    + (int) (WorldList.players.get(0).posX / 12) + ", Y: "
-                    + (int) (WorldList.players.get(0).posY / 12)
+                    + (int) (ControlRoom.PLAYER.posX / 12) + ", Y: "
+                    + (int) (ControlRoom.PLAYER.posY / 12)
                     + "        |       " + " Souris -- X : ");
             //		+ (int) Souris.SaisirX() + " , Y : "
             //		+ (int) Souris.SaisirY());
@@ -56,9 +55,7 @@ public class GameClock {
     }
 
     private void worldTick() {
-        for (int i = 0; i < WorldList.players.size(); i++) {
-            WorldList.players.get(i).nextTick();
-        }
+        ControlRoom.PLAYER.nextTick();
 
         for (int i = 0; i < WorldList.monsters.size(); i++) {
             WorldList.monsters.get(i).nextTick();

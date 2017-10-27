@@ -14,7 +14,7 @@ public class Main {
 		gameLoop.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameLoop.frame.setLocationRelativeTo(null);
 		gameLoop.frame.setVisible(true);
-		startGame(gameLoop);
+        startGame(gameLoop);
 	}
 
 	private static synchronized void startGame(GameLoop gameLoop) {

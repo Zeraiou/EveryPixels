@@ -7,14 +7,12 @@ import com.fap.APM.WorldObjects.Basics.Resource;
 import com.fap.APM.WorldObjects.Basics.Tile;
 import com.fap.APM.WorldObjects.Basics.Wall;
 import com.fap.APM.Graphics.Particle;
-import com.fap.APM.WorldObjects.Units.Player;
 import com.fap.APM.WorldObjects.Units.Monster;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WorldList {
 
-    public static List<Player> players = new ArrayList<Player>();
     public static List<Monster> monsters = new ArrayList<Monster>();
     public static List<Particle> particles = new ArrayList<Particle>();
 

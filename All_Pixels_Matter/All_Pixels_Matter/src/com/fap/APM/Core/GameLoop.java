@@ -7,26 +7,26 @@ import java.awt.image.*;
 import javax.swing.*;
 import com.fap.APM.Core.Input.Keyboard;
 import com.fap.APM.Core.Input.Mouse;
-import com.fap.APM.Graphics.Phy.GameClock;
+import com.fap.APM.WorldObjects.Units.Player;
+import com.fap.APM.WorldObjects.WorldList;
 
 public class GameLoop extends Canvas implements Runnable {
 
     private BufferedImage imageInFrame = new BufferedImage(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixelsInFrame = ((DataBufferInt) imageInFrame.getRaster().getDataBuffer()).getData();
     private static final long serialVersionUID = 1L;
+    public JFrame frame = new JFrame();
+    long clock1Sec = System.currentTimeMillis();
+    long lastTime = System.nanoTime();
     private boolean running;
-    public JFrame frame;
-    private Keyboard keyBoard;
+    double delta = 0;
 
     public GameLoop() {
         setPreferredSize(new Dimension(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT));
-        frame = new JFrame();
-        keyBoard = new Keyboard();
-        keyBoard.loadInputActions(frame);
-        addKeyListener(keyBoard);
+        ControlRoom.PLAYER = new Player();
+        Keyboard.shared().loadInputActions(frame);
+        addKeyListener(Keyboard.shared());
         addMouseListener(Mouse.shared());
-
-        WorldMaker.shared().createPlayer();
     }
 
 	public void run() {
@@ -34,12 +34,15 @@ public class GameLoop extends Canvas implements Runnable {
         running = true;
 
 		while(running) {
-		    GameClock.shared().clockTick(frame);
+		    nextTick();
+
 			renderScreen();
 		}
 
         running = false;
 	}
+
+
 
 	public void renderScreen() {
 		 BufferStrategy BufferStrategy = getBufferStrategy();
@@ -62,4 +65,45 @@ public class GameLoop extends Canvas implements Runnable {
 		graphics.dispose();
 		BufferStrategy.show();
 	}
+
+    public void nextTick() {
+        long currentTime = System.nanoTime();
+        delta += (currentTime - lastTime) / ControlRoom.NANOSECONDE;
+        lastTime = currentTime;
+
+        if (delta >= 1) {
+            worldTick();
+            WorldMaker.shared().removeEntity();
+            ControlRoom.TPS++;
+            delta--;
+        }
+
+        ControlRoom.FPS++;
+
+//
+//        if (System.currentTimeMillis() - clock1Sec > 1000) {
+//            clock1Sec += 1000;
+//            frame.setTitle(ControlRoom.GAME_TITLE + " | Fps: "
+//                    + ControlRoom.FPS + ", Tps: " + ControlRoom.TPS
+//                    + " | Pixels (" + (int) ControlRoom.PLAYER.posX + "," + (int) ControlRoom.PLAYER.posY + ") | "
+//                    + "Tile: (" + (int) (ControlRoom.PLAYER.posX / 12) + "," + (int) (ControlRoom.PLAYER.posY / 12) + ") | "
+//                    + "Mouse: (" + Mouse.shared().getMouseX()) + "," + Mouse.shared().getMouseY() + ")";
+//            ControlRoom.FPS = 0;
+//            ControlRoom.TPS = 0;
+//        }
+    }
+
+    private void worldTick() {
+        ControlRoom.PLAYER.nextTick();
+
+        for (int i = 0; i < WorldList.monsters.size(); i++) {
+            WorldList.monsters.get(i).nextTick();
+        }
+
+        for (int i = 0; i < WorldList.particles.size(); i++) {
+            WorldList.particles.get(i).nextTick();
+        }
+
+        WorldMaker.shared().tickGenerateMonster();
+    }
 }

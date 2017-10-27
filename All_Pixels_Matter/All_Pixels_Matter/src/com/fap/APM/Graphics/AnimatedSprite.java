@@ -22,8 +22,12 @@ public class AnimatedSprite extends Sprite {
     public void tickAnimation() {
         time++;
         if (time % animationRate == 0) {
-            if (frame >= amountOfAnimation - 1) frame = 0;
-            else frame++;
+            if (frame >= amountOfAnimation - 1) {
+                frame = 0;
+            } else {
+                frame++;
+            }
+
             sprite = spriteSheet.getSprites()[frame];
         }
     }

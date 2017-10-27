@@ -40,8 +40,8 @@ public class DrawManager {
     public void renderScreen() {
 
         pixelsScreen = new int[totalPixels];
-        this.offsetX = (int)(WorldList.players.get(0).posX - screenCenterX);
-        this.offsetY = (int)(WorldList.players.get(0).posY - screenCenterY);
+        this.offsetX = (int)(ControlRoom.PLAYER.posX - screenCenterX);
+        this.offsetY = (int)(ControlRoom.PLAYER.posY - screenCenterY);
 
         if (ControlRoom.RENDER_SCREEN_OUT) {
             System.out.println("Total Screen Pixels:" + totalPixels + " - OffSetX: " + offsetX + ", OffsetY: " + offsetX);
@@ -150,29 +150,25 @@ public class DrawManager {
    
 
     private void drawPlayers() {
-        for (int i = 0; i < WorldList.players.size(); i++) {
+        int posX = (int)ControlRoom.PLAYER.posX - offsetX;
+        int posY = (int)ControlRoom.PLAYER.posY - offsetY;
+        Sprite sprite = ControlRoom.PLAYER.sprite.getSprite();
 
-            int posX = (int)WorldList.players.get(i).posX - offsetX;
-            int posY = (int)WorldList.players.get(i).posY - offsetY;
-            Sprite sprite = WorldList.players.get(i).sprite.getSprite();
+        for (int y = 0; y < sprite.height; y++) {
+            int yDestination = y + posY;
 
-            for (int y = 0; y < sprite.height; y++) {
-                int yDestination = y + posY;
-
-                for (int x = 0; x < sprite.width; x++) {
-                    int xDestination = x + posX;
-                    if (xDestination < - sprite.width || xDestination >= screenWidth || yDestination < 0 || yDestination >= screenHeight){
-                        break;
-                    } else if (xDestination < 0){
+            for (int x = 0; x < sprite.width; x++) {
+                int xDestination = x + posX;
+                if (xDestination < - sprite.width || xDestination >= screenWidth || yDestination < 0 || yDestination >= screenHeight){
+                    break;
+                } else if (xDestination < 0){
                         xDestination = 0;
-                    }
+                }
 
-                    if (sprite.pixelsSprite[x + y * sprite.width] != WorldList.COLOR_NULL1) {
-                        pixelsScreen[xDestination + yDestination * screenWidth] = sprite.pixelsSprite[x + y * sprite.width];
-                    }
+                if (sprite.pixelsSprite[x + y * sprite.width] != WorldList.COLOR_NULL1) {
+                    pixelsScreen[xDestination + yDestination * screenWidth] = sprite.pixelsSprite[x + y * sprite.width];
                 }
             }
-
         }
     }
 
@@ -253,6 +249,4 @@ public class DrawManager {
             return WorldList.tile_Void_In;
         }
     }
-   
-    
 }

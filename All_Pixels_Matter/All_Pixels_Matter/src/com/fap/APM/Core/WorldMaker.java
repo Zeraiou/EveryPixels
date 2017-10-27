@@ -101,21 +101,6 @@ public class WorldMaker {
         
     }
 
-    public void createPlayer() {
-        WorldList.players.add(new Player());
-
-        if (ControlRoom.PIXEL_TILE_LOAD_OUT) {
-            if (WorldList.players.size() == 0) {
-                System.out.println("ERROR -- createPlayer() Failed!");
-            } else {
-                System.out.println("Total Players: " + WorldList.players.size());
-                for (int i = 0; i < WorldList.players.size(); i++) {
-                    System.out.println("Player " + i + ": " + WorldList.players.get(i).posX + ", " + WorldList.players.get(i).posY);
-                }
-            }
-        }
-    }
-
     public void createZombie(int posX, int posY, int orientation, int type, int level, int status) {
         Monster monster = new Monster(posX, posY, orientation, type, level, status);
         WorldList.monsters.add(monster);

@@ -1,6 +1,6 @@
 package com.fap.APM.Core.Input;
 import com.fap.APM.Core.ControlRoom;
-import com.fap.APM.WorldObjects.WorldList;
+import com.fap.APM.WorldObjects.Units.Player;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -15,7 +15,6 @@ public class Keyboard implements KeyListener {
     private static final String MOVE_LEFT = "move left";
     private static final String MOVE_RIGHT = "move right";
     private static final String FIRE = "fire";
-    private JLabel keyMapper;
 
     private Keyboard() { }
 
@@ -48,68 +47,109 @@ public class Keyboard implements KeyListener {
         frame.add(tempD);
     }
 
-    private void mapKeys() {
-//        map("W", MOVE_UP, new moveUp());
-//        map("S", MOVE_DOWN, new moveDown());
-//        map("A", MOVE_LEFT, new moveLeft());
-//        map("D", MOVE_RIGHT, new moveRight());
-
-        keyMapper.getInputMap(IFW).put(KeyStroke.getKeyStroke("W"), MOVE_UP);
-        keyMapper.getActionMap().put(MOVE_UP, new moveUp());
-        keyMapper.getInputMap(IFW).put(KeyStroke.getKeyStroke("S"), MOVE_DOWN);
-        keyMapper.getActionMap().put(MOVE_DOWN, new moveDown());
-        keyMapper.getInputMap(IFW).put(KeyStroke.getKeyStroke("A"), MOVE_LEFT);
-        keyMapper.getActionMap().put(MOVE_LEFT, new moveLeft());
-        keyMapper.getInputMap(IFW).put(KeyStroke.getKeyStroke("D"), MOVE_RIGHT);
-        keyMapper.getActionMap().put(MOVE_RIGHT, new moveRight());
-    }
-
-    private void map(String keyName, String actionName, AbstractAction action) {
-        keyMapper.getInputMap(IFW).put(KeyStroke.getKeyStroke(keyName), actionName);
-        keyMapper.getActionMap().put(actionName, action);
-    }
-
     private class moveUp extends AbstractAction {
         public moveUp() {
-            System.out.println("KeyMap Created: W");
+            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+                System.out.println("KeyMap Created: W");
+            }
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("KeyPush: W - NORTH");
-            WorldList.players.get(0).walk(1);
+            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+                System.out.println("KeyPush: W");
+            }
+            ControlRoom.PLAYER.walk(1);
         }
     }
 
     private class moveDown extends AbstractAction {
         public  moveDown() {
-            System.out.println("KeyMap Created: S");
+            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+                System.out.println("KeyMap Created: S");
+            }
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("KeyPush: S - SOUTH");
-            WorldList.players.get(0).walk(2);
+            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+                System.out.println("KeyPush: S");
+            }
+            ControlRoom.PLAYER.walk(2);
         }
     }
 
     private class moveLeft extends AbstractAction {
         public  moveLeft() {
-            System.out.println("KeyMap Created: A");
+            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+                System.out.println("KeyMap Created: A");
+            }
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("KeyPush: W - WEST");
-            WorldList.players.get(0).walk(3);
+            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+                System.out.println("KeyPush: A");
+            }
+            ControlRoom.PLAYER.walk(3);
         }
     }
 
     private class moveRight extends AbstractAction {
         public  moveRight() {
-            System.out.println("KeyMap Created: D");
+            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+                System.out.println("KeyMap Created: D");
+            }
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("KeyPush: E - EAST");
-            WorldList.players.get(0).walk(4);
+            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+                System.out.println("KeyPush: D");
+            }
+            ControlRoom.PLAYER.walk(4);
+        }
+    }
+
+    public void keyReleased(KeyEvent e) {
+        if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+            System.out.println("KeyReleased:(" + e.getKeyChar() + "," + e.getKeyCode() + "," + e.getExtendedKeyCode() + ") " + e.getID() + " " + e.getModifiers() + " " + e.getKeyLocation());
+        }
+
+        if (ControlRoom.PLAYER.move == true) {
+            if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP) {
+                if (ControlRoom.PLAYER.direction == Player.Direction.NORTH_WEST) {
+                    ControlRoom.PLAYER.direction = Player.Direction.WEST;
+                } else if (ControlRoom.PLAYER.direction == Player.Direction.NORTH_EAST) {
+                    ControlRoom.PLAYER.direction = Player.Direction.EAST;
+                } else if (ControlRoom.PLAYER.direction == Player.Direction.SOUTH || ControlRoom.PLAYER.direction == Player.Direction.SOUTH_WEST || ControlRoom.PLAYER.direction == Player.Direction.SOUTH_EAST) {
+                } else {
+                    ControlRoom.PLAYER.move = false;
+                }
+            } else if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN) {
+                if (ControlRoom.PLAYER.direction == Player.Direction.SOUTH_WEST) {
+                    ControlRoom.PLAYER.direction = Player.Direction.WEST;
+                } else if (ControlRoom.PLAYER.direction == Player.Direction.SOUTH_EAST) {
+                    ControlRoom.PLAYER.direction = Player.Direction.EAST;
+                } else if (ControlRoom.PLAYER.direction == Player.Direction.NORTH || ControlRoom.PLAYER.direction == Player.Direction.NORTH_WEST || ControlRoom.PLAYER.direction == Player.Direction.NORTH_EAST) {
+                } else {
+                    ControlRoom.PLAYER.move = false;
+                }
+            } else if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_LEFT) {
+                if (ControlRoom.PLAYER.direction == Player.Direction.NORTH_WEST) {
+                    ControlRoom.PLAYER.direction = Player.Direction.NORTH;
+                } else if (ControlRoom.PLAYER.direction == Player.Direction.SOUTH_WEST) {
+                    ControlRoom.PLAYER.direction = Player.Direction.SOUTH;
+                } else if (ControlRoom.PLAYER.direction == Player.Direction.EAST || ControlRoom.PLAYER.direction == Player.Direction.NORTH_EAST || ControlRoom.PLAYER.direction == Player.Direction.SOUTH_EAST) {
+                } else {
+                    ControlRoom.PLAYER.move = false;
+                }
+            } else if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                if (ControlRoom.PLAYER.direction == Player.Direction.NORTH_EAST) {
+                    ControlRoom.PLAYER.direction = Player.Direction.NORTH;
+                } else if (ControlRoom.PLAYER.direction == Player.Direction.SOUTH_EAST) {
+                    ControlRoom.PLAYER.direction = Player.Direction.SOUTH;
+                } else if (ControlRoom.PLAYER.direction == Player.Direction.WEST || ControlRoom.PLAYER.direction == Player.Direction.NORTH_WEST || ControlRoom.PLAYER.direction == Player.Direction.SOUTH_WEST) {
+                } else {
+                    ControlRoom.PLAYER.move = false;
+                }
+            }
         }
     }
 
@@ -119,12 +159,5 @@ public class Keyboard implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-    }
-
-    public void keyReleased(KeyEvent e) {
-        if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
-            System.out.println("KeyReleased:(" + e.getKeyChar() + "," + e.getKeyCode() + "," + e.getExtendedKeyCode() + ") " + e.getID() + " " + e.getModifiers() + " " + e.getKeyLocation());
-        }
-        WorldList.players.get(0).move = false;
     }
 }
