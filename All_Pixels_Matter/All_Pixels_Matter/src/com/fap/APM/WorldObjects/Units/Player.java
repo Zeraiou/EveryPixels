@@ -63,7 +63,7 @@ public class Player {
                     direction = Direction.NORTH_WEST;
                 } else if ((direction == Direction.SOUTH || direction == Direction.SOUTH_WEST) && move == true) {
                     direction = Direction.SOUTH_WEST;
-                } else if ((direction == Direction.EAST || direction == Direction.NORTH_WEST || direction == Direction.NORTH_EAST && move == true)) {
+                } else if ((direction == Direction.EAST || direction == Direction.NORTH_WEST || direction == Direction.NORTH_EAST) && move == true) {
                 } else {
                     direction = Direction.WEST;
                 }
