@@ -139,7 +139,7 @@ public class WorldList {
     public static Sprite sprite_Wall_Wood_Top_4X2 = new Sprite(48, 24, 0, 6, Wall_Wood);
     public static Sprite sprite_Wall_Wood_Top_4X3 = new Sprite(48, 36, 0, 3, Wall_Wood);
     public static Sprite sprite_Wall_Wood_Top_4X4 = new Sprite(48, 48, 0, 1, Wall_Wood);
- 
+   
     public static final int COLOR_TRANSPARENT = 0xffff00ff;
     public static final int COLOR_WALL_WOOD_1 = 0xff4293E8;
     public static final int COLOR_WALL_WOOD_2 = 0xffE53327;
@@ -162,6 +162,24 @@ public class WorldList {
     public static final int COLOR_WALL_WOOD_TOP_4X3 = 0xff27E109;
     public static final int COLOR_WALL_WOOD_TOP_4X4 = 0xff27E109;
    */
+    
+    public static SpriteSheet Door_Wood = new SpriteSheet(ControlRoom.DOOR_WOOD_SPRITE_PATH, 96, 96);
+    public static Sprite sprite_Door_Wood_Close = new Sprite(48, 48, 0, 1, Door_Wood);
+    public static Sprite sprite_Door_Wood_Open = new Sprite(12, 48, 4, 1, Door_Wood);
+    public static Sprite sprite_Door_Wood_Top_Close = new Sprite(48, 12, 0, 3, Door_Wood);
+    public static Sprite sprite_Wall_Wood_Top_Open = new Sprite(12, 48, 4, 0, Door_Wood);
+    
+    public static final int COLOR_DOOR_WOOD_TOP_CLOSE = 0xffEAF8FF;
+    public static final int COLOR_DOOR_WOOD_CLOSE = 0xffD3F4FF;
+    public static final int COLOR_DOOR_WOOD_TOP_OPEN = 0xffB375FF;
+    public static final int COLOR_DOOR_WOOD_OPEN = 0xffC4A5FF;
+    
+    
+    
+    
+    
+    
+    
     
     public static SpriteSheet Coniferous = new SpriteSheet(ControlRoom.CONIFEROUS_SPRITE_PATH, 144, 96);
     public static Sprite sprite_Coniferous_Big = new Sprite(72, 96, 0, 0, Coniferous);

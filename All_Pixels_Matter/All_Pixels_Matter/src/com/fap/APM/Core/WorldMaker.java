@@ -154,15 +154,17 @@ public class WorldMaker {
 		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_1X2) return WorldList.sprite_Wall_Wood_Top_1X2;
 		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_2X1) return WorldList.sprite_Wall_Wood_Top_2X1;
 		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_2X2) return WorldList.sprite_Wall_Wood_Top_2X2;
-
 		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_2X3) return WorldList.sprite_Wall_Wood_Top_2X3;
 		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_3X2) return WorldList.sprite_Wall_Wood_Top_3X2;
 		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_4X2) return WorldList.sprite_Wall_Wood_Top_4X2;
-
-		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_TRANSPARENT) return WorldList.sprite_Void12_transparent;
-		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_2X4) {
-			return WorldList.sprite_Wall_Wood_Top_2X4; 
-		} else {
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_WALL_WOOD_TOP_2X4) return WorldList.sprite_Wall_Wood_Top_2X4; 
+		
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_DOOR_WOOD_CLOSE) return WorldList.sprite_Door_Wood_Close;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_DOOR_WOOD_OPEN) return WorldList.sprite_Door_Wood_Open;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_DOOR_WOOD_TOP_CLOSE) return WorldList.sprite_Door_Wood_Top_Close;
+		if (WorldMaker.shared().mapStructures[x + y * WorldMaker.shared().width] == WorldList.COLOR_DOOR_WOOD_TOP_OPEN) {
+			return WorldList.sprite_Wall_Wood_Top_Open;
+				} else {
 			return WorldList.sprite_Void12_transparent;
 		}
 

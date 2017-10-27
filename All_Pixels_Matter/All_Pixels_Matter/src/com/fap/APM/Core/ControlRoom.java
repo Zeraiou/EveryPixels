@@ -39,7 +39,9 @@ public class ControlRoom {
 
         /// WALLS ///
     public static final String WALL_WOOD_SPRITE_PATH = "/Textures/SpriteSheets/Structure/Wall-Wood.png";
+    public static final String DOOR_WOOD_SPRITE_PATH = "/Textures/SpriteSheets/Structure/Door-Wood.png";
 
+    
         /// TREES ///
     public static final String CONIFEROUS_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Coniferous.png";
     public static final String HARDWOOD_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Hardwood.png";
