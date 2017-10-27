@@ -1,12 +1,14 @@
 package com.fap.APM.Core;
 import com.fap.APM.WorldObjects.Units.*;
 import com.fap.APM.Graphics.Sprite;
+import com.fap.APM.Graphics.Phy.AI;
 import com.fap.APM.WorldObjects.WorldList;
 import com.fap.APM.WorldObjects.Basics.Resource;
 import com.fap.APM.WorldObjects.Basics.Wall;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Random;
 
 public class WorldMaker {
 
@@ -14,7 +16,9 @@ public class WorldMaker {
     public int[] mapFieldTiles, mapStructures, mapResources;
     private static WorldMaker INSTANCE = null;
     private int time = 0;
-
+    private final Random RANDOM = new Random();
+    
+    
     private WorldMaker() { }
 
     public static WorldMaker shared() {
@@ -23,6 +27,7 @@ public class WorldMaker {
             INSTANCE.extractMapField();
             INSTANCE.extractMapStructure();
             INSTANCE.extractMapResource();
+            AI.shared().GenerateResource(10);
             
         }
         return INSTANCE;
@@ -36,7 +41,7 @@ public class WorldMaker {
             totalTiles = this.width * this.height;
             mapFieldTiles = new int[this.totalTiles];
             imageFromFile.getRGB(0, 0, width, height, mapFieldTiles, 0, width);
-
+           
             if (ControlRoom.PIXEL_TILE_LOAD_OUT) {
                 System.out.println("Width: " + width + " - Height: " + height + " - TotalTiles: " + totalTiles + " - Array Size: " + mapFieldTiles.length);
             }
@@ -99,6 +104,8 @@ public class WorldMaker {
             }
         }
         
+		System.out.println("Ressource dessiner sur la map : " + WorldList.resources.size());
+
     }
 
     public void createZombie(int posX, int posY, int orientation, int type, int level, int status) {
@@ -130,6 +137,8 @@ public class WorldMaker {
 		Resource resource = new Resource(sprite, posX, posY, width, height);
 		WorldList.resources.add(resource);
 	}
+    
+   
 
     public void removeEntity() {
         for (int i = 0; i < WorldList.monsters.size(); i++) {
@@ -198,21 +207,5 @@ public class WorldMaker {
 		
 	}
 
-	public void tickGenerateMonster() {
-		time++;
-		if (time == 3600) {
-            time = 0;
-        } else if (time == 120) {
-            WorldMaker.shared().createEspirito(ControlRoom.STARTING_X - 200, ControlRoom.STARTING_Y - 200, 4, 2, 1, 1);
-        } else if (time == 60) {
-           WorldMaker.shared().createZombie(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20, 4, 1, 1, 1);
-        } else if (time == 360) {
-           WorldMaker.shared().createLarvion(ControlRoom.STARTING_X + 40, ControlRoom.STARTING_Y + 40, 4, 3, 1, 1);
-
-        }  else if (time == 240) {
-            WorldMaker.shared().createBichette(ControlRoom.STARTING_X + 75, ControlRoom.STARTING_Y + 75, 4, 4, 1, 1);
-        }
-
-		
-	}
+	
 }

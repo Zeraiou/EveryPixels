@@ -1,4 +1,6 @@
 package com.fap.APM.Core;
+import java.util.Random;
+
 import com.fap.APM.WorldObjects.Units.Player;
 
 
@@ -60,4 +62,8 @@ public class ControlRoom {
 
     /// TIME VARIABLES ///
     public static final double NANOSECONDE = 1000000000.0 / 60.0;
+    
+    ///Random///
+    public final static Random RANDOM = new Random();
+    
 }

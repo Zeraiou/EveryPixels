@@ -2,6 +2,8 @@ package com.fap.APM.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import java.awt.image.WritableRaster;
+
 
 public class SpriteSheet {
 
@@ -61,6 +63,7 @@ public class SpriteSheet {
             BufferedImage imageSpriteSheet = ImageIO.read(SpriteSheet.class.getResource(path));
             System.out.println("Reussi" + path);
             imageSpriteSheet.getRGB(0, 0, imageSpriteSheet.getWidth(), imageSpriteSheet.getHeight(), pixelsSpriteSheet, 0, width);
+        
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {

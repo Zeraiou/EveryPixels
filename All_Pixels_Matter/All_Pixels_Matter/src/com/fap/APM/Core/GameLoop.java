@@ -7,12 +7,13 @@ import java.awt.image.*;
 import javax.swing.*;
 import com.fap.APM.Core.Input.Keyboard;
 import com.fap.APM.Core.Input.Mouse;
+import com.fap.APM.Graphics.Phy.AI;
 import com.fap.APM.WorldObjects.Units.Player;
 import com.fap.APM.WorldObjects.WorldList;
 
 public class GameLoop extends Canvas implements Runnable {
 
-    private BufferedImage imageInFrame = new BufferedImage(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
+    private BufferedImage imageInFrame = new BufferedImage(ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, BufferedImage.TYPE_INT_ARGB);
     private int[] pixelsInFrame = ((DataBufferInt) imageInFrame.getRaster().getDataBuffer()).getData();
     private static final long serialVersionUID = 1L;
     public JFrame frame = new JFrame();
@@ -80,17 +81,17 @@ public class GameLoop extends Canvas implements Runnable {
 
         ControlRoom.FPS++;
 
-//
-//        if (System.currentTimeMillis() - clock1Sec > 1000) {
-//            clock1Sec += 1000;
-//            frame.setTitle(ControlRoom.GAME_TITLE + " | Fps: "
-//                    + ControlRoom.FPS + ", Tps: " + ControlRoom.TPS
-//                    + " | Pixels (" + (int) ControlRoom.PLAYER.posX + "," + (int) ControlRoom.PLAYER.posY + ") | "
-//                    + "Tile: (" + (int) (ControlRoom.PLAYER.posX / 12) + "," + (int) (ControlRoom.PLAYER.posY / 12) + ") | "
-//                    + "Mouse: (" + Mouse.shared().getMouseX()) + "," + Mouse.shared().getMouseY() + ")";
-//            ControlRoom.FPS = 0;
-//            ControlRoom.TPS = 0;
-//        }
+
+        if (System.currentTimeMillis() - clock1Sec > 1000) {
+            clock1Sec += 1000;
+            frame.setTitle(ControlRoom.GAME_TITLE + " | Fps: "
+                    + ControlRoom.FPS + ", Tps: " + ControlRoom.TPS
+                    + " | Pixels (" + (int) ControlRoom.PLAYER.posX + "," + (int) ControlRoom.PLAYER.posY + ") | "
+                    + "Tile: (" + (int) (ControlRoom.PLAYER.posX / 12) + "," + (int) (ControlRoom.PLAYER.posY / 12) + ") | "
+                    + "Mouse: (" + Mouse.shared().getMouseX() + "," + Mouse.shared().getMouseY() + ")");
+            ControlRoom.FPS = 0;
+            ControlRoom.TPS = 0;
+        }
     }
 
     private void worldTick() {
@@ -104,6 +105,6 @@ public class GameLoop extends Canvas implements Runnable {
             WorldList.particles.get(i).nextTick();
         }
 
-        WorldMaker.shared().tickGenerateMonster();
+        AI.shared().tickAI();
     }
 }

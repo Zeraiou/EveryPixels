@@ -21,7 +21,7 @@ public class WorldList {
     public static List<Resource> resources = new ArrayList<Resource>();
     public static List<Item> items = new ArrayList<Item>();
 
-    public static SpriteSheet player_Base34 = new SpriteSheet(ControlRoom.PLAYER_SPRITE_PATH, 192, 144);
+    public static SpriteSheet player_Base34 = new SpriteSheet(ControlRoom.PLAYER_SPRITE_PATH, 144, 192);
     public static SpriteSheet player_Idle_Down = new SpriteSheet(player_Base34, 0, 0, 1, 1, 36, 48);
     public static SpriteSheet player_Idle_Right = new SpriteSheet(player_Base34, 1, 0, 1, 1, 36, 48);
     public static SpriteSheet player_Idle_Up = new SpriteSheet(player_Base34, 2, 0, 1, 1, 36, 48);
