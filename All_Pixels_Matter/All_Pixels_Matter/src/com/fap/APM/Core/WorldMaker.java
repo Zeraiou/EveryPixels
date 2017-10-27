@@ -8,16 +8,13 @@ import com.fap.APM.WorldObjects.Basics.Wall;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Random;
 
 public class WorldMaker {
 
     public int width, height, totalTiles;
     public int[] mapFieldTiles, mapStructures, mapResources;
     private static WorldMaker INSTANCE = null;
-    private int time = 0;
-    private final Random RANDOM = new Random();
-    
+   
     
     private WorldMaker() { }
 
@@ -199,10 +196,13 @@ public class WorldMaker {
 		if (WorldMaker.shared().mapResources[x + y * WorldMaker.shared().width] == WorldList.COLOR_HARDWOOD_BIG) return WorldList.sprite_Hardwood_Big;
 		if (WorldMaker.shared().mapResources[x + y * WorldMaker.shared().width] == WorldList.COLOR_HARDWOOD_SMALL) return WorldList.sprite_Hardwood_Small;
 		if (WorldMaker.shared().mapResources[x + y * WorldMaker.shared().width] == WorldList.COLOR_BUSH_BIG) return WorldList.sprite_Bush_Big;
-		if (WorldMaker.shared().mapResources[x + y * WorldMaker.shared().width] == WorldList.COLOR_BUSH_SMALL) {
-			return WorldList.sprite_Bush_Small; 
-		} else {
-			return WorldList.sprite_Void12_transparent;
+		if (WorldMaker.shared().mapResources[x + y * WorldMaker.shared().width] == WorldList.COLOR_BUSH_SMALL) return WorldList.sprite_Bush_Small;  
+		if (WorldMaker.shared().mapResources[x + y * WorldMaker.shared().width] == WorldList.COLOR_ROCK_1X1) return WorldList.sprite_Rock_1X1;
+		if (WorldMaker.shared().mapResources[x + y * WorldMaker.shared().width] == WorldList.COLOR_ROCK_2X2) return WorldList.sprite_Rock_2X2;
+		if (WorldMaker.shared().mapResources[x + y * WorldMaker.shared().width] == WorldList.COLOR_ROCK_3X3) {
+			return WorldList.sprite_Rock_3X3;  
+		} 	else {
+				return WorldList.sprite_Void12_transparent;
 		}
 		
 	}

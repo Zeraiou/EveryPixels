@@ -47,7 +47,10 @@ public class ControlRoom {
         /// TREES ///
     public static final String CONIFEROUS_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Coniferous.png";
     public static final String HARDWOOD_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Hardwood.png";
+    	///RESOURCES///
+    public static final String ROCK_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Rocks.png";
 
+    
         /// MONSTERS ///
     public static final String PLAYER_SPRITE_PATH = "/Textures/SpriteSheets/Units/Player/Player_Base-3X4.png";
     public static final String ZOMBIE_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Zombie_Base-2X2.png";

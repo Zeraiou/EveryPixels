@@ -46,7 +46,7 @@ public class AI {
     
     public void GenerateResource(int amountOfRandomGeneration) {
     	for (int i = 0; i < amountOfRandomGeneration; i++) {
-    		int typeTemp = ControlRoom.RANDOM.nextInt(6) + 1;
+    		int typeTemp = ControlRoom.RANDOM.nextInt(9) + 1;
     		int amountTemp = ControlRoom.RANDOM.nextInt(50);
     		System.out.println("Type : " + typeTemp + " , Quantite : " + amountTemp);
     		createRandomResource(typeTemp, amountTemp);
@@ -75,7 +75,14 @@ public class AI {
     			sprite = WorldList.sprite_Bush_Big;
     		} else if (typeResource == 6) {
     			sprite = WorldList.sprite_Bush_Small;
+    		} else if (typeResource == 7) {
+    			sprite = WorldList.sprite_Rock_1X1;
+    		} else if (typeResource == 8) {
+    			sprite = WorldList.sprite_Rock_2X2;
+    		} else if (typeResource == 9) {
+    			sprite = WorldList.sprite_Rock_3X3;
     		}
+    		
     	
     		if (sprite != null) {
     			int posXTemp = (ControlRoom.RANDOM.nextInt(WorldMaker.shared().width) * ControlRoom.TILE_WIDTH);

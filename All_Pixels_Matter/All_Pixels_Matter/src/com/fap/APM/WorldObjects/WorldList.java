@@ -196,12 +196,21 @@ public class WorldList {
     public static Sprite sprite_Bush_Big = new Sprite(36, 24, 0, 3, Hardwood);
     public static Sprite sprite_Bush_Small = new Sprite(24, 24, 0, 4, Hardwood);
     
+    public static SpriteSheet Rock = new SpriteSheet(ControlRoom.ROCK_SPRITE_PATH, 36, 72);
+    public static Sprite sprite_Rock_1X1 = new Sprite(12, 12, 0, 2, Rock);
+    public static Sprite sprite_Rock_2X2 = new Sprite(24, 24, 0, 0, Rock);
+    public static Sprite sprite_Rock_3X3 = new Sprite(36, 36, 0, 1, Rock);
+    
     public static final int COLOR_CONIFEROUS_BIG = 0xffC619FF;
     public static final int COLOR_CONIFEROUS_SMALL = 0xff870FFF;
     public static final int COLOR_HARDWOOD_BIG = 0xffE500FF;
     public static final int COLOR_HARDWOOD_SMALL = 0xffFF00A5;
     public static final int COLOR_BUSH_BIG = 0xffFF0037;
     public static final int COLOR_BUSH_SMALL = 0xffFF6100;
+    
+    public static final int COLOR_ROCK_1X1 = 0xff5B5B5B;
+    public static final int COLOR_ROCK_2X2 = 0xff676772;
+    public static final int COLOR_ROCK_3X3 = 0xff7A7A87;
     
     
     
