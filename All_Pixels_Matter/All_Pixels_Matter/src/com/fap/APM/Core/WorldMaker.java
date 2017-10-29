@@ -73,7 +73,6 @@ public class WorldMaker {
                 }
             }
         }
-
     }
 
     private void extractMapResource() {
@@ -101,7 +100,6 @@ public class WorldMaker {
         }
 
 		System.out.println("Ressource dessiner sur la map : " + WorldList.resources.size());
-
     }
 
     public void createZombie(int posX, int posY, int orientation, int type, int level, int status) {
@@ -133,8 +131,6 @@ public class WorldMaker {
 		Resource resource = new Resource(sprite, posX, posY, width, height);
 		WorldList.resources.add(resource);
 	}
-
-
 
     public void removeEntity() {
         for (int i = 0; i < WorldList.monsters.size(); i++) {

@@ -23,11 +23,11 @@ public class InputManager {
         mapInputToAction(frame, "SHIFT", new leftShift());
         mapInputToAction(frame, "CONTROL", new ctrl());
         mapInputToAction(frame, "ALT", new alt());
-        mapInputToAction(frame, "TAB ", new tab());
+        mapInputToAction(frame, "TAB", new tab());
         mapInputToAction(frame, "CAPS_LOCK", new caps());
         mapInputToAction(frame, "SPACE", new space());
         mapInputToAction(frame, "ENTER", new enter());
-        mapInputToAction(frame, "`", new console());
+        //mapInputToAction(frame, "`", new console());
 
         mapInputToAction(frame, "0", new fastItemSwitch(0));
         mapInputToAction(frame, "1", new fastItemSwitch(1));
@@ -134,13 +134,13 @@ public class InputManager {
     private class leftShift extends AbstractAction {
         public  leftShift() {
             if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
-                System.out.println("KeyMap Created:ESCAPE");
+                System.out.println("KeyMap Created:LEFT_SHIFT");
             }
         }
         @Override
         public void actionPerformed(ActionEvent e) {
             if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
-                System.out.println("KeyPush:ESCAPE " + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
+                System.out.println("KeyPush:LEFT_SHIFT " + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
             }
         }
     }
@@ -229,19 +229,19 @@ public class InputManager {
         }
     }
 
-    private class console extends AbstractAction {
-        public  console() {
-            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
-                System.out.println("KeyMap Created:CONSOLE");
-            }
-        }
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
-                System.out.println("KeyPush:CONSOLE " + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
-            }
-        }
-    }
+//    private class console extends AbstractAction {
+//        public  console() {
+//            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+//                System.out.println("KeyMap Created:CONSOLE");
+//            }
+//        }
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
+//                System.out.println("KeyPush:CONSOLE " + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
+//            }
+//        }
+//    }
 
     private class fastItemSwitch extends AbstractAction {
         private int number;
