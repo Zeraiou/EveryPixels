@@ -2,6 +2,7 @@ package com.fap.APM.Core.Input;
 import com.fap.APM.ControlRoom;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 public class InputManager {
 
@@ -9,15 +10,15 @@ public class InputManager {
     protected boolean[] keys = new boolean[199];
 
     public void loadInputActions(JFrame frame) {
-        mapInputToAction(frame, "W", new moveUp());
-        mapInputToAction(frame, "S", new moveDown());
-        mapInputToAction(frame, "A", new moveLeft());
-        mapInputToAction(frame, "D", new moveRight());
+        mapInputToAction(frame, "W", new moveUp(KeyEvent.VK_W));
+        mapInputToAction(frame, "S", new moveDown(KeyEvent.VK_S));
+        mapInputToAction(frame, "A", new moveLeft(KeyEvent.VK_A));
+        mapInputToAction(frame, "D", new moveRight(KeyEvent.VK_D));
 
-        mapInputToAction(frame, "UP", new moveUp());
-        mapInputToAction(frame, "DOWN", new moveDown());
-        mapInputToAction(frame, "LEFT", new moveLeft());
-        mapInputToAction(frame, "RIGHT", new moveRight());
+        mapInputToAction(frame, "UP", new moveUp(KeyEvent.VK_UP));
+        mapInputToAction(frame, "DOWN", new moveDown(KeyEvent.VK_DOWN));
+        mapInputToAction(frame, "LEFT", new moveLeft(KeyEvent.VK_LEFT));
+        mapInputToAction(frame, "RIGHT", new moveRight(KeyEvent.VK_RIGHT));
 
         mapInputToAction(frame, "ESCAPE", new escape());
         mapInputToAction(frame, "SHIFT", new leftShift());
@@ -58,7 +59,10 @@ public class InputManager {
     }
 
     private class moveUp extends AbstractAction {
-        public moveUp() {
+        private int key;
+
+        public moveUp(int key) {
+            this.key = key;
             if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
                 System.out.println("KeyMap Created: W");
             }
@@ -69,11 +73,15 @@ public class InputManager {
                 System.out.println("KeyPush:W " + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
             }
             ControlRoom.PLAYER.movement.setYDirection(-1);
+            keys[this.key] = true;
         }
     }
 
     private class moveDown extends AbstractAction {
-        public  moveDown() {
+        private int key;
+
+        public  moveDown(int key) {
+            this.key = key;
             if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
                 System.out.println("KeyMap Created: S");
             }
@@ -84,11 +92,15 @@ public class InputManager {
                 System.out.println("KeyPush:S " + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
             }
             ControlRoom.PLAYER.movement.setYDirection(1);
+            keys[this.key] = true;
         }
     }
 
     private class moveLeft extends AbstractAction {
-        public  moveLeft() {
+        private int key;
+
+        public  moveLeft(int key) {
+            this.key = key;
             if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
                 System.out.println("KeyMap Created: A");
             }
@@ -99,11 +111,15 @@ public class InputManager {
                 System.out.println("KeyPush:A" + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
             }
             ControlRoom.PLAYER.movement.setXDirection(-1);
+            keys[this.key] = true;
         }
     }
 
     private class moveRight extends AbstractAction {
-        public  moveRight() {
+        private int key;
+
+        public  moveRight(int key) {
+            this.key = key;
             if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
                 System.out.println("KeyMap Created: D");
             }
@@ -111,9 +127,10 @@ public class InputManager {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
-                System.out.println("KeyPush:D " + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
-        }
+                System.out.println("KeyPush:D " + System.currentTimeMillis() / 1000 + " " + e.getActionCommand());
+            }
             ControlRoom.PLAYER.movement.setXDirection(1);
+            keys[this.key] = true;
         }
     }
 
