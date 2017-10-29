@@ -1,5 +1,5 @@
 package com.fap.APM.WorldObjects;
-import com.fap.APM.Core.ControlRoom;
+import com.fap.APM.ControlRoom;
 import com.fap.APM.Graphics.Sprite;
 import com.fap.APM.Graphics.SpriteSheet;
 import com.fap.APM.WorldObjects.Items.Item;
@@ -15,7 +15,6 @@ public class WorldList {
 
     public static List<Monster> monsters = new ArrayList<Monster>();
     public static List<Particle> particles = new ArrayList<Particle>();
-
     public static List<Tile> tiles = new ArrayList<Tile>();
     public static List<Wall> walls = new ArrayList<Wall>();
     public static List<Resource> resources = new ArrayList<Resource>();
@@ -61,7 +60,6 @@ public class WorldList {
     public static SpriteSheet bichette_34_Left = new SpriteSheet(bichette_34, 3, 0, 1, 3, 36, 48);
     public static Sprite sprite_bichette_34 = new Sprite(36, 48, 0, 0, bichette_34);
 
-    
     public static Sprite particle1p = new Sprite(1, 1, 0xff7f00ff);
     public static Sprite particle2p = new Sprite(2, 2, 0xff7f00ff);
     public static Sprite particle3p = new Sprite(3, 3, 0xff7f00ff);
@@ -121,7 +119,6 @@ public class WorldList {
     public static final int COLOR_DIRT = 0xff694B11;
     public static final int COLOR_NULL1 = 0xffFF00FF;
     public static final int COLOR_NULL2 = 0xff7f007f;
-
     
     public static SpriteSheet Wall_Wood = new SpriteSheet(ControlRoom.WALL_WOOD_SPRITE_PATH, 120, 168);
     public static Sprite sprite_Wall_Wood_1 = new Sprite(12, 48, 9, 0, Wall_Wood);
@@ -157,6 +154,7 @@ public class WorldList {
     public static final int COLOR_WALL_WOOD_TOP_2X4 = 0xff38387F;
     public static final int COLOR_WALL_WOOD_TOP_3X2 = 0xffE02670;
     public static final int COLOR_WALL_WOOD_TOP_4X2 = 0xff7F5E28;
+
     // public static final int COLOR_WALL_WOOD_TOP_1X1 = 0xff27E109;
     // public static final int COLOR_WALL_WOOD_TOP_1X3 = 0xff27E109;
     // public static final int COLOR_WALL_WOOD_TOP_1X4 = 0xff27E109;
@@ -178,14 +176,7 @@ public class WorldList {
     public static final int COLOR_DOOR_WOOD_CLOSE = 0xffD3F4FF;
     public static final int COLOR_DOOR_WOOD_TOP_OPEN = 0xffB375FF;
     public static final int COLOR_DOOR_WOOD_OPEN = 0xffC4A5FF;
-    
-    
-    
-    
-    
-    
-    
-    
+
     public static SpriteSheet Coniferous = new SpriteSheet(ControlRoom.CONIFEROUS_SPRITE_PATH, 144, 96);
     public static Sprite sprite_Coniferous_Big = new Sprite(72, 96, 0, 0, Coniferous);
     public static Sprite sprite_Coniferous_Small = new Sprite(72, 72, 1, 0, Coniferous);
@@ -207,12 +198,8 @@ public class WorldList {
     public static final int COLOR_HARDWOOD_SMALL = 0xffFF00A5;
     public static final int COLOR_BUSH_BIG = 0xffFF0037;
     public static final int COLOR_BUSH_SMALL = 0xffFF6100;
-    
     public static final int COLOR_ROCK_1X1 = 0xff5B5B5B;
     public static final int COLOR_ROCK_2X2 = 0xff676772;
     public static final int COLOR_ROCK_3X3 = 0xff7A7A87;
-    
-    
-    
-}
 
+}

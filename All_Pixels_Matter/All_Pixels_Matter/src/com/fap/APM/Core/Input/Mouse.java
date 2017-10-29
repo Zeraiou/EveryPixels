@@ -1,5 +1,5 @@
 package com.fap.APM.Core.Input;
-import com.fap.APM.Core.ControlRoom;
+import com.fap.APM.ControlRoom;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;

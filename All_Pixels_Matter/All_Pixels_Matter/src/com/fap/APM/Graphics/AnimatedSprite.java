@@ -18,7 +18,7 @@ public class AnimatedSprite extends Sprite {
             System.err.println("Erreur!");
         }
     }
-		
+
     public void tickAnimation() {
         time++;
         if (time % animationRate == 0) {
@@ -29,6 +29,7 @@ public class AnimatedSprite extends Sprite {
             }
 
             sprite = spriteSheet.getSprites()[frame];
+
         }
     }
 
@@ -42,5 +43,9 @@ public class AnimatedSprite extends Sprite {
 
     public void setFrame(int index) {
         sprite = spriteSheet.getSprites()[index];
+    }
+
+    public void resetAnimation() {
+
     }
 }

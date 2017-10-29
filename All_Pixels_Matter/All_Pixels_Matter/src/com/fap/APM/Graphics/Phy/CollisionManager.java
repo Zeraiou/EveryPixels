@@ -6,12 +6,12 @@ public class CollisionManager {
 
 	 private CollisionManager() {}
 
-	    public static CollisionManager shared() {
-	        if (INSTANCE == null) {
-	            INSTANCE = new CollisionManager();
-	        }
-	        return INSTANCE;
-	    }
+	public static CollisionManager shared() {
+		if (INSTANCE == null) {
+			INSTANCE = new CollisionManager();
+		}
+		return INSTANCE;
+	}
 }
 	    
 	/*    
@@ -31,20 +31,19 @@ public class CollisionManager {
 	}
 
 	public boolean CollisionParticuleTuile(double xActuelle, double yActuelle) {
-			boolean Solide = false;
-			for (int c = 0; c < 4; c++) {
-				double xTemporaire = (xActuelle - c % 2 * 16) / 16;
-				double yTemporaire = (yActuelle - c / 2 * 16) / 16;
+		boolean Solide = false;
+		for (int c = 0; c < 4; c++) {
+			double xTemporaire = (xActuelle - c % 2 * 16) / 16;
+			double yTemporaire = (yActuelle - c / 2 * 16) / 16;
 				
-				int xTemporaireInt = (int) Math.ceil(xTemporaire);
-				int yTemporaireInt = (int) Math.ceil(yTemporaire);
+			int xTemporaireInt = (int) Math.ceil(xTemporaire);
+			int yTemporaireInt = (int) Math.ceil(yTemporaire);
 				
-				
-				if (c % 2 == 0) xTemporaireInt = (int) Math.floor(xTemporaire);
-				if (c / 2 == 0) yTemporaireInt = (int) Math.floor(yTemporaire);
+			if (c % 2 == 0) xTemporaireInt = (int) Math.floor(xTemporaire);
+			if (c / 2 == 0) yTemporaireInt = (int) Math.floor(yTemporaire);
 			
 				if (niveau.SaisirTuileHUB(xTemporaireInt, yTemporaireInt).Solide()) Solide = true;
-			}return Solide;
+		}return Solide;
 	}
 
 	public boolean CollisionEntiteTuile(int xActuelle, int yActuelle, int DimensionEntite, int xDecallage, int yDecallage) {

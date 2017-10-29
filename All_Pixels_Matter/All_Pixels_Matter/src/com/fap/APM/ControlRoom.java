@@ -1,8 +1,6 @@
-package com.fap.APM.Core;
+package com.fap.APM;
 import java.util.Random;
-
 import com.fap.APM.WorldObjects.Units.Player;
-
 
 public class ControlRoom {
 
@@ -17,8 +15,9 @@ public class ControlRoom {
     /// CONSOLE LOG SWITCHES ///
     public static final boolean PIXEL_TILE_LOAD_OUT = false;
     public static final boolean RENDER_SCREEN_OUT = false;
-    public static final boolean MOUSE_INPUT_OUT = true;
+    public static final boolean MOUSE_INPUT_OUT = false;
     public static final boolean KEYBOARD_INPUT_OUT = true;
+    public static final boolean TITLE_INFO_OUT = true;
 
     /// SCREEN INFO ///
     public static final int SCREEN_WIDTH = 800;
@@ -39,19 +38,17 @@ public class ControlRoom {
     public static final String GAME_TITLE = "All Pixels Matter!";
     public static final String TILE_SPRITE_PATH = "/Textures/SpriteSheets/Tiles/TileBase12.png";
 
-        /// WALLS ///
+    /// WALLS ///
     public static final String WALL_WOOD_SPRITE_PATH = "/Textures/SpriteSheets/Structure/Wall-Wood.png";
     public static final String DOOR_WOOD_SPRITE_PATH = "/Textures/SpriteSheets/Structure/Door-Wood.png";
 
-    
-        /// TREES ///
+    /// TREES ///
     public static final String CONIFEROUS_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Coniferous.png";
     public static final String HARDWOOD_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Hardwood.png";
-    	///RESOURCES///
+    ///RESOURCES///
     public static final String ROCK_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Rocks.png";
 
-    
-        /// MONSTERS ///
+    /// MONSTERS ///
     public static final String PLAYER_SPRITE_PATH = "/Textures/SpriteSheets/Units/Player/Player_Base-3X4.png";
     public static final String ZOMBIE_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Zombie_Base-2X2.png";
     public static final String LARVION_SPRITE_PATH = "/Textures/SpriteSheets/Units/Monster/Larvion-4X6.png";
@@ -65,8 +62,7 @@ public class ControlRoom {
 
     /// TIME VARIABLES ///
     public static final double NANOSECONDE = 1000000000.0 / 60.0;
-    
+
     ///Random///
     public final static Random RANDOM = new Random();
-    
 }

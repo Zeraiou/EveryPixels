@@ -1,6 +1,5 @@
 package com.fap.APM.Graphics.Phy;
-
-import com.fap.APM.Core.ControlRoom;
+import com.fap.APM.ControlRoom;
 import com.fap.APM.Core.WorldMaker;
 import com.fap.APM.Graphics.Sprite;
 import com.fap.APM.WorldObjects.WorldList;
@@ -10,7 +9,6 @@ public class AI {
     private static AI INSTANCE = null;
     private int time = 0;
 
-    
     private AI() { }
 
     public static AI shared() {
@@ -21,11 +19,11 @@ public class AI {
         return INSTANCE;
     }
     
-    public void tickAI() {
-    	GenerateMonster();
+    public void nextTick() {
+    	generateMonster();
 	}
     
-    public void GenerateMonster() {
+    public void generateMonster() {
 		time++;
 		if (time == 3600) {
             time = 0;
@@ -39,11 +37,8 @@ public class AI {
         }  else if (time == 240) {
             WorldMaker.shared().createBichette(ControlRoom.STARTING_X + 75, ControlRoom.STARTING_Y + 75, 4, 4, 1, 1);
         }
-
-		
 	}
-    
-    
+
     public void GenerateResource(int amountOfRandomGeneration) {
     	for (int i = 0; i < amountOfRandomGeneration; i++) {
     		int typeTemp = ControlRoom.RANDOM.nextInt(9) + 1;
@@ -53,7 +48,6 @@ public class AI {
     	}
 	
     	System.out.println("Ressource apres le random creation : " + WorldList.resources.size());
-
     }
     
     
@@ -82,8 +76,7 @@ public class AI {
     		} else if (typeResource == 9) {
     			sprite = WorldList.sprite_Rock_3X3;
     		}
-    		
-    	
+
     		if (sprite != null) {
     			int posXTemp = (ControlRoom.RANDOM.nextInt(WorldMaker.shared().width) * ControlRoom.TILE_WIDTH);
     			int posYTemp = (ControlRoom.RANDOM.nextInt(WorldMaker.shared().height) * ControlRoom.TILE_HEIGHT);
@@ -121,6 +114,4 @@ public class AI {
     		}
     	}
     }
-
-	
 }
