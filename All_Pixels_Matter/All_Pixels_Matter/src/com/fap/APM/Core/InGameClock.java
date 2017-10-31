@@ -1,6 +1,4 @@
 package com.fap.APM.Core;
-
-
 import com.fap.APM.Helpers.ControlRoom;
 
 public class InGameClock {
@@ -21,11 +19,9 @@ public class InGameClock {
 		return INSTANCE;
 	}
 
-
 	public static void startClock() {
 		INSTANCE = new InGameClock();
 	}
-
 
 	public void tickInGameClock() {
 		loopCount++;
