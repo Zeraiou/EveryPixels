@@ -92,7 +92,7 @@ public class AI {
     				int resourcesMaxY =  WorldList.resources.get(r).posY +  WorldList.resources.get(r).height;
     				
     				
-    				if (posXTemp >= resourcesMinX && posXTemp <= resourcesMaxX) {
+    				if (posXTemp >= resourcesMinX && (posXTemp + sprite.width) <= resourcesMaxX) {
     					if (posYTemp >= resourcesMinY && posYTemp <= resourcesMaxY) {
     						create = false;
     						System.out.println(posXTemp / ControlRoom.TILE_WIDTH + " , " + posYTemp / ControlRoom.TILE_HEIGHT + " : deja un occupant");

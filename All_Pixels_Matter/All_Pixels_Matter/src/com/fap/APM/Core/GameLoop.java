@@ -57,12 +57,12 @@ public class GameLoop extends Canvas implements Runnable {
 
         if (delta >= 1) {
             ControlRoom.TPS++;
+            ControlRoom.FPS++;
             delta--;
             timeForNewTick = true;
         }
 
         setTitleInfo();
-        ControlRoom.FPS++;
         if (timeForNewTick == true) {
             return true;
         }
@@ -84,7 +84,6 @@ public class GameLoop extends Canvas implements Runnable {
             createBufferStrategy(3);
             return;
         }
-
         DrawManager.shared().renderScreen();
 
         for (int i = 0; i < pixelsInFrame.length; i++) {
