@@ -1,9 +1,6 @@
 package com.fap.APM.Core;
 
-<<<<<<< HEAD
-=======
-import com.fap.APM.Graphics.Phy.CollisionManager;
->>>>>>> clock
+
 import com.fap.APM.Helpers.ControlRoom;
 
 public class InGameClock {
@@ -23,19 +20,13 @@ public class InGameClock {
 	    }
 		return INSTANCE;
 	}
-<<<<<<< HEAD
+
 
 	public static void startClock() {
 		INSTANCE = new InGameClock();
 	}
 
-=======
-	
-	public static void startInGameClock() {
-	    INSTANCE = new InGameClock();
-    }
-	
->>>>>>> clock
+
 	public void tickInGameClock() {
 		loopCount++;
 		
