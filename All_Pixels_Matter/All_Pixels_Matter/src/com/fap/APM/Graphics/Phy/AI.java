@@ -14,32 +14,37 @@ public class AI {
     public static AI shared() {
         if (INSTANCE == null) {
             INSTANCE = new AI();
-            
         }
         return INSTANCE;
     }
     
-    public void nextTick() {
-    	generateMonster();
+    public void monstersNextTick() {
+        for (int i = 0; i < WorldList.monsters.size(); i++) {
+            WorldList.monsters.get(i).nextTick();
+        }
+        generateRandomMonster();
 	}
-    
+
     public void generateMonster() {
-		time++;
-		if (time == 3600) {
+
+	}
+
+    public void generateRandomMonster() {
+        time++;
+        if (time == 3600) {
             time = 0;
         } else if (time == 120) {
             WorldMaker.shared().createEspirito(ControlRoom.STARTING_X - 200, ControlRoom.STARTING_Y - 200, 4, 2, 1, 1);
         } else if (time == 60) {
-           WorldMaker.shared().createZombie(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20, 4, 1, 1, 1);
+            WorldMaker.shared().createZombie(ControlRoom.STARTING_X + 20, ControlRoom.STARTING_Y + 20, 4, 1, 1, 1);
         } else if (time == 360) {
-           WorldMaker.shared().createLarvion(ControlRoom.STARTING_X + 40, ControlRoom.STARTING_Y + 40, 4, 3, 1, 1);
-
+            WorldMaker.shared().createLarvion(ControlRoom.STARTING_X + 40, ControlRoom.STARTING_Y + 40, 4, 3, 1, 1);
         }  else if (time == 240) {
             WorldMaker.shared().createBichette(ControlRoom.STARTING_X + 75, ControlRoom.STARTING_Y + 75, 4, 4, 1, 1);
         }
-	}
+    }
 
-    public void GenerateResource(int amountOfRandomGeneration) {
+    public void generateResource(int amountOfRandomGeneration) {
     	for (int i = 0; i < amountOfRandomGeneration; i++) {
     		int typeTemp = ControlRoom.RANDOM.nextInt(9) + 1;
     		int amountTemp = ControlRoom.RANDOM.nextInt(50);
@@ -49,8 +54,7 @@ public class AI {
 	
     	System.out.println("Ressource apres le random creation : " + WorldList.resources.size());
     }
-    
-    
+
     public void createRandomResource(int typeResource, int amountToCreate) {
     	Sprite sprite = null;
     	boolean create = false;
@@ -97,6 +101,7 @@ public class AI {
     				}
     				create = true;
     			}
+
     			if (create) {
     				for (int r = 0; r < WorldList.walls.size(); r ++) {
     					int wallsMinX =  WorldList.walls.get(r).posX;

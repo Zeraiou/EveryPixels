@@ -26,8 +26,7 @@ public class WorldMaker {
             INSTANCE.extractMapStructure();
             INSTANCE.extractMapFurniture();
             INSTANCE.extractMapResource();
-            AI.shared().GenerateResource(10);
-
+            AI.shared().generateResource(10);
         }
         return INSTANCE;
     }

@@ -71,10 +71,10 @@ public class GameLoop extends Canvas implements Runnable {
 
     private void worldTick() {
         ControlRoom.PLAYER.nextTick();
-        //Todo: write a method to setup only the objects involved in the screen/action/active zones etc.
-        for (int i = 0; i < WorldList.monsters.size(); i++) WorldList.monsters.get(i).nextTick();
-        for (int i = 0; i < WorldList.particles.size(); i++) WorldList.particles.get(i).nextTick();
-        AI.shared().nextTick();
+        AI.shared().monstersNextTick();
+        for (int i = 0; i < WorldList.particles.size(); i++) {
+            WorldList.particles.get(i).nextTick();
+        }
     }
 
     private void renderScreen() {
