@@ -4,6 +4,7 @@ import com.fap.APM.Core.Input.Mouse;
 import com.fap.APM.Graphics.Phy.AI;
 import com.fap.APM.Graphics.Phy.CollisionManager;
 import com.fap.APM.WorldObjects.Units.Player;
+import com.fap.APM.WorldObjects.InGameClock;
 import com.fap.APM.WorldObjects.WorldList;
 import javax.swing.JFrame;
 import java.awt.image.BufferStrategy;
@@ -56,7 +57,8 @@ public class GameLoop extends Canvas implements Runnable {
 
         while (running) {
             if (nextTick() == true) {
-                worldTick();
+                InGameClock.shared().tickInGameClock();
+            	worldTick();
                 CollisionManager.shared().collisionDetection();
                 WorldMaker.shared().removeEntity();
                 renderScreen();
