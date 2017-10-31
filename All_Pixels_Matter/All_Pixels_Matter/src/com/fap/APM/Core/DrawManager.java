@@ -49,11 +49,11 @@ public class DrawManager {
         }
 
         drawTiles();
-        drawPlayers();
         drawStructures();
         drawResources();
         drawMonsters();
         drawParticles();
+        drawPlayers();
     }
 
     private  void drawTiles() {
