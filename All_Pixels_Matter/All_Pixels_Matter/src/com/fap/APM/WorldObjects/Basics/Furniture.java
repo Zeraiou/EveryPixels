@@ -1,0 +1,24 @@
+package com.fap.APM.WorldObjects.Basics;
+
+import com.fap.APM.Graphics.Sprite;
+
+public class Furniture {
+	public int posX, posY;
+	public int width, height;
+    public int phyState;
+	public Sprite sprite;
+
+	public Furniture(Sprite sprite, int posX, int posY, int width, int height) {
+		this.posX = posX;
+		this.posY = posY;
+		this.width = width;
+		this.height = height;
+
+		this.sprite = sprite;
+	}
+	
+	public Sprite getSprite() {
+		return sprite;
+	}
+	
+}

@@ -3,6 +3,7 @@ import com.fap.APM.ControlRoom;
 import com.fap.APM.Graphics.Sprite;
 import com.fap.APM.Graphics.SpriteSheet;
 import com.fap.APM.WorldObjects.Items.Item;
+import com.fap.APM.WorldObjects.Basics.Furniture;
 import com.fap.APM.WorldObjects.Basics.Resource;
 import com.fap.APM.WorldObjects.Basics.Tile;
 import com.fap.APM.WorldObjects.Basics.Wall;
@@ -17,6 +18,8 @@ public class WorldList {
     public static List<Particle> particles = new ArrayList<Particle>();
     public static List<Tile> tiles = new ArrayList<Tile>();
     public static List<Wall> walls = new ArrayList<Wall>();
+    public static List<Furniture> furnitures = new ArrayList<Furniture>();
+    
     public static List<Resource> resources = new ArrayList<Resource>();
     public static List<Item> items = new ArrayList<Item>();
 
@@ -72,9 +75,12 @@ public class WorldList {
     public static Sprite particle8p = new Sprite(8, 8, 0xff7f00ff);
     public static Sprite particle9p = new Sprite(9, 9, 0xff7f00ff);
 
-    public static Sprite tile_Void12_Out = new Sprite(12, 12, 0x5D3F97);
-    public static Sprite tile_Void12_In = new Sprite(12, 12, 0x694BE1);
+    public static Sprite tile_Void12_Out = new Sprite(12, 12, 0xff5D3F97);
+    public static Sprite tile_Void12_In = new Sprite(12, 12, 0xff694BE1);
     public static Sprite sprite_Void12_transparent = new Sprite(12, 12, 0x00000000);
+
+    public static final int COLOR_TRANSPARENT = 0xffff00ff;
+    
     
     public static SpriteSheet tiles_Base12 = new SpriteSheet(ControlRoom.TILE_SPRITE_PATH, 48, 36);
     public static Sprite tile_Grass12 = new Sprite(12, 12, 0, 0, tiles_Base12);
@@ -120,29 +126,31 @@ public class WorldList {
     public static final int COLOR_NULL1 = 0xffFF00FF;
     public static final int COLOR_NULL2 = 0xff7f007f;
     
-    public static SpriteSheet Wall_Wood = new SpriteSheet(ControlRoom.WALL_WOOD_SPRITE_PATH, 120, 168);
-    public static Sprite sprite_Wall_Wood_1 = new Sprite(12, 48, 9, 0, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_2 = new Sprite(24, 48, 2, 0, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_3 = new Sprite(36, 48, 2, 0, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_4 = new Sprite(48, 48, 0, 0, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_1X1 = new Sprite(12, 12, 9, 8, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_1X2 = new Sprite(12, 24, 9, 6, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_1X3 = new Sprite(12, 36, 9, 3, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_1X4 = new Sprite(12, 48, 9, 1, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_2X1 = new Sprite(24, 12, 2, 8, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_2X2 = new Sprite(24, 24, 2, 6, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_2X3 = new Sprite(24, 36, 2, 3, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_2X4 = new Sprite(24, 48, 2, 1, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_3X1 = new Sprite(36, 12, 2, 8, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_3X2 = new Sprite(36, 24, 2, 6, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_3X3 = new Sprite(36, 36, 2, 3, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_3X4 = new Sprite(36, 48, 2, 1, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_4X1 = new Sprite(48, 12, 0, 8, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_4X2 = new Sprite(48, 24, 0, 6, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_4X3 = new Sprite(48, 36, 0, 3, Wall_Wood);
-    public static Sprite sprite_Wall_Wood_Top_4X4 = new Sprite(48, 48, 0, 1, Wall_Wood);
+    
+    ///Structures///
+    
+    public static SpriteSheet wall_Wood = new SpriteSheet(ControlRoom.WALL_WOOD_SPRITE_PATH, 120, 168);
+    public static Sprite sprite_Wall_Wood_1 = new Sprite(12, 48, 9, 0, wall_Wood);
+    public static Sprite sprite_Wall_Wood_2 = new Sprite(24, 48, 2, 0, wall_Wood);
+    public static Sprite sprite_Wall_Wood_3 = new Sprite(36, 48, 2, 0, wall_Wood);
+    public static Sprite sprite_Wall_Wood_4 = new Sprite(48, 48, 0, 0, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X1 = new Sprite(12, 12, 9, 8, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X2 = new Sprite(12, 24, 9, 6, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X3 = new Sprite(12, 36, 9, 3, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_1X4 = new Sprite(12, 48, 9, 1, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X1 = new Sprite(24, 12, 2, 8, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X2 = new Sprite(24, 24, 2, 6, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X3 = new Sprite(24, 36, 2, 3, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_2X4 = new Sprite(24, 48, 2, 1, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X1 = new Sprite(36, 12, 2, 8, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X2 = new Sprite(36, 24, 2, 6, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X3 = new Sprite(36, 36, 2, 3, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_3X4 = new Sprite(36, 48, 2, 1, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X1 = new Sprite(48, 12, 0, 8, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X2 = new Sprite(48, 24, 0, 6, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X3 = new Sprite(48, 36, 0, 3, wall_Wood);
+    public static Sprite sprite_Wall_Wood_Top_4X4 = new Sprite(48, 48, 0, 1, wall_Wood);
    
-    public static final int COLOR_TRANSPARENT = 0xffff00ff;
     public static final int COLOR_WALL_WOOD_1 = 0xff4293E8;
     public static final int COLOR_WALL_WOOD_2 = 0xffE53327;
     public static final int COLOR_WALL_WOOD_3 = 0xff42933F;
@@ -155,42 +163,48 @@ public class WorldList {
     public static final int COLOR_WALL_WOOD_TOP_3X2 = 0xffE02670;
     public static final int COLOR_WALL_WOOD_TOP_4X2 = 0xff7F5E28;
 
-    // public static final int COLOR_WALL_WOOD_TOP_1X1 = 0xff27E109;
-    // public static final int COLOR_WALL_WOOD_TOP_1X3 = 0xff27E109;
-    // public static final int COLOR_WALL_WOOD_TOP_1X4 = 0xff27E109;
-    // public static final int COLOR_WALL_WOOD_TOP_3X1 = 0xff27E109;
-   /* public static final int COLOR_WALL_WOOD_TOP_3X3 = 0xff27E109;
-    public static final int COLOR_WALL_WOOD_TOP_3X4 = 0xff27E109;
-    public static final int COLOR_WALL_WOOD_TOP_4X1 = 0xff27E109;
-    public static final int COLOR_WALL_WOOD_TOP_4X3 = 0xff27E109;
-    public static final int COLOR_WALL_WOOD_TOP_4X4 = 0xff27E109;
-   */
-    
-    public static SpriteSheet Door_Wood = new SpriteSheet(ControlRoom.DOOR_WOOD_SPRITE_PATH, 96, 96);
-    public static Sprite sprite_Door_Wood_Close = new Sprite(48, 48, 0, 1, Door_Wood);
-    public static Sprite sprite_Door_Wood_Open = new Sprite(12, 48, 4, 1, Door_Wood);
-    public static Sprite sprite_Door_Wood_Top_Close = new Sprite(48, 12, 0, 3, Door_Wood);
-    public static Sprite sprite_Wall_Wood_Top_Open = new Sprite(12, 48, 4, 0, Door_Wood);
+    public static SpriteSheet door_Wood = new SpriteSheet(ControlRoom.DOOR_WOOD_SPRITE_PATH, 96, 96);
+    public static Sprite sprite_Door_Wood_Close = new Sprite(48, 48, 0, 1, door_Wood);
+    public static Sprite sprite_Door_Wood_Open = new Sprite(12, 48, 4, 1, door_Wood);
+    public static Sprite sprite_Door_Wood_Top_Close = new Sprite(48, 12, 0, 3, door_Wood);
+    public static Sprite sprite_Wall_Wood_Top_Open = new Sprite(12, 48, 4, 0, door_Wood);
     
     public static final int COLOR_DOOR_WOOD_TOP_CLOSE = 0xffEAF8FF;
     public static final int COLOR_DOOR_WOOD_CLOSE = 0xffD3F4FF;
     public static final int COLOR_DOOR_WOOD_TOP_OPEN = 0xffB375FF;
     public static final int COLOR_DOOR_WOOD_OPEN = 0xffC4A5FF;
-
-    public static SpriteSheet Coniferous = new SpriteSheet(ControlRoom.CONIFEROUS_SPRITE_PATH, 144, 96);
-    public static Sprite sprite_Coniferous_Big = new Sprite(72, 96, 0, 0, Coniferous);
-    public static Sprite sprite_Coniferous_Small = new Sprite(72, 72, 1, 0, Coniferous);
     
-    public static SpriteSheet Hardwood = new SpriteSheet(ControlRoom.HARDWOOD_SPRITE_PATH, 120, 120);
-    public static Sprite sprite_Hardwood_Big = new Sprite(60, 96, 1, 0, Hardwood);
-    public static Sprite sprite_Hardwood_Small = new Sprite(60, 72, 0, 0, Hardwood);
-    public static Sprite sprite_Bush_Big = new Sprite(36, 24, 0, 3, Hardwood);
-    public static Sprite sprite_Bush_Small = new Sprite(24, 24, 0, 4, Hardwood);
     
-    public static SpriteSheet Rock = new SpriteSheet(ControlRoom.ROCK_SPRITE_PATH, 36, 72);
-    public static Sprite sprite_Rock_1X1 = new Sprite(12, 12, 0, 2, Rock);
-    public static Sprite sprite_Rock_2X2 = new Sprite(24, 24, 0, 0, Rock);
-    public static Sprite sprite_Rock_3X3 = new Sprite(36, 36, 0, 1, Rock);
+    
+    ///Furniture///
+    
+    public static SpriteSheet chest = new SpriteSheet(ControlRoom.CHEST_SPRITE_PATH, 48, 24);
+    public static Sprite sprite_Chest_Close = new Sprite(24, 24, 0, 0, chest);
+    public static Sprite sprite_Chest_Open = new Sprite(24, 24, 1, 0, chest);
+    
+    
+    public static final int COLOR_CHEST_CLOSE = 0xff261A06;
+    public static final int COLOR_CHEST_OPEN = 0xff231A0B;
+   
+    
+    
+    
+    ///Resources///
+    
+    public static SpriteSheet coniferous = new SpriteSheet(ControlRoom.CONIFEROUS_SPRITE_PATH, 144, 96);
+    public static Sprite sprite_Coniferous_Big = new Sprite(72, 96, 0, 0, coniferous);
+    public static Sprite sprite_Coniferous_Small = new Sprite(72, 72, 1, 0, coniferous);
+    
+    public static SpriteSheet hardwood = new SpriteSheet(ControlRoom.HARDWOOD_SPRITE_PATH, 120, 120);
+    public static Sprite sprite_Hardwood_Big = new Sprite(60, 96, 1, 0, hardwood);
+    public static Sprite sprite_Hardwood_Small = new Sprite(60, 72, 0, 0, hardwood);
+    public static Sprite sprite_Bush_Big = new Sprite(36, 24, 0, 3, hardwood);
+    public static Sprite sprite_Bush_Small = new Sprite(24, 24, 0, 4, hardwood);
+    
+    public static SpriteSheet rock = new SpriteSheet(ControlRoom.ROCK_SPRITE_PATH, 36, 72);
+    public static Sprite sprite_Rock_1X1 = new Sprite(12, 12, 0, 2, rock);
+    public static Sprite sprite_Rock_2X2 = new Sprite(24, 24, 0, 0, rock);
+    public static Sprite sprite_Rock_3X3 = new Sprite(36, 36, 0, 1, rock);
     
     public static final int COLOR_CONIFEROUS_BIG = 0xffC619FF;
     public static final int COLOR_CONIFEROUS_SMALL = 0xff870FFF;

@@ -50,13 +50,15 @@ public class DrawManager {
 
         drawTiles();
         drawStructures();
+        drawFurnitures();
         drawResources();
         drawMonsters();
         drawParticles();
         drawPlayers();
     }
 
-    private  void drawTiles() {
+
+	private  void drawTiles() {
         int x0 = (offsetX - tileWidth) / tileWidth;
         int x1 = (offsetX + screenWidth + tileWidth) / tileWidth;
         int y0 = (offsetY - tileHeight) / tileHeight;
@@ -88,35 +90,63 @@ public class DrawManager {
         }
     }
     
-    private  void drawStructures() {
-     
+	private  void drawStructures() {
+		for (int g = 0; g < WorldList.walls.size(); g++) {
         
-        for (int g = 0; g < WorldList.walls.size(); g++) {
-        
-                int posX = WorldList.walls.get(g).posX - offsetX;
-                int posY = WorldList.walls.get(g).posY - offsetY;
-                Sprite sprite = WorldList.walls.get(g).sprite;
+			int posX = WorldList.walls.get(g).posX - offsetX;
+			int posY = WorldList.walls.get(g).posY - offsetY;
+			Sprite sprite = WorldList.walls.get(g).sprite;
 
 
-                for (int i = 0; i < sprite.height; i++) {
-                    int yAbsolu = i + posY;
+			for (int i = 0; i < sprite.height; i++) {
+				int yAbsolu = i + posY;
 
-                    for (int j = 0; j < sprite.width; j++) {
-                        int xAbsolu = j + posX;
+				for (int j = 0; j < sprite.width; j++) {
+					int xAbsolu = j + posX;
 
-                        if (xAbsolu < - sprite.width || xAbsolu >= screenWidth || yAbsolu < 0 || yAbsolu >= screenHeight) {
-                            break;
-                        } else if (xAbsolu < 0) {
-                            xAbsolu = 0;
-                        }
-                        if (sprite.pixelsSprite[j + i * sprite.width] != WorldList.COLOR_NULL1) {
+					if (xAbsolu < - sprite.width || xAbsolu >= screenWidth || yAbsolu < 0 || yAbsolu >= screenHeight) {
+						break;
+					} else if (xAbsolu < 0) {
+						xAbsolu = 0;
+					}
+					if (sprite.pixelsSprite[j + i * sprite.width] != WorldList.COLOR_NULL1) {
 
-                        pixelsScreen[xAbsolu + yAbsolu * screenWidth] = sprite.pixelsSprite[j + i * sprite.width];
-                        }
-                    }
-                }
-        }
-   }
+						pixelsScreen[xAbsolu + yAbsolu * screenWidth] = sprite.pixelsSprite[j + i * sprite.width];
+					}
+				}
+			}
+		}
+	}
+
+    
+    private void drawFurnitures() {
+    	for (int g = 0; g < WorldList.furnitures.size(); g++) {
+            
+			int posX = WorldList.furnitures.get(g).posX - offsetX;
+			int posY = WorldList.furnitures.get(g).posY - offsetY;
+			Sprite sprite = WorldList.furnitures.get(g).sprite;
+
+
+			for (int i = 0; i < sprite.height; i++) {
+				int yAbsolu = i + posY;
+
+				for (int j = 0; j < sprite.width; j++) {
+					int xAbsolu = j + posX;
+
+					if (xAbsolu < - sprite.width || xAbsolu >= screenWidth || yAbsolu < 0 || yAbsolu >= screenHeight) {
+						break;
+					} else if (xAbsolu < 0) {
+						xAbsolu = 0;
+					}
+					if (sprite.pixelsSprite[j + i * sprite.width] != WorldList.COLOR_NULL1) {
+
+						pixelsScreen[xAbsolu + yAbsolu * screenWidth] = sprite.pixelsSprite[j + i * sprite.width];
+					}
+				}
+			}
+		}
+    	
+    }
     
     private  void drawResources() {
      

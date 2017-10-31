@@ -82,10 +82,16 @@ public class AI {
     			int posYTemp = (ControlRoom.RANDOM.nextInt(WorldMaker.shared().height) * ControlRoom.TILE_HEIGHT);
     			
     			for (int r = 0; r < WorldList.resources.size(); r ++) {
-    				if (posXTemp == WorldList.resources.get(r).posX) {
-    					if (posYTemp == WorldList.resources.get(r).posY) {
+    				int resourcesMinX =  WorldList.resources.get(r).posX;
+    				int resourcesMinY =  WorldList.resources.get(r).posY;
+    				int resourcesMaxX =  WorldList.resources.get(r).posX +  WorldList.resources.get(r).width;
+    				int resourcesMaxY =  WorldList.resources.get(r).posY +  WorldList.resources.get(r).height;
+    				
+    				
+    				if (posXTemp >= resourcesMinX && posXTemp <= resourcesMaxX) {
+    					if (posYTemp >= resourcesMinY && posYTemp <= resourcesMaxY) {
     						create = false;
-    						System.out.println("deja un occupant");
+    						System.out.println(posXTemp / ControlRoom.TILE_WIDTH + " , " + posYTemp / ControlRoom.TILE_HEIGHT + " : deja un occupant");
     						break;
     					}
     				}
@@ -93,10 +99,16 @@ public class AI {
     			}
     			if (create) {
     				for (int r = 0; r < WorldList.walls.size(); r ++) {
-    					if (posXTemp == WorldList.walls.get(r).posX) {
-    						if (posYTemp == WorldList.walls.get(r).posY) {
+    					int wallsMinX =  WorldList.walls.get(r).posX;
+        				int wallsMinY =  WorldList.walls.get(r).posY;
+        				int wallsMaxX =  WorldList.walls.get(r).posX +  WorldList.walls.get(r).width;
+        				int wallsMaxY =  WorldList.walls.get(r).posY +  WorldList.walls.get(r).height;
+        			
+    					
+    					if (posXTemp >= wallsMinX && posXTemp <= wallsMaxX) {
+        					if (posYTemp >= wallsMinY && posYTemp <= wallsMaxY) {
     							create = false;
-    							System.out.println("deja un occupant");
+    							System.out.println(posXTemp / ControlRoom.TILE_WIDTH + " , " + posYTemp / ControlRoom.TILE_HEIGHT + " : deja un occupant");
     							break;
     						}
     					}

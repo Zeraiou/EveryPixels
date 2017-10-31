@@ -38,14 +38,21 @@ public class ControlRoom {
     public static final String GAME_TITLE = "All Pixels Matter!";
     public static final String TILE_SPRITE_PATH = "/Textures/SpriteSheets/Tiles/TileBase12.png";
 
+    ///STRUCTURES///
     /// WALLS ///
     public static final String WALL_WOOD_SPRITE_PATH = "/Textures/SpriteSheets/Structure/Wall-Wood.png";
     public static final String DOOR_WOOD_SPRITE_PATH = "/Textures/SpriteSheets/Structure/Door-Wood.png";
 
+    ///FURNITURES///
+    public static final String CHEST_SPRITE_PATH = "/Textures/SpriteSheets/Furniture/Chest.png";
+
+    
+    
+    ///RESOURCES///
     /// TREES ///
     public static final String CONIFEROUS_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Coniferous.png";
     public static final String HARDWOOD_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Hardwood.png";
-    ///RESOURCES///
+   
     public static final String ROCK_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Rocks.png";
 
     /// MONSTERS ///
@@ -58,6 +65,7 @@ public class ControlRoom {
     /// MAP DATA ///
     public static final String MAP_FIELD_PATH = "/Map/Map512-Field.png"; // Map64.png, Map1024.png, Map8192.png
     public static final String MAP_STRUCTURE_PATH = "/Map/Map512-Structure.png"; // Map64.png, Map1024.png, Map8192.png
+    public static final String MAP_FURNITURE_PATH = "/Map/Map512-Furniture.png"; // Map64.png, Map1024.png, Map8192.png
     public static final String MAP_RESOURCE_PATH = "/Map/Map512-Resource.png"; // Map64.png, Map1024.png, Map8192.png
 
     /// TIME VARIABLES ///
