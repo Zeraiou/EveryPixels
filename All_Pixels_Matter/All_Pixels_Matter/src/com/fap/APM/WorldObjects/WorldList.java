@@ -201,5 +201,4 @@ public class WorldList {
     public static final int COLOR_ROCK_1X1 = 0xff5B5B5B;
     public static final int COLOR_ROCK_2X2 = 0xff676772;
     public static final int COLOR_ROCK_3X3 = 0xff7A7A87;
-
 }

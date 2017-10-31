@@ -20,6 +20,14 @@ public class Movement {
         return y * magnitude;
     }
 
+    public int getXDirectionalVec() {
+        return x;
+    }
+
+    public int getYDirectionalVec() {
+        return y;
+    }
+
     public int getCardinalDirection() {
         return cardinalDirection;
     }
@@ -42,6 +50,11 @@ public class Movement {
     public void setYDirection(int y) {
         this.y = y;
         updateCardinalDirection();
+    }
+
+    public void stop() {
+        this.x = 0;
+        this.y = 0;
     }
 
     private void updateCardinalDirection() {

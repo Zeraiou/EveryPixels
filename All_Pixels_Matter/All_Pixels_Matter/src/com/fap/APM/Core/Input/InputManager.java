@@ -3,11 +3,13 @@ import com.fap.APM.ControlRoom;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputManager {
 
     private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
-    protected boolean[] keys = new boolean[199];
+    public static List<Integer> movementKeys = new ArrayList<Integer>();
 
     public void loadInputActions(JFrame frame) {
         mapInputToAction(frame, "W", new moveUp(KeyEvent.VK_W));
@@ -73,7 +75,7 @@ public class InputManager {
                 System.out.println("KeyPush:W " + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
             }
             ControlRoom.PLAYER.movement.setYDirection(-1);
-            keys[this.key] = true;
+            InputManager.addKeyIfNotInList(1);
         }
     }
 
@@ -92,7 +94,7 @@ public class InputManager {
                 System.out.println("KeyPush:S " + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
             }
             ControlRoom.PLAYER.movement.setYDirection(1);
-            keys[this.key] = true;
+            InputManager.addKeyIfNotInList(2);
         }
     }
 
@@ -111,7 +113,7 @@ public class InputManager {
                 System.out.println("KeyPush:A" + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
             }
             ControlRoom.PLAYER.movement.setXDirection(-1);
-            keys[this.key] = true;
+            InputManager.addKeyIfNotInList(3);
         }
     }
 
@@ -130,7 +132,7 @@ public class InputManager {
                 System.out.println("KeyPush:D " + System.currentTimeMillis() / 1000 + " " + e.getActionCommand());
             }
             ControlRoom.PLAYER.movement.setXDirection(1);
-            keys[this.key] = true;
+            InputManager.addKeyIfNotInList(4);
         }
     }
 
@@ -386,6 +388,19 @@ public class InputManager {
             if (ControlRoom.KEYBOARD_INPUT_OUT == true) {
                 System.out.println("KeyPush:V " + System.currentTimeMillis()/1000 + " " + e.getActionCommand());
             }
+        }
+    }
+
+    private static void addKeyIfNotInList(Integer movementKey) {
+        boolean exists = false;
+
+        for (int i = 0; i < movementKeys.size(); i++) {
+            if (movementKeys.get(i) == movementKey) {
+                exists = true;
+            }
+        }
+        if (exists == false) {
+            movementKeys.add(movementKey);
         }
     }
 }
