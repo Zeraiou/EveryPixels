@@ -1,7 +1,7 @@
-package com.fap.APM.WorldObjects.Units;
+package com.fap.APM.Graphics.Units;
 
-import com.fap.APM.Graphics.AnimatedSprite;
-import com.fap.APM.WorldObjects.WorldList;
+import com.fap.APM.Graphics.Sprites.AnimatedSprite;
+import com.fap.APM.Core.WorldList;
 
 public class MonsterAnimations {
     public static AnimatedSprite animationDown_Zombie = new AnimatedSprite(WorldList.zombie_Base22_Down, 24, 24, 3);

@@ -1,6 +1,6 @@
 package com.fap.APM.Helpers;
 
-import com.fap.APM.WorldObjects.Units.Monster;
+import com.fap.APM.Graphics.Units.Monster;
 
 public class Helper {
 

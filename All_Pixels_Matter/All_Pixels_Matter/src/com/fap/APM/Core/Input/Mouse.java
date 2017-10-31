@@ -1,8 +1,8 @@
 package com.fap.APM.Core.Input;
-import com.fap.APM.Core.ControlRoom;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import com.fap.APM.Helpers.ControlRoom;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 
 public class Mouse implements MouseListener, MouseMotionListener {
 
@@ -18,6 +18,10 @@ public class Mouse implements MouseListener, MouseMotionListener {
             INSTANCE = new Mouse();
         }
         return INSTANCE;
+    }
+
+    public static void startMouse() {
+        INSTANCE = new Mouse();
     }
 
 	public int getMouseX() {

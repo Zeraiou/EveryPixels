@@ -1,4 +1,4 @@
-package com.fap.APM.Graphics;
+package com.fap.APM.Graphics.Sprites;
 
 public class Sprite {
 	

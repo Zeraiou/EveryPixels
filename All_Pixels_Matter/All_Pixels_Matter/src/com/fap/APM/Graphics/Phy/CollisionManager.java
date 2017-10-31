@@ -13,11 +13,15 @@ public class CollisionManager {
 		return INSTANCE;
 	}
 
+	public static void startCollision() {
+	    INSTANCE = new CollisionManager();
+    }
+
 	public void collisionDetection() {
 
 	}
 }
-	    
+
 	/*    
 	    private boolean CollisionCreatureTuile(double xAbsolu, double yAbsolu) {
 			boolean Solide = false;

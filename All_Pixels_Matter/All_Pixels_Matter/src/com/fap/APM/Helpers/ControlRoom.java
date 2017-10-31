@@ -1,6 +1,6 @@
-package com.fap.APM.Core;
+package com.fap.APM.Helpers;
 import java.util.Random;
-import com.fap.APM.WorldObjects.Units.Player;
+import com.fap.APM.Graphics.Units.Player;
 
 public class ControlRoom {
 

@@ -1,4 +1,4 @@
-package com.fap.APM.Graphics;
+package com.fap.APM.Graphics.Sprites;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;

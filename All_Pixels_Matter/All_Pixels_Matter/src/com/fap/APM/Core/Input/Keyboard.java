@@ -1,7 +1,7 @@
 package com.fap.APM.Core.Input;
-import com.fap.APM.Core.ControlRoom;
-import java.awt.event.KeyEvent;
+import com.fap.APM.Helpers.ControlRoom;
 import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 
 public class Keyboard implements KeyListener {
 
@@ -17,6 +17,10 @@ public class Keyboard implements KeyListener {
             INSTANCE = new Keyboard();
         }
         return INSTANCE;
+    }
+
+    public static void startKeyboard() {
+        INSTANCE = new Keyboard();
     }
 
     @Override

@@ -1,5 +1,5 @@
-package com.fap.APM.Graphics;
-import com.fap.APM.WorldObjects.WorldList;
+package com.fap.APM.Graphics.Sprites;
+import com.fap.APM.Core.WorldList;
 import java.util.Random;
 
 public class Particle {

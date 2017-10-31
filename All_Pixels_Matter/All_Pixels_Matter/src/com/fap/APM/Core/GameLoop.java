@@ -1,11 +1,10 @@
 package com.fap.APM.Core;
+import com.fap.APM.Helpers.ControlRoom;
 import com.fap.APM.Core.Input.Keyboard;
 import com.fap.APM.Core.Input.Mouse;
 import com.fap.APM.Graphics.Phy.AI;
 import com.fap.APM.Graphics.Phy.CollisionManager;
-import com.fap.APM.WorldObjects.Units.Player;
-import com.fap.APM.WorldObjects.InGameClock;
-import com.fap.APM.WorldObjects.WorldList;
+import com.fap.APM.Graphics.Units.Player;
 import javax.swing.JFrame;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -14,8 +13,6 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-
-import static com.fap.APM.Core.ControlRoom.TITLE_INFO_OUT;
 
 public class GameLoop extends Canvas implements Runnable {
 
@@ -41,16 +38,20 @@ public class GameLoop extends Canvas implements Runnable {
         startGame(gameLoop);
 	}
 
-	private static synchronized void startGame(GameLoop gameLoop) {
-		Thread thread = new Thread(gameLoop, "Display");
-		thread.start();
-	}
+	private void GameLoop() {
+        WorldMaker.startWorld();
+        Keyboard.startKeyboard();
+        Mouse.startMouse();
+        DrawManager.startDraw();
+        EffectsManager.startEffects();
+        CollisionManager.startCollision();
+        AI.startAI();
+    }
 
     @Override
     public void run() {
-        addKeyListener(Keyboard.shared());
-        Keyboard.shared().inputManager.loadInputActions(frame);
-        addMouseListener(Mouse.shared());
+	    addInputDevices();
+
         ControlRoom.PLAYER = new Player();
         requestFocus();
         running = true;
@@ -115,7 +116,7 @@ public class GameLoop extends Canvas implements Runnable {
     }
 
     private void setTitleInfo() {
-        if (TITLE_INFO_OUT == true) {
+        if (ControlRoom.TITLE_INFO_OUT == true) {
             if (System.currentTimeMillis() - clock1Sec > 1000) {
                 clock1Sec += 1000;
                 frame.setTitle(ControlRoom.GAME_TITLE + " | Fps: " + ControlRoom.FPS + ", Tps: " + ControlRoom.TPS
@@ -125,6 +126,17 @@ public class GameLoop extends Canvas implements Runnable {
                 ControlRoom.TPS = 0;
             }
         }
+    }
+
+    private static synchronized void startGame(GameLoop gameLoop) {
+        Thread thread = new Thread(gameLoop, "Display");
+        thread.start();
+    }
+
+    private void addInputDevices() {
+        Keyboard.shared().inputManager.loadInputActions(frame);
+        addKeyListener(Keyboard.shared());
+        addMouseListener(Mouse.shared());
     }
 }
 

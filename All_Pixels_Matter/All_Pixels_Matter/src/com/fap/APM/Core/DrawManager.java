@@ -1,7 +1,7 @@
 package com.fap.APM.Core;
-import com.fap.APM.Graphics.Sprite;
-import com.fap.APM.WorldObjects.Basics.Tile;
-import com.fap.APM.WorldObjects.WorldList;
+import com.fap.APM.Helpers.ControlRoom;
+import com.fap.APM.Graphics.Sprites.Sprite;
+import com.fap.APM.Graphics.Basics.Tile;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
@@ -37,8 +37,11 @@ public class DrawManager {
         return INSTANCE;
     }
 
-    public void renderScreen() {
+    public static void startDraw() {
+        INSTANCE = new DrawManager();
+    }
 
+    public void renderScreen() {
         pixelsScreen = new int[totalPixels];
         this.offsetX = (int)(ControlRoom.PLAYER.posX - screenCenterX);
         this.offsetY = (int)(ControlRoom.PLAYER.posY - screenCenterY);

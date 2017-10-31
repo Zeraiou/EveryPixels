@@ -1,11 +1,11 @@
 package com.fap.APM.Core;
-import com.fap.APM.WorldObjects.Units.*;
-import com.fap.APM.Graphics.Sprite;
+import com.fap.APM.Helpers.ControlRoom;
+import com.fap.APM.Graphics.Units.*;
+import com.fap.APM.Graphics.Sprites.Sprite;
 import com.fap.APM.Graphics.Phy.AI;
-import com.fap.APM.WorldObjects.WorldList;
-import com.fap.APM.WorldObjects.Basics.Furniture;
-import com.fap.APM.WorldObjects.Basics.Resource;
-import com.fap.APM.WorldObjects.Basics.Wall;
+import com.fap.APM.Graphics.Basics.Furniture;
+import com.fap.APM.Graphics.Basics.Resource;
+import com.fap.APM.Graphics.Basics.Wall;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -30,6 +30,9 @@ public class WorldMaker {
         return INSTANCE;
     }
 
+    public static void startWorld() {
+        INSTANCE = new WorldMaker();
+    }
 
 	private void extractMapField() {
         try {

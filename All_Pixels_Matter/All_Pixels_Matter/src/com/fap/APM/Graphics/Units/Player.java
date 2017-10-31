@@ -1,8 +1,8 @@
-package com.fap.APM.WorldObjects.Units;
+package com.fap.APM.Graphics.Units;
 import com.fap.APM.Helpers.Movement;
-import com.fap.APM.Core.ControlRoom;
-import com.fap.APM.Graphics.AnimatedSprite;
-import com.fap.APM.WorldObjects.WorldList;
+import com.fap.APM.Helpers.ControlRoom;
+import com.fap.APM.Graphics.Sprites.AnimatedSprite;
+import com.fap.APM.Core.WorldList;
 
 public class Player {
 

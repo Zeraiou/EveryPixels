@@ -1,8 +1,8 @@
-package com.fap.APM.WorldObjects.Units;
-import com.fap.APM.Core.ControlRoom;
+package com.fap.APM.Graphics.Units;
+import com.fap.APM.Helpers.ControlRoom;
 import com.fap.APM.Core.DrawManager;
 import com.fap.APM.Helpers.Helper;
-import com.fap.APM.Graphics.AnimatedSprite;
+import com.fap.APM.Graphics.Sprites.AnimatedSprite;
 import java.util.Random;
 
 public class Monster {

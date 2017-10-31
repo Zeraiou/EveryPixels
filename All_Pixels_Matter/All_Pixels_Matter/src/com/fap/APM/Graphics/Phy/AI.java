@@ -1,11 +1,12 @@
 package com.fap.APM.Graphics.Phy;
-import com.fap.APM.Core.ControlRoom;
+import com.fap.APM.Helpers.ControlRoom;
 import com.fap.APM.Core.WorldMaker;
-import com.fap.APM.Graphics.Sprite;
-import com.fap.APM.WorldObjects.WorldList;
-import com.fap.APM.WorldObjects.Basics.Resource;
+import com.fap.APM.Graphics.Sprites.Sprite;
+import com.fap.APM.Core.WorldList;
+import com.fap.APM.Graphics.Basics.Resource;
 
 public class AI {
+
     private static AI INSTANCE = null;
     private int time = 0;
 
@@ -17,7 +18,11 @@ public class AI {
         }
         return INSTANCE;
     }
-    
+
+    public static void startAI(){
+        INSTANCE = new AI();
+    }
+
     public void monstersNextTick() {
         for (int i = 0; i < WorldList.monsters.size(); i++) {
             WorldList.monsters.get(i).nextTick();

@@ -1,7 +1,5 @@
 package com.fap.APM.Core;
 
-import com.fap.APM.WorldObjects.WorldList;
-
 public class EffectsManager {
 
     private static EffectsManager INSTANCE = null;
@@ -14,6 +12,10 @@ public class EffectsManager {
             INSTANCE = new EffectsManager();
         }
         return INSTANCE;
+    }
+
+    public static void startEffects() {
+        INSTANCE = new EffectsManager();
     }
 
     public void effectsNextTick() {

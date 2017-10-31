@@ -1,5 +1,5 @@
-package com.fap.APM.WorldObjects.Basics;
-import com.fap.APM.Graphics.Sprite;
+package com.fap.APM.Graphics.Basics;
+import com.fap.APM.Graphics.Sprites.Sprite;
 
 public class Tile {
 

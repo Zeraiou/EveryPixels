@@ -1,15 +1,14 @@
-package com.fap.APM.WorldObjects.Basics;
+package com.fap.APM.Graphics.Basics;
 
-import com.fap.APM.Graphics.Sprite;
+import com.fap.APM.Graphics.Sprites.Sprite;
 
-public class Wall {
-	
+public class Furniture {
 	public int posX, posY;
 	public int width, height;
     public int phyState;
 	public Sprite sprite;
 
-	public Wall(Sprite sprite, int posX, int posY, int width, int height) {
+	public Furniture(Sprite sprite, int posX, int posY, int width, int height) {
 		this.posX = posX;
 		this.posY = posY;
 		this.width = width;
