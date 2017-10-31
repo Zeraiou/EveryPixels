@@ -12,6 +12,10 @@ public class CollisionManager {
 		}
 		return INSTANCE;
 	}
+
+	public void collisionDetection() {
+
+	}
 }
 	    
 	/*    

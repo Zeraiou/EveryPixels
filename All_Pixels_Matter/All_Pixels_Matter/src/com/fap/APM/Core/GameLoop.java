@@ -10,6 +10,7 @@ import com.fap.APM.ControlRoom;
 import com.fap.APM.Core.Input.Keyboard;
 import com.fap.APM.Core.Input.Mouse;
 import com.fap.APM.Graphics.Phy.AI;
+import com.fap.APM.Graphics.Phy.CollisionManager;
 import com.fap.APM.WorldObjects.Units.Player;
 import com.fap.APM.WorldObjects.WorldList;
 
@@ -39,12 +40,36 @@ public class GameLoop extends Canvas implements Runnable {
         running = true;
 
         while (running) {
-            nextTick();
-
-            renderScreen();
+            if (nextTick() == true) {
+                worldTick();
+                CollisionManager.shared().collisionDetection();
+                WorldMaker.shared().removeEntity();
+                renderScreen();
+            }
         }
         running = false;
     }
+
+    private boolean nextTick() {
+        boolean timeForNewTick = false;
+        long currentTime = System.nanoTime();
+        delta += (currentTime - lastTime) / ControlRoom.NANOSECONDE;
+        lastTime = currentTime;
+
+        if (delta >= 1) {
+            ControlRoom.TPS++;
+            delta--;
+            timeForNewTick = true;
+        }
+
+        setTitleInfo();
+        ControlRoom.FPS++;
+        if (timeForNewTick == true) {
+            return true;
+        }
+        return false;
+    }
+
 
     public void renderScreen() {
         BufferStrategy BufferStrategy = getBufferStrategy();
@@ -66,22 +91,6 @@ public class GameLoop extends Canvas implements Runnable {
         graphics.drawImage(imageInFrame, 0, 0, ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, null);
         graphics.dispose();
         BufferStrategy.show();
-    }
-
-    public void nextTick() {
-        long currentTime = System.nanoTime();
-        delta += (currentTime - lastTime) / ControlRoom.NANOSECONDE;
-        lastTime = currentTime;
-
-        if (delta >= 1) {
-            worldTick();
-            WorldMaker.shared().removeEntity();
-            ControlRoom.TPS++;
-            delta--;
-        }
-
-        setTitleInfo();
-        ControlRoom.FPS++;
     }
 
     private void setTitleInfo() {
