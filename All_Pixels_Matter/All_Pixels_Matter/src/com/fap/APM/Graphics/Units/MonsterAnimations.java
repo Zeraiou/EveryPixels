@@ -22,5 +22,4 @@ public class MonsterAnimations {
     public static AnimatedSprite animationRight_Bichette = new AnimatedSprite(WorldList.bichette_34_Right, 36, 48, 3);
     public static AnimatedSprite animationUp_Bichette = new AnimatedSprite(WorldList.bichette_34_Up, 36, 48, 3);
     public static AnimatedSprite animationLeft_Bichette = new AnimatedSprite(WorldList.bichette_34_Left, 36, 48, 3);
-
 }

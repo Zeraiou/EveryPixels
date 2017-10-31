@@ -20,11 +20,16 @@ public class CollisionManager {
     }
 
 	public void collisionDetection() {
-	     for (int i = 0; i < WorldList.resources.size(); i++) {
+        for (int i = 0; i < WorldList.resources.size(); i++) {
 
-         }
+        }
 	}
 }
+
+
+
+
+
 
 	/*    
 	    private boolean CollisionCreatureTuile(double xAbsolu, double yAbsolu) {
