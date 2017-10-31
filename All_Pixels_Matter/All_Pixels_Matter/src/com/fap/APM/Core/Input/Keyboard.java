@@ -1,5 +1,5 @@
 package com.fap.APM.Core.Input;
-import com.fap.APM.ControlRoom;
+import com.fap.APM.Core.ControlRoom;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

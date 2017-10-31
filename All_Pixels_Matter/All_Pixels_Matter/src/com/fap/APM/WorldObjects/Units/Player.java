@@ -1,6 +1,6 @@
 package com.fap.APM.WorldObjects.Units;
 import com.fap.APM.Helpers.Movement;
-import com.fap.APM.ControlRoom;
+import com.fap.APM.Core.ControlRoom;
 import com.fap.APM.Graphics.AnimatedSprite;
 import com.fap.APM.WorldObjects.WorldList;
 
@@ -29,10 +29,12 @@ public class Player {
     }
 
 	public void nextTick() {
-        posX += movement.getXMovement();
-        posY += movement.getYMovement();
-        animationDirection();
-        sprite.tickAnimation();
+	    if (movement.moving() == true) {
+            posX += movement.getXMovement();
+            posY += movement.getYMovement();
+            animationDirection();
+            sprite.tickAnimation();
+        }
     }
 
     public void animationDirection() {

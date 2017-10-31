@@ -1,4 +1,4 @@
-package com.fap.APM;
+package com.fap.APM.Core;
 import java.util.Random;
 import com.fap.APM.WorldObjects.Units.Player;
 

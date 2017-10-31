@@ -56,6 +56,12 @@ public class Movement {
         this.x = 0;
         this.y = 0;
     }
+    public boolean moving() {
+        if (x == 0 && y == 0)  {
+            return false;
+        }
+        return true;
+    }
 
     private void updateCardinalDirection() {
         if (x == 0) {
