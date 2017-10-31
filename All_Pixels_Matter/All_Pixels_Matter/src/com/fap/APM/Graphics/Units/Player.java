@@ -6,10 +6,19 @@ import com.fap.APM.Core.WorldList;
 
 public class Player {
 
-    private AnimatedSprite animationDown = new AnimatedSprite(WorldList.player_Base34_Down, 36, 48, 3);
-    private AnimatedSprite animationRight = new AnimatedSprite(WorldList.player_Base34_Right, 36, 48, 3);
-    private AnimatedSprite animationUp = new AnimatedSprite(WorldList.player_Base34_Up, 36, 48, 3);
-    private AnimatedSprite animationLeft = new AnimatedSprite(WorldList.player_Base34_Left, 36, 48, 3);
+    private AnimatedSprite animationIdle_Down = new AnimatedSprite(WorldList.player_Idle_Down, 36, 48, 1);
+    private AnimatedSprite animationIdle_Right = new AnimatedSprite(WorldList.player_Idle_Right, 36, 48, 1);
+    private AnimatedSprite animationIdle_Up = new AnimatedSprite(WorldList.player_Idle_Up, 36, 48, 1);
+    private AnimatedSprite animationIdle_Left = new AnimatedSprite(WorldList.player_Idle_Left, 36, 48, 1);
+	
+	
+    private AnimatedSprite animationWalking_Down = new AnimatedSprite(WorldList.player_Walking_Down, 36, 48, 3);
+    private AnimatedSprite animationWalking_Right = new AnimatedSprite(WorldList.player_Walking_Right, 36, 48, 3);
+    private AnimatedSprite animationWalking_Up = new AnimatedSprite(WorldList.player_Walking_Up, 36, 48, 3);
+    private AnimatedSprite animationWalking_Left = new AnimatedSprite(WorldList.player_Walking_Left, 36, 48, 3);
+    
+    
+    
     public AnimatedSprite sprite;
     private double healthPoints, maxHealthPoints, fireRate, pointExperience;
     private boolean isAlive = true;
@@ -18,7 +27,7 @@ public class Player {
     public Movement movement;
 
 	public Player() {
-        sprite = animationDown;
+        sprite = animationIdle_Down;
         posX = ControlRoom.STARTING_X;
         posY = ControlRoom.STARTING_Y;
         healthPoints = ControlRoom.HEALTH_POINTS;
@@ -39,13 +48,15 @@ public class Player {
 
     public void animationDirection() {
         if (movement.getCardinalDirection() == 1) {
-            sprite = animationUp;
+            sprite = animationWalking_Up;
         } else if (movement.getCardinalDirection() == 3) {
-            sprite = animationDown;
+            sprite = animationWalking_Down;
         } else if (movement.getCardinalDirection() == 2 || movement.getCardinalDirection() == 5 || movement.getCardinalDirection() == 6) {
-            sprite = animationRight;
+            sprite = animationWalking_Right;
         } else {
-            sprite = animationLeft;
+            sprite = animationWalking_Left;
         }
+        
+        
     }
 }
