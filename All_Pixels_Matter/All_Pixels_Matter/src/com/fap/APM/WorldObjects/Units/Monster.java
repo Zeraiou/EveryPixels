@@ -19,38 +19,40 @@ public class Monster {
     public boolean isMoving = false;
     private int monsterType, level, status, orientation;
 
-	public Monster(int posX, int posY, int orientation, int type, int level, int status) {
+    public Monster(int posX, int posY, int orientation, int type, int level, int status) {
+        this.posX = posX;
+        this.posY = posY;
+        this.monsterType = type;
+        this.level = level;
+        this.status = status;
+        this.orientation = orientation;
+        this.movementSpeed = 1.0;
+        this.ticksAlive = 0;
+
+        setMonsterType();
+
+        if (orientation == 1) {
+            sprite = animUp;
+        } else if (orientation == 2) {
+            sprite = animDown;
+        } else if (orientation == 3) {
+            sprite = animRight;
+        } else if (orientation == 4) {
+            sprite = animLeft;
+        }
+    }
+
+	public Monster(int posX, int posY, int orientation, int type, int status) {
 		this.posX = posX;
 		this.posY = posY;
 		this.monsterType = type;
-		this.level = level;
+		this.level = 1;
 		this.status = status;
 		this.orientation = orientation;
 		this.movementSpeed = 1.0;
 		this.ticksAlive = 0;
 
-		if (monsterType == 1) {
-            animDown = MonsterAnimations.animationDown_Zombie;
-            animUp = MonsterAnimations.animationUp_Zombie;
-            animLeft = MonsterAnimations.animationLeft_Zombie;
-            animRight = MonsterAnimations.animationRight_Zombie;
-        } else if (monsterType == 2) {
-            animDown = MonsterAnimations.animationDown_Espirito;
-            animUp = MonsterAnimations.animationUp_Espirito;
-            animLeft = MonsterAnimations.animationLeft_Espirito;
-            animRight = MonsterAnimations.animationRight_Espirito;
-        }  else if (monsterType == 3) {
-            animDown = MonsterAnimations.animationDown_Larvion;
-            animUp = MonsterAnimations.animationUp_Larvion;
-            animLeft = MonsterAnimations.animationLeft_Larvion;
-            animRight = MonsterAnimations.animationRight_Larvion;
-        
-        }  else if (monsterType == 4) {
-        	animDown = MonsterAnimations.animationDown_Bichette;
-        	animUp = MonsterAnimations.animationUp_Bichette;
-        	animLeft = MonsterAnimations.animationLeft_Bichette;
-        	animRight = MonsterAnimations.animationRight_Bichette;
-        }
+        setMonsterType();
 		
 		if (orientation == 1) {
 			sprite = animUp;
@@ -157,5 +159,29 @@ public class Monster {
             }
         }
         return solid;
+    }
+
+    private void setMonsterType() {
+        if (monsterType == 1) {
+            animDown = MonsterAnimations.animationDown_Zombie;
+            animUp = MonsterAnimations.animationUp_Zombie;
+            animLeft = MonsterAnimations.animationLeft_Zombie;
+            animRight = MonsterAnimations.animationRight_Zombie;
+        } else if (monsterType == 2) {
+            animDown = MonsterAnimations.animationDown_Espirito;
+            animUp = MonsterAnimations.animationUp_Espirito;
+            animLeft = MonsterAnimations.animationLeft_Espirito;
+            animRight = MonsterAnimations.animationRight_Espirito;
+        }  else if (monsterType == 3) {
+            animDown = MonsterAnimations.animationDown_Larvion;
+            animUp = MonsterAnimations.animationUp_Larvion;
+            animLeft = MonsterAnimations.animationLeft_Larvion;
+            animRight = MonsterAnimations.animationRight_Larvion;
+        }  else if (monsterType == 4) {
+            animDown = MonsterAnimations.animationDown_Bichette;
+            animUp = MonsterAnimations.animationUp_Bichette;
+            animLeft = MonsterAnimations.animationLeft_Bichette;
+            animRight = MonsterAnimations.animationRight_Bichette;
+        }
     }
 }

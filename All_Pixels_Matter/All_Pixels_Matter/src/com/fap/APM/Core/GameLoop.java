@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.*;
 import javax.swing.*;
-
 import com.fap.APM.ControlRoom;
 import com.fap.APM.Core.Input.Keyboard;
 import com.fap.APM.Core.Input.Mouse;
@@ -70,8 +69,15 @@ public class GameLoop extends Canvas implements Runnable {
         return false;
     }
 
+    private void worldTick() {
+        ControlRoom.PLAYER.nextTick();
+        //Todo: write a method to setup only the objects involved in the screen/action/active zones etc.
+        for (int i = 0; i < WorldList.monsters.size(); i++) WorldList.monsters.get(i).nextTick();
+        for (int i = 0; i < WorldList.particles.size(); i++) WorldList.particles.get(i).nextTick();
+        AI.shared().nextTick();
+    }
 
-    public void renderScreen() {
+    private void renderScreen() {
         BufferStrategy BufferStrategy = getBufferStrategy();
 
         if (BufferStrategy == null) {
@@ -104,13 +110,5 @@ public class GameLoop extends Canvas implements Runnable {
                 ControlRoom.TPS = 0;
             }
         }
-    }
-
-    private void worldTick() {
-        ControlRoom.PLAYER.nextTick();
-        //Todo: write a method to setup only the objects involved in the screen/action/active zones etc.
-        for (int i = 0; i < WorldList.monsters.size(); i++) WorldList.monsters.get(i).nextTick();
-        for (int i = 0; i < WorldList.particles.size(); i++) WorldList.particles.get(i).nextTick();
-        AI.shared().nextTick();
     }
 }

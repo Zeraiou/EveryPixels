@@ -391,7 +391,7 @@ public class InputManager {
         }
     }
 
-    private static void addKeyIfNotInList(Integer movementKey) {
+    protected static void addKeyIfNotInList(Integer movementKey) {
         boolean exists = false;
 
         for (int i = 0; i < movementKeys.size(); i++) {
