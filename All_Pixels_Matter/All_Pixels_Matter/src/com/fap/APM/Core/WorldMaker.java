@@ -70,10 +70,9 @@ public class WorldMaker {
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x <width; x++) {
-
                 Sprite sprite = getStructuresSprite(x, y);
                 if (sprite != WorldList.sprite_Void12_transparent) {
-                WorldMaker.shared().createWall(sprite, x * ControlRoom.TILE_WIDTH, y * ControlRoom.TILE_HEIGHT , sprite.width, sprite.height);
+                    WorldMaker.shared().createWall(sprite, x * ControlRoom.TILE_WIDTH, y * ControlRoom.TILE_HEIGHT , sprite.width, sprite.height);
                 }
             }
         }
@@ -96,16 +95,13 @@ public class WorldMaker {
     	  
     	  for (int y = 0; y < height; y++) {
               for (int x = 0; x <width; x++) {
-
                   Sprite sprite = getFunituresSprite(x, y);
                   if (sprite != WorldList.sprite_Void12_transparent) {
-                  WorldMaker.shared().createFurniture(sprite, x * ControlRoom.TILE_WIDTH, y * ControlRoom.TILE_HEIGHT , sprite.width, sprite.height);
+                    WorldMaker.shared().createFurniture(sprite, x * ControlRoom.TILE_WIDTH, y * ControlRoom.TILE_HEIGHT , sprite.width, sprite.height);
                   }
               }
           }
     }
-
-
 
 	private void extractMapResource() {
         try {
@@ -126,11 +122,10 @@ public class WorldMaker {
             for (int x = 0; x <width; x++) {
                 Sprite sprite = getResourcesSprite(x, y);
                 if (sprite != WorldList.sprite_Void12_transparent) {
-                WorldMaker.shared().createResource(sprite, x * ControlRoom.TILE_WIDTH, y * ControlRoom.TILE_HEIGHT , sprite.width, sprite.height);
+                    WorldMaker.shared().createResource(sprite, x * ControlRoom.TILE_WIDTH, y * ControlRoom.TILE_HEIGHT , sprite.width, sprite.height);
                 }
             }
         }
-
 		System.out.println("Ressource dessiner sur la map : " + WorldList.resources.size());
     }
 
@@ -162,8 +157,6 @@ public class WorldMaker {
     public void createFurniture(Sprite sprite, int posX, int posY, int width, int height) {
 		Furniture furniture = new Furniture(sprite, posX, posY, width, height);
 		WorldList.furnitures.add(furniture);
-
-    	
     }
 
     public void createResource(Sprite sprite, int posX, int posY, int width, int height) {

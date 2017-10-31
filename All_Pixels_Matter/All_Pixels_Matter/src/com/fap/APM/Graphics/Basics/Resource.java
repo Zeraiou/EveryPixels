@@ -1,5 +1,4 @@
 package com.fap.APM.Graphics.Basics;
-
 import com.fap.APM.Graphics.Sprites.Sprite;
 
 public class Resource {
@@ -21,5 +20,4 @@ public class Resource {
 	public Sprite getSprite() {
 		return sprite;
 	}
-	
 }

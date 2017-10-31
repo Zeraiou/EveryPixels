@@ -1,5 +1,4 @@
 package com.fap.APM.Graphics.Units;
-
 import com.fap.APM.Graphics.Sprites.AnimatedSprite;
 import com.fap.APM.Core.WorldList;
 

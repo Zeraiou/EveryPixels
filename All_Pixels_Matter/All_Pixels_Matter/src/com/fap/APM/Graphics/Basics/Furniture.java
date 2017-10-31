@@ -1,5 +1,4 @@
 package com.fap.APM.Graphics.Basics;
-
 import com.fap.APM.Graphics.Sprites.Sprite;
 
 public class Furniture {
@@ -16,9 +15,8 @@ public class Furniture {
 
 		this.sprite = sprite;
 	}
-	
+
 	public Sprite getSprite() {
 		return sprite;
 	}
-	
 }

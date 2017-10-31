@@ -38,7 +38,6 @@ public class InGameClock {
 		}
 		
 		if (minuteCount >= 60) {
-			
 			minuteCount -= 60;
 			hourCount++;
 		}
@@ -55,12 +54,10 @@ public class InGameClock {
 			if (hourCount <= 19 && minuteCount <= 59) {
 				day = true;
 				night = false;
-				
 			} else if (hourCount >= 20 && minuteCount >= 0) {
 				day = false;
 				night = true;
 			}
-		
 		}
 	}
 }
