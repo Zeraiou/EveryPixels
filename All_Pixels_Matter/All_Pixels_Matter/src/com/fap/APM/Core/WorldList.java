@@ -15,12 +15,14 @@ import java.util.List;
 public class WorldList {
 
     public static List<Monster> monsters = new ArrayList<Monster>();
-    public static List<Particle> particles = new ArrayList<Particle>();
     public static List<Tile> tiles = new ArrayList<Tile>();
     public static List<Wall> walls = new ArrayList<Wall>();
+
     public static List<Furniture> furnitures = new ArrayList<Furniture>();
     public static List<Resource> resources = new ArrayList<Resource>();
+
     public static List<Item> items = new ArrayList<Item>();
+    public static List<Particle> particles = new ArrayList<Particle>();
 
     public static SpriteSheet player_1 = new SpriteSheet(ControlRoom.PLAYER_SPRITE_PATH, 144, 192);
     public static SpriteSheet player_Idle_Down = new SpriteSheet(player_1, 0, 0, 1, 1, 36, 48);

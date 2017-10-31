@@ -1,22 +1,16 @@
 package com.fap.APM.Core;
 
-import com.fap.APM.Core.ControlRoom;
+import com.fap.APM.Helpers.ControlRoom;
 
 public class InGameClock {
 	
     private static InGameClock INSTANCE = null;
-    
-    
     private double minuteInGameElasped = 1440 / (ControlRoom.MINUTE_PER_DAY * 60);
-    
-
     public int secondCount, hourCount, dayCount;   
     public double minuteCount;
     public boolean day, night;
-    
     private int loopCount = 0;
-    
-	
+
 	private InGameClock() { }
 
 	public static InGameClock shared() {
@@ -25,8 +19,11 @@ public class InGameClock {
 	    }
 		return INSTANCE;
 	}
-	
-	
+
+	public static void startClock() {
+		INSTANCE = new InGameClock();
+	}
+
 	public void tickInGameClock() {
 		loopCount++;
 		
@@ -34,8 +31,6 @@ public class InGameClock {
 			secondCount += 60;
 			System.out.println(loopCount + " : " + "day " + dayCount + " - " + hourCount + ":" + minuteCount + ":" + secondCount);
 			System.out.println(loopCount + " : " + "day " + day + " , night " + night);
-			 
-
 		}
 		
 		if (secondCount == 60) {
@@ -48,9 +43,7 @@ public class InGameClock {
 			minuteCount -= 60;
 			hourCount++;
 		}
-		
-		
-		
+
 		if (hourCount == 24) {
 			hourCount = 0;
 			dayCount++;
@@ -70,6 +63,5 @@ public class InGameClock {
 			}
 		
 		}
-		
 	}
 }

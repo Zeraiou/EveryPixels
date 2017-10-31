@@ -46,8 +46,6 @@ public class ControlRoom {
     ///FURNITURES///
     public static final String CHEST_SPRITE_PATH = "/Textures/SpriteSheets/Furniture/Chest.png";
 
-    
-    
     ///RESOURCES///
     /// TREES ///
     public static final String CONIFEROUS_SPRITE_PATH = "/Textures/SpriteSheets/Resources/Coniferous.png";
@@ -71,8 +69,6 @@ public class ControlRoom {
     /// TIME VARIABLES ///
     public static final double NANOSECONDE = 1000000000.0 / 60.0;
     public static final double MINUTE_PER_DAY = 4.5;
- 
-    
 
     ///Random///
     public final static Random RANDOM = new Random();

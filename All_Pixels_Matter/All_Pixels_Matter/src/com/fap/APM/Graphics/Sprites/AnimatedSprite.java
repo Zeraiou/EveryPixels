@@ -29,7 +29,6 @@ public class AnimatedSprite extends Sprite {
             }
 
             sprite = spriteSheet.getSprites()[frame];
-
         }
     }
 

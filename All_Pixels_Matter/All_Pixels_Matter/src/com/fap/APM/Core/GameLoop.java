@@ -40,6 +40,7 @@ public class GameLoop extends Canvas implements Runnable {
 
 	private void GameLoop() {
         WorldMaker.startWorld();
+        InGameClock.startClock();
         Keyboard.startKeyboard();
         Mouse.startMouse();
         DrawManager.startDraw();
@@ -115,6 +116,17 @@ public class GameLoop extends Canvas implements Runnable {
         BufferStrategy.show();
     }
 
+    private static synchronized void startGame(GameLoop gameLoop) {
+        Thread thread = new Thread(gameLoop, "Display");
+        thread.start();
+    }
+
+    private void addInputDevices() {
+        Keyboard.shared().inputManager.loadInputActions(frame);
+        addKeyListener(Keyboard.shared());
+        addMouseListener(Mouse.shared());
+    }
+
     private void setTitleInfo() {
         if (ControlRoom.TITLE_INFO_OUT == true) {
             if (System.currentTimeMillis() - clock1Sec > 1000) {
@@ -126,17 +138,6 @@ public class GameLoop extends Canvas implements Runnable {
                 ControlRoom.TPS = 0;
             }
         }
-    }
-
-    private static synchronized void startGame(GameLoop gameLoop) {
-        Thread thread = new Thread(gameLoop, "Display");
-        thread.start();
-    }
-
-    private void addInputDevices() {
-        Keyboard.shared().inputManager.loadInputActions(frame);
-        addKeyListener(Keyboard.shared());
-        addMouseListener(Mouse.shared());
     }
 }
 

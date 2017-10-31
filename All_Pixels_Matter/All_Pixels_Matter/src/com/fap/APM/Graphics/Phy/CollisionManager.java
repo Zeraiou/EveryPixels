@@ -1,5 +1,7 @@
 package com.fap.APM.Graphics.Phy;
 
+import com.fap.APM.Core.WorldList;
+
 public class CollisionManager {
     
 	private static CollisionManager INSTANCE = null;
@@ -18,7 +20,9 @@ public class CollisionManager {
     }
 
 	public void collisionDetection() {
+	     for (int i = 0; i < WorldList.resources.size(); i++) {
 
+         }
 	}
 }
 
