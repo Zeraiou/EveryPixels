@@ -20,7 +20,7 @@ public class CollisionManager {
 	    INSTANCE = new CollisionManager();
     }
 
-	public void collisionDetection(ActiveScope scope) {
+	public void collisionDetection() {
 	    for (int i = 0; i < WorldList.resources.size(); i++) {
 
         }
