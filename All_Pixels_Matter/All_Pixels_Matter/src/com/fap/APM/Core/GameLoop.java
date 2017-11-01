@@ -5,6 +5,8 @@ import com.fap.APM.Core.Input.Mouse;
 import com.fap.APM.Graphics.Phy.AI;
 import com.fap.APM.Graphics.Phy.CollisionManager;
 import com.fap.APM.Graphics.Units.Player;
+import com.fap.APM.Helpers.Helper;
+
 import javax.swing.JFrame;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -120,6 +122,8 @@ public class GameLoop extends Canvas implements Runnable {
     }
 
     private static void prepareForNextTick() {
+        // Helper.currentPlayerTileCoords();
+        //CollisionManager.shared().setNextActiveScope();
     }
 
     private static synchronized void startGame(GameLoop gameLoop) {
