@@ -2,6 +2,7 @@ package com.fap.APM.Core;
 import com.fap.APM.Helpers.ControlRoom;
 import com.fap.APM.Core.Input.Keyboard;
 import com.fap.APM.Core.Input.Mouse;
+import com.fap.APM.GUI.ManagerGUI;
 import com.fap.APM.Graphics.Phy.AI;
 import com.fap.APM.Graphics.Phy.CollisionManager;
 import com.fap.APM.Graphics.Units.Player;
@@ -42,6 +43,7 @@ public class GameLoop extends Canvas implements Runnable {
 
 	private void GameLoop() {
         new WorldMaker();
+        new GUIMaker();
         new InGameClock();
         new Keyboard();
         new Mouse();
@@ -50,6 +52,7 @@ public class GameLoop extends Canvas implements Runnable {
         new CollisionManager();
         new AI();
 
+        
         AI.shared().generateResource(10);
     }
 
@@ -98,6 +101,7 @@ public class GameLoop extends Canvas implements Runnable {
         ControlRoom.PLAYER.nextTick();
         AI.shared().monstersNextTick();
         EffectsManager.shared().effectsNextTick();
+        GUIMaker.shared().tickGUI();
     }
 
     private void renderScreen() {
@@ -117,6 +121,7 @@ public class GameLoop extends Canvas implements Runnable {
         graphics.setColor(Color.BLUE);
         graphics.fillRect(0, 0, ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT);
         graphics.drawImage(imageInFrame, 0, 0, ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, null);
+        GUIMaker.shared().managerGUI.renderManagerGUI(graphics);
         graphics.dispose();
         BufferStrategy.show();
     }

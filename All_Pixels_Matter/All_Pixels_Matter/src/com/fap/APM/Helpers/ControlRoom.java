@@ -35,6 +35,8 @@ public class ControlRoom {
     public static int FPS = 0;
     public static int TPS = 0;
     public static long GAME_START_TIME = System.currentTimeMillis();
+    public static final String GAME_NAME = "All Pixels Matter";
+    
 
     /// SPRITE LOADING STRINGS ///
     public static final String GAME_TITLE = "All Pixels Matter!";

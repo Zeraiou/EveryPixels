@@ -27,7 +27,7 @@ public class WorldMaker {
     public static WorldMaker shared() {
         if (INSTANCE == null) {
             INSTANCE = new WorldMaker();
-        }
+     }
         return INSTANCE;
     }
 

@@ -24,8 +24,8 @@ public class InGameClock {
 		
 		if (loopCount % 60 == 0) {
 			secondCount += 60;
-			System.out.println(loopCount + " : " + "day " + dayCount + " - " + hourCount + ":" + (int) minuteCount + ":" + secondCount);
-			System.out.println(loopCount + " : " + "day " + day + " , night " + night);
+			//System.out.println(loopCount + " : " + "day " + dayCount + " - " + hourCount + ":" + (int) minuteCount + ":" + secondCount);
+			//System.out.println(loopCount + " : " + "day " + day + " , night " + night);
 		}
 		
 		if (secondCount == 60) {

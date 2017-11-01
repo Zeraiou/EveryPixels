@@ -3,6 +3,8 @@ import com.fap.APM.Helpers.ControlRoom;
 import com.fap.APM.Graphics.Sprites.Sprite;
 import com.fap.APM.Graphics.Sprites.SpriteSheet;
 import com.fap.APM.Graphics.Basics.Item;
+import com.fap.APM.GUI.ComponentGUI;
+import com.fap.APM.GUI.PanelGUI;
 import com.fap.APM.Graphics.Basics.Furniture;
 import com.fap.APM.Graphics.Basics.Resource;
 import com.fap.APM.Graphics.Basics.Tile;
@@ -205,4 +207,11 @@ public class WorldList {
     public static final int COLOR_ROCK_1X1 = 0xff5B5B5B;
     public static final int COLOR_ROCK_2X2 = 0xff676772;
     public static final int COLOR_ROCK_3X3 = 0xff7A7A87;
+    
+     
+    ///GUI///
+	public static List<ComponentGUI> componentsGUI = new ArrayList<ComponentGUI>();
+    public static List<PanelGUI> panelsGUI = new ArrayList<PanelGUI>();
+	
+   
 }
