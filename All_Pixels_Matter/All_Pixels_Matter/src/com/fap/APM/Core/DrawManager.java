@@ -16,7 +16,7 @@ public class DrawManager {
     private int offsetX, offsetY;
     public int[] pixelsScreen;
 
-    private DrawManager() {
+    public DrawManager() {
         screenWidth = ControlRoom.SCREEN_WIDTH;
         screenHeight = ControlRoom.SCREEN_HEIGHT;
         totalPixels = screenWidth * screenHeight;
@@ -37,10 +37,6 @@ public class DrawManager {
         return INSTANCE;
     }
 
-    public static void startDraw() {
-        INSTANCE = new DrawManager();
-    }
-
     public void renderScreen() {
         pixelsScreen = new int[totalPixels];
         this.offsetX = (int)(ControlRoom.PLAYER.posX - screenCenterX);
@@ -58,7 +54,6 @@ public class DrawManager {
         drawParticles();
         drawPlayers();
     }
-
 
 	private  void drawTiles() {
         int x0 = (offsetX - tileWidth) / tileWidth;
@@ -99,7 +94,6 @@ public class DrawManager {
 			int posY = WorldList.walls.get(g).posY - offsetY;
 			Sprite sprite = WorldList.walls.get(g).sprite;
 
-
 			for (int i = 0; i < sprite.height; i++) {
 				int yAbsolu = i + posY;
 
@@ -128,7 +122,6 @@ public class DrawManager {
 			int posY = WorldList.furnitures.get(g).posY - offsetY;
 			Sprite sprite = WorldList.furnitures.get(g).sprite;
 
-
 			for (int i = 0; i < sprite.height; i++) {
 				int yAbsolu = i + posY;
 
@@ -151,38 +144,32 @@ public class DrawManager {
     }
     
     private  void drawResources() {
-     
-        
         for (int g = 0; g < WorldList.resources.size(); g++) {
-        
-                int posX = WorldList.resources.get(g).posX - offsetX;
-                int posY = WorldList.resources.get(g).posY - offsetY;
-                Sprite sprite = WorldList.resources.get(g).sprite;
+            int posX = WorldList.resources.get(g).posX - offsetX;
+            int posY = WorldList.resources.get(g).posY - offsetY;
+            Sprite sprite = WorldList.resources.get(g).sprite;
 
+            for (int i = 0; i < sprite.height; i++) {
+                int yAbsolu = i + posY;
 
-                for (int i = 0; i < sprite.height; i++) {
-                    int yAbsolu = i + posY;
+                for (int j = 0; j < sprite.width; j++) {
+                    int xAbsolu = j + posX;
 
-                    for (int j = 0; j < sprite.width; j++) {
-                        int xAbsolu = j + posX;
+                    if (xAbsolu < - sprite.width || xAbsolu >= screenWidth || yAbsolu < 0 || yAbsolu >= screenHeight) {
+                        break;
+                    } else if (xAbsolu < 0) {
+                        xAbsolu = 0;
+                    }
 
-                        if (xAbsolu < - sprite.width || xAbsolu >= screenWidth || yAbsolu < 0 || yAbsolu >= screenHeight) {
-                            break;
-                        } else if (xAbsolu < 0) {
-                            xAbsolu = 0;
-                        }
-              
-                        if (sprite.pixelsSprite[j + i * sprite.width] != WorldList.COLOR_NULL1) {
-
+                    if (sprite.pixelsSprite[j + i * sprite.width] != WorldList.COLOR_NULL1) {
                         pixelsScreen[xAbsolu + yAbsolu * screenWidth] = sprite.pixelsSprite[j + i * sprite.width];
-                        }
                     }
                 }
+            }
         }
    }
-   
 
-    private void drawPlayers() {
+   private void drawPlayers() {
         int posX = (int)ControlRoom.PLAYER.posX - offsetX;
         int posY = (int)ControlRoom.PLAYER.posY - offsetY;
         Sprite sprite = ControlRoom.PLAYER.sprite.getSprite();

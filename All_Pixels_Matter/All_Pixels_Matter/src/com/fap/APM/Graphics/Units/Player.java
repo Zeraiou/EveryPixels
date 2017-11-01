@@ -21,17 +21,20 @@ public class Player {
     private boolean isAlive = true;
     public boolean shiftDown = false;
     public double posX, posY;
+    public double height, width;
     public Movement movement;
 
 	public Player() {
-        sprite = animationIdle_Down;
-        posX = ControlRoom.STARTING_X;
-        posY = ControlRoom.STARTING_Y;
-        healthPoints = ControlRoom.HEALTH_POINTS;
-        maxHealthPoints = ControlRoom.MAX_HEALTH_POINTS;
-        movement = new Movement(ControlRoom.MOVEMENT_SPEED);
-        pointExperience = ControlRoom.EXP_POINTS;
-        fireRate = ControlRoom.FIRE_RATE;
+        this.sprite = animationIdle_Down;
+        this.posX = ControlRoom.STARTING_X;
+        this.posY = ControlRoom.STARTING_Y;
+        this.height = ControlRoom.PLAYER_HEIGHT;
+        this.width = ControlRoom.PLAYER_WIDTH;
+        this.healthPoints = ControlRoom.HEALTH_POINTS;
+        this.maxHealthPoints = ControlRoom.MAX_HEALTH_POINTS;
+        this.movement = new Movement(ControlRoom.MOVEMENT_SPEED);
+        this.pointExperience = ControlRoom.EXP_POINTS;
+        this.fireRate = ControlRoom.FIRE_RATE;
     }
 
 	public void nextTick() {

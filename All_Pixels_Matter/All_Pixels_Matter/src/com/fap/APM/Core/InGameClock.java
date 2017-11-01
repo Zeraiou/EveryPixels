@@ -10,17 +10,13 @@ public class InGameClock {
     public boolean day, night;
     private int loopCount = 0;
 
-	private InGameClock() { }
+    public InGameClock() { }
 
 	public static InGameClock shared() {
 		if (INSTANCE == null) {
 			INSTANCE = new InGameClock();
 	    }
 		return INSTANCE;
-	}
-
-	public static void startClock() {
-		INSTANCE = new InGameClock();
 	}
 
 	public void tickInGameClock() {

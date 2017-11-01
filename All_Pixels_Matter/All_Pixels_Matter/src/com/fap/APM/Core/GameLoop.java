@@ -39,14 +39,16 @@ public class GameLoop extends Canvas implements Runnable {
 	}
 
 	private void GameLoop() {
-        WorldMaker.startWorld();
-        InGameClock.startClock();
-        Keyboard.startKeyboard();
-        Mouse.startMouse();
-        DrawManager.startDraw();
-        EffectsManager.startEffects();
-        CollisionManager.startCollision();
-        AI.startAI();
+        new WorldMaker();
+        new InGameClock();
+        new Keyboard();
+        new Mouse();
+        new DrawManager();
+        new EffectsManager();
+        new CollisionManager();
+        new AI();
+
+        AI.shared().generateResource(10);
     }
 
     @Override
@@ -64,6 +66,7 @@ public class GameLoop extends Canvas implements Runnable {
                 CollisionManager.shared().collisionDetection();
                 WorldMaker.shared().removeEntity();
                 renderScreen();
+                prepareForNextTick();
             }
         }
         running = false;
@@ -114,6 +117,9 @@ public class GameLoop extends Canvas implements Runnable {
         graphics.drawImage(imageInFrame, 0, 0, ControlRoom.SCREEN_WIDTH, ControlRoom.SCREEN_HEIGHT, null);
         graphics.dispose();
         BufferStrategy.show();
+    }
+
+    private static void prepareForNextTick() {
     }
 
     private static synchronized void startGame(GameLoop gameLoop) {

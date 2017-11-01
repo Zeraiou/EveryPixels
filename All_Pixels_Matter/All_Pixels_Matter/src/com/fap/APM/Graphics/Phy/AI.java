@@ -10,17 +10,13 @@ public class AI {
     private static AI INSTANCE = null;
     private int time = 0;
 
-    private AI() { }
+    public AI() { }
 
     public static AI shared() {
         if (INSTANCE == null) {
             INSTANCE = new AI();
         }
         return INSTANCE;
-    }
-
-    public static void startAI(){
-        INSTANCE = new AI();
     }
 
     public void monstersNextTick() {
@@ -95,8 +91,7 @@ public class AI {
     				int resourcesMinY =  WorldList.resources.get(r).posY;
     				int resourcesMaxX =  WorldList.resources.get(r).posX +  WorldList.resources.get(r).width;
     				int resourcesMaxY =  WorldList.resources.get(r).posY +  WorldList.resources.get(r).height;
-    				
-    				
+
     				if (posXTemp >= resourcesMinX && (posXTemp + sprite.width) <= resourcesMaxX) {
     					if (posYTemp >= resourcesMinY && posYTemp <= resourcesMaxY) {
     						create = false;
@@ -113,7 +108,6 @@ public class AI {
         				int wallsMinY =  WorldList.walls.get(r).posY;
         				int wallsMaxX =  WorldList.walls.get(r).posX +  WorldList.walls.get(r).width;
         				int wallsMaxY =  WorldList.walls.get(r).posY +  WorldList.walls.get(r).height;
-        			
     					
     					if (posXTemp >= wallsMinX && posXTemp <= wallsMaxX) {
         					if (posYTemp >= wallsMinY && posYTemp <= wallsMaxY) {
@@ -127,7 +121,7 @@ public class AI {
     			}
     			
     			if (create) {
-    				Resource resource = new Resource(sprite, posXTemp, posYTemp, sprite.width, sprite.height);
+    				Resource resource = new Resource(sprite, posXTemp, posYTemp, sprite.width, sprite.height, 10);
     				WorldList.resources.add(resource);
     				System.out.println("Ressource posX : " + posXTemp / ControlRoom.TILE_WIDTH + " , Ressource posY : " + posYTemp / ControlRoom.TILE_HEIGHT);
     				System.out.println("Ressources incrementer dune creation : " + WorldList.resources.size());

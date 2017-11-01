@@ -6,7 +6,7 @@ public class CollisionManager {
     
 	private static CollisionManager INSTANCE = null;
 
-	 private CollisionManager() {}
+	public CollisionManager() {}
 
 	public static CollisionManager shared() {
 		if (INSTANCE == null) {
@@ -20,7 +20,7 @@ public class CollisionManager {
     }
 
 	public void collisionDetection() {
-        for (int i = 0; i < WorldList.resources.size(); i++) {
+	    for (int i = 0; i < WorldList.resources.size(); i++) {
 
         }
 	}

@@ -16,22 +16,19 @@ public class WorldMaker {
     public int[] mapFieldTiles, mapStructures, mapFurnitures, mapResources;
     private static WorldMaker INSTANCE = null;
 
-    private WorldMaker() { }
+    public WorldMaker() {
+        INSTANCE = this;
+        INSTANCE.extractMapField();
+        INSTANCE.extractMapStructure();
+        INSTANCE.extractMapFurniture();
+        INSTANCE.extractMapResource();
+    }
 
     public static WorldMaker shared() {
         if (INSTANCE == null) {
             INSTANCE = new WorldMaker();
-            INSTANCE.extractMapField();
-            INSTANCE.extractMapStructure();
-            INSTANCE.extractMapFurniture();
-            INSTANCE.extractMapResource();
-            AI.shared().generateResource(10);
         }
         return INSTANCE;
-    }
-
-    public static void startWorld() {
-        INSTANCE = new WorldMaker();
     }
 
 	private void extractMapField() {
@@ -129,38 +126,38 @@ public class WorldMaker {
 		System.out.println("Ressource dessiner sur la map : " + WorldList.resources.size());
     }
 
-    public void createZombie(int tileX, int tileY, int orientation, int type, int level, int status) {
-        Monster monster = new Monster(tileX, tileY, orientation, type, level, status);
+    public void createZombie(int posX, int posY, int orientation, int type, int level, int status) {
+        Monster monster = new Monster(posX, posY, orientation, type, level, status);
         WorldList.monsters.add(monster);
     }
 
-    public void createEspirito(int tileX, int tileY, int orientation, int type, int level, int status) {
-        Monster monster = new Monster(tileX, tileY, orientation, type, level, status);
+    public void createEspirito(int posX, int posY, int orientation, int type, int level, int status) {
+        Monster monster = new Monster(posX, posY, orientation, type, level, status);
         WorldList.monsters.add(monster);
     }
 
-    public void createLarvion(int tileX, int tileY, int orientation, int type, int level, int status) {
-        Monster monster = new Monster(tileX, tileY, orientation, type, level, status);
+    public void createLarvion(int posX, int posY, int orientation, int type, int level, int status) {
+        Monster monster = new Monster(posX, posY, orientation, type, level, status);
         WorldList.monsters.add(monster);
     }
 
-    public void createBichette(int tileX, int tileY, int orientation, int type, int level, int status) {
-        Monster monster = new Monster(tileX, tileY, orientation, type, level, status);
+    public void createBichette(int posX, int posY, int orientation, int type, int level, int status) {
+        Monster monster = new Monster(posX, posY, orientation, type, level, status);
         WorldList.monsters.add(monster);
     }
 
-    public void createWall(Sprite sprite, int tileX, int tileY, int width, int height) {
-		Wall wall = new Wall(sprite, tileX, tileY, width, height);
+    public void createWall(Sprite sprite, int posX, int posY, int width, int height) {
+		Wall wall = new Wall(sprite, posX, posY, width, height);
 		WorldList.walls.add(wall);
 	}
 
-    public void createFurniture(Sprite sprite, int tileX, int tileY, int width, int height) {
-		Furniture furniture = new Furniture(sprite, tileX, tileY, width, height);
+    public void createFurniture(Sprite sprite, int posX, int posY, int width, int height) {
+		Furniture furniture = new Furniture(sprite, posX, posY, width, height);
 		WorldList.furnitures.add(furniture);
     }
 
-    public void createResource(Sprite sprite, int tileX, int tileY, int width, int height) {
-		Resource resource = new Resource(sprite, tileX, tileY, width, height);
+    public void createResource(Sprite sprite, int posX, int posY, int width, int height) {
+		Resource resource = new Resource(sprite, posX, posY, width, height);
 		WorldList.resources.add(resource);
 	}
 

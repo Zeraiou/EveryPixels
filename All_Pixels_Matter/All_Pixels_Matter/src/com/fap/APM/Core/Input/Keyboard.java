@@ -8,7 +8,7 @@ public class Keyboard implements KeyListener {
     public InputManager inputManager;
     private static Keyboard INSTANCE = null;
 
-    private Keyboard() {
+    public Keyboard() {
         inputManager = new InputManager();
     }
 
@@ -17,10 +17,6 @@ public class Keyboard implements KeyListener {
             INSTANCE = new Keyboard();
         }
         return INSTANCE;
-    }
-
-    public static void startKeyboard() {
-        INSTANCE = new Keyboard();
     }
 
     @Override

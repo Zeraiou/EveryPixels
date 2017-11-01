@@ -12,16 +12,13 @@ public class Mouse implements MouseListener, MouseMotionListener {
 	public static int alternatePushReleaseButton = 0;
 	private static Mouse INSTANCE = null;
 
-    private Mouse() { }
+    public Mouse() { }
+
     public static Mouse shared() {
         if (INSTANCE == null) {
             INSTANCE = new Mouse();
         }
         return INSTANCE;
-    }
-
-    public static void startMouse() {
-        INSTANCE = new Mouse();
     }
 
 	public int getMouseX() {

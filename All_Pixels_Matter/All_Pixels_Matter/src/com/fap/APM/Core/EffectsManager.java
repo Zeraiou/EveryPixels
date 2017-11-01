@@ -4,8 +4,7 @@ public class EffectsManager {
 
     private static EffectsManager INSTANCE = null;
 
-    private EffectsManager() {
-    }
+    public EffectsManager() {}
 
     public static EffectsManager shared() {
         if (INSTANCE == null) {

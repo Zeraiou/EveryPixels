@@ -31,7 +31,6 @@ public class WorldList {
     public static SpriteSheet player_Idle_Left = new SpriteSheet(player_1, 3, 0, 1, 1, 36, 48);
     public static Sprite sprite_Player_Idle = new Sprite(36, 48, 0, 0, player_1);
 
-    
     public static SpriteSheet player_Walking_Down = new SpriteSheet(player_1, 0, 1, 1, 3, 36, 48);
     public static SpriteSheet player_Walking_Right = new SpriteSheet(player_1, 1, 1, 1, 3, 36, 48);
     public static SpriteSheet player_Walking_Up = new SpriteSheet(player_1, 2, 1, 1, 3, 36, 48);
@@ -84,7 +83,6 @@ public class WorldList {
 
     public static final int COLOR_TRANSPARENT = 0xffff00ff;
     
-    
     public static SpriteSheet tiles_Base12 = new SpriteSheet(ControlRoom.TILE_SPRITE_PATH, 48, 36);
     public static Sprite tile_Grass12 = new Sprite(12, 12, 0, 0, tiles_Base12);
     public static Sprite tile_Rock12 = new Sprite(12, 12, 1, 0, tiles_Base12);
@@ -128,10 +126,8 @@ public class WorldList {
     public static final int COLOR_DIRT = 0xff694B11;
     public static final int COLOR_NULL1 = 0xffFF00FF;
     public static final int COLOR_NULL2 = 0xff7f007f;
-    
-    
+
     ///Structures///
-    
     public static SpriteSheet wall_Wood = new SpriteSheet(ControlRoom.WALL_WOOD_SPRITE_PATH, 120, 168);
     public static Sprite sprite_Wall_Wood_1 = new Sprite(12, 48, 9, 0, wall_Wood);
     public static Sprite sprite_Wall_Wood_2 = new Sprite(24, 48, 2, 0, wall_Wood);
@@ -176,24 +172,15 @@ public class WorldList {
     public static final int COLOR_DOOR_WOOD_CLOSE = 0xffD3F4FF;
     public static final int COLOR_DOOR_WOOD_TOP_OPEN = 0xffB375FF;
     public static final int COLOR_DOOR_WOOD_OPEN = 0xffC4A5FF;
-    
-    
-    
+
     ///Furniture///
-    
     public static SpriteSheet chest = new SpriteSheet(ControlRoom.CHEST_SPRITE_PATH, 48, 24);
     public static Sprite sprite_Chest_Close = new Sprite(24, 24, 0, 0, chest);
     public static Sprite sprite_Chest_Open = new Sprite(24, 24, 1, 0, chest);
-    
-    
     public static final int COLOR_CHEST_CLOSE = 0xff261A06;
     public static final int COLOR_CHEST_OPEN = 0xff231A0B;
-   
-    
-    
-    
+
     ///Resources///
-    
     public static SpriteSheet coniferous = new SpriteSheet(ControlRoom.CONIFEROUS_SPRITE_PATH, 144, 96);
     public static Sprite sprite_Coniferous_Big = new Sprite(72, 96, 0, 0, coniferous);
     public static Sprite sprite_Coniferous_Small = new Sprite(72, 72, 1, 0, coniferous);

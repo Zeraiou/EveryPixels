@@ -11,6 +11,8 @@ public class ControlRoom {
     public static final double HEALTH_POINTS = 100.00;
     public static final double MAX_HEALTH_POINTS = 100.00;
     public static final int EXP_POINTS = 0;
+    public static final double PLAYER_HEIGHT = 4.0;
+    public static final double PLAYER_WIDTH = 3.0;
 
     /// CONSOLE LOG SWITCHES ///
     public static final boolean PIXEL_TILE_LOAD_OUT = false;
