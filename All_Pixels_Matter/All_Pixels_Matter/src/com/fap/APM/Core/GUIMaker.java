@@ -59,7 +59,6 @@ public class GUIMaker {
 		labelCycleDayNight.dropShadow = true;
 		panelCycleDayNight.addComponent(labelCycleDayNight);
 		
-		
 	}
     
 	public static GUIMaker shared() {
@@ -68,28 +67,37 @@ public class GUIMaker {
 	    }
 		return INSTANCE;
 	}
-
-
-	public static void startGUIMaker() {
-		INSTANCE = new GUIMaker();
-	}
-
-
-	
 	
 	public void tickGUI() {
 		
 		if (InGameClock.shared().day) {
-			cycleDayNight = "Day";
+			cycleDayNight = "Cycle : Day";
 		} else {
-			cycleDayNight = "Night";
+			cycleDayNight = "Cycle : Night";
 		}
 		
+		
+		if (InGameClock.shared().dayCount < 10) {
+			labelDayCount.text = new String("Day : " + "0" + InGameClock.shared().dayCount);
+		} else {
+			labelDayCount.text = new String("Day : " + InGameClock.shared().dayCount);
+		}
+		
+		if (InGameClock.shared().hourCount < 10) {
+			if (InGameClock.shared().minuteCount < 10) {
+				labelTimeCount.text = new String("Time : " + "0" + InGameClock.shared().hourCount + " : " + "0" + (int) InGameClock.shared().minuteCount + ".");
+			} else {
+				labelTimeCount.text = new String("Time : " + "0" + InGameClock.shared().hourCount + " : " + (int) InGameClock.shared().minuteCount + ".");
+			}
+		} else {
+			if (InGameClock.shared().minuteCount < 10) {
+				labelTimeCount.text = new String("Time : " + InGameClock.shared().hourCount + " : " + "0" + (int) InGameClock.shared().minuteCount + ".");
+			} else {
+			labelTimeCount.text = new String("Time : " + InGameClock.shared().hourCount + " : " + (int) InGameClock.shared().minuteCount + ".");
+			}
+		}
+
 		labelCycleDayNight.text = cycleDayNight;
-		
-		
-		labelTimeCount.text = new String("Time : " + InGameClock.shared().hourCount + " : " + (int) InGameClock.shared().minuteCount + ".");
 	}
-	
 	
 }
