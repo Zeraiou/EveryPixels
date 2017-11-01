@@ -1,4 +1,5 @@
 package com.fap.APM.Core;
+import com.fap.APM.Helpers.ActiveScope;
 import com.fap.APM.Helpers.ControlRoom;
 import com.fap.APM.Core.Input.Keyboard;
 import com.fap.APM.Core.Input.Mouse;
@@ -127,6 +128,7 @@ public class GameLoop extends Canvas implements Runnable {
     }
 
     private static void prepareForNextTick() {
+	    CollisionManager.shared().setActiveScope(new ActiveScope(ControlRoom.PLAYER.posX, ControlRoom.PLAYER.posY, ControlRoom.SCOPE_HEIGHT, ControlRoom.SCOPE_WIDTH));
         // Helper.currentPlayerTileCoords();
         //CollisionManager.shared().setNextActiveScope();
     }

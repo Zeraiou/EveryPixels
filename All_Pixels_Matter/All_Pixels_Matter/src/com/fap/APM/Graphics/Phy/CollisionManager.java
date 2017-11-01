@@ -6,6 +6,7 @@ import com.fap.APM.Helpers.ActiveScope;
 public class CollisionManager {
     
 	private static CollisionManager INSTANCE = null;
+    ActiveScope scope;
 
 	public CollisionManager() {}
 
@@ -16,8 +17,8 @@ public class CollisionManager {
 		return INSTANCE;
 	}
 
-	public static void startCollision() {
-	    INSTANCE = new CollisionManager();
+    public void setActiveScope(ActiveScope currentScope) {
+	    this.scope = currentScope;
     }
 
 	public void collisionDetection() {
@@ -26,10 +27,6 @@ public class CollisionManager {
         }
 	}
 }
-
-
-
-
 
 
 	/*    

@@ -30,6 +30,8 @@ public class ControlRoom {
     public static final int STARTING_Y = 60 * 12;
     public static final int TILE_WIDTH = 12;
     public static final int TILE_HEIGHT = 12;
+    public static final int SCOPE_WIDTH = 80;
+    public static final int SCOPE_HEIGHT = 60;
 
     /// GAME INFO DATA ///
     public static int FPS = 0;
